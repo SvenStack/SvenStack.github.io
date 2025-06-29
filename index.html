@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,121 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/29/Algorithm-Day03-Longest-Consecutive-Sequence-lc-128/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/06/29/Algorithm-Day03-Longest-Consecutive-Sequence-lc-128/" class="post-title-link" itemprop="url">Algorithm-Day03-Longest-Consecutive-Sequence-lc-128</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-06-29 21:46:08 / Modified: 21:47:06" itemprop="dateCreated datePublished" datetime="2025-06-29T21:46:08+10:00">2025-06-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Hash-Table/" itemprop="url" rel="index"><span itemprop="name">Hash Table</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an unsorted array of integers <code>nums</code>, return the length of the <strong>longest consecutive elements sequence</strong>.</p>
+<p>You must write an algorithm that runs in <strong>O(n)</strong> time.</p>
+<p><strong>Example:</strong></p>
+<p>Input: nums &#x3D; [100, 4, 200, 1, 3, 2]<br> Output: 4<br> Explanation: The longest consecutive sequence is [1, 2, 3, 4]. Therefore its length is 4.</p>
+<h2 id="💡-Brute-Force-Not-Enough"><a href="#💡-Brute-Force-Not-Enough" class="headerlink" title="💡 Brute Force? Not Enough"></a>💡 Brute Force? Not Enough</h2><p>A naive solution would be to:</p>
+<ul>
+<li>Sort the array → O(n log n)</li>
+<li>Iterate to find longest streak</li>
+</ul>
+<p>This <strong>fails the O(n) constraint</strong>, so we need a better approach.</p>
+<hr>
+<h2 id="💡-Optimized-Approach-Using-HashSet"><a href="#💡-Optimized-Approach-Using-HashSet" class="headerlink" title="💡 Optimized Approach (Using HashSet)"></a>💡 Optimized Approach (Using HashSet)</h2><p>To achieve linear time:</p>
+<ol>
+<li>Store all numbers in a <code>HashSet</code> for constant-time lookups.</li>
+<li>Iterate through the array, and only <strong>start a new sequence</strong> if <code>num - 1</code> is not in the set (i.e., it’s the start of a sequence).</li>
+<li>Expand forward: check how long the consecutive streak goes.</li>
+<li>Track the max length.</li>
+</ol>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">longestConsecutive</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            set.add(num);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">maxLen</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.contains(num - <span class="number">1</span>)) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">current</span> <span class="operator">=</span> num;</span><br><span class="line">                <span class="type">int</span> <span class="variable">length</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">while</span> (set.contains(current + <span class="number">1</span>)) &#123;</span><br><span class="line">                    current++;</span><br><span class="line">                    length++;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                maxLen = Math.max(maxLen, length);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> maxLen;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n)<br> Each number is added and checked in constant time.</li>
+<li><strong>Space Complexity:</strong> O(n)<br> To store all unique numbers in the HashSet.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>This is a great example of using <strong>HashSet</strong> to eliminate redundant computation.</li>
+<li>The key optimization is <strong>only starting a streak when <code>num - 1</code> is not in the set</strong>.</li>
+<li>Sorting is too slow for this problem — always check time constraints carefully.</li>
+</ul>
+<blockquote>
+<p>This technique of using hash-based lookup to replace sorting is common in many “O(n)” constraint problems.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
