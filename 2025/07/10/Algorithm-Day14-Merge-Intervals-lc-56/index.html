@@ -19,30 +19,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="🧩 Problem DescriptionYou are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the i-th line are (i, 0) and (i, height[i]). Find two lines tha">
+    <meta name="description" content="🧩 Problem DescriptionGiven an array of intervals where intervals[i] &#x3D; [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the interv">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithm-Day05-Container-With-Most-Water-lc#11">
-<meta property="og:url" content="http://example.com/2025/07/01/Algorithm-Day05-Container-With-Most-Water-lc-11/index.html">
+<meta property="og:title" content="Algorithm-Day14-Merge-Intervals-lc-56">
+<meta property="og:url" content="http://example.com/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/index.html">
 <meta property="og:site_name" content="SvenStack">
-<meta property="og:description" content="🧩 Problem DescriptionYou are given an integer array height of length n. There are n vertical lines drawn such that the two endpoints of the i-th line are (i, 0) and (i, height[i]). Find two lines tha">
+<meta property="og:description" content="🧩 Problem DescriptionGiven an array of intervals where intervals[i] &#x3D; [start_i, end_i], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the interv">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-07-01T10:13:45.000Z">
-<meta property="article:modified_time" content="2025-07-01T10:17:55.317Z">
+<meta property="article:published_time" content="2025-07-09T15:03:04.000Z">
+<meta property="article:modified_time" content="2025-07-09T15:04:51.371Z">
 <meta property="article:author" content="Sven">
 <meta property="article:tag" content="Daily Challenge">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="Medium">
-<meta property="article:tag" content="lc-11">
+<meta property="article:tag" content="lc-56">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/2025/07/01/Algorithm-Day05-Container-With-Most-Water-lc-11/">
+<link rel="canonical" href="http://example.com/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/">
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/07/01/Algorithm-Day05-Container-With-Most-Water-lc-11/","path":"2025/07/01/Algorithm-Day05-Container-With-Most-Water-lc-11/","title":"Algorithm-Day05-Container-With-Most-Water-lc#11"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/","path":"2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/","title":"Algorithm-Day14-Merge-Intervals-lc-56"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Algorithm-Day05-Container-With-Most-Water-lc#11 | SvenStack</title>
+<title>Algorithm-Day14-Merge-Intervals-lc-56 | SvenStack</title>
   
 
 
@@ -133,7 +133,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A9-Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">🧩 Problem Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-Naive-Approach-Brute-Force"><span class="nav-number">2.</span> <span class="nav-text">💡 Naive Approach (Brute Force)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-Optimal-Approach-Two-Pointers"><span class="nav-number">3.</span> <span class="nav-text">💡 Optimal Approach (Two Pointers)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A2-Java-Code"><span class="nav-number">4.</span> <span class="nav-text">🔢 Java Code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%8F%B1-Time-and-Space-Complexity"><span class="nav-number">5.</span> <span class="nav-text">⏱ Time and Space Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%8D%EF%B8%8F-Summary"><span class="nav-number">6.</span> <span class="nav-text">✍️ Summary</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A9-Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">🧩 Problem Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-Brute-Force-Not-Ideal"><span class="nav-number">2.</span> <span class="nav-text">💡 Brute Force? Not Ideal</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-Optimal-Approach-Sort-Merge"><span class="nav-number">3.</span> <span class="nav-text">💡 Optimal Approach: Sort + Merge</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E2%9C%A8-Key-Idea"><span class="nav-number">3.1.</span> <span class="nav-text">✨ Key Idea</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%8F%B1-Time-and-Space-Complexity"><span class="nav-number">4.</span> <span class="nav-text">⏱ Time and Space Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%8D%EF%B8%8F-Summary"><span class="nav-number">5.</span> <span class="nav-text">✍️ Summary</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -194,7 +194,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/01/Algorithm-Day05-Container-With-Most-Water-lc-11/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/profile_compressed.png">
@@ -207,12 +207,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Algorithm-Day05-Container-With-Most-Water-lc#11 | SvenStack">
+      <meta itemprop="name" content="Algorithm-Day14-Merge-Intervals-lc-56 | SvenStack">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Algorithm-Day05-Container-With-Most-Water-lc#11
+          Algorithm-Day14-Merge-Intervals-lc-56
         </h1>
 
         <div class="post-meta-container">
@@ -224,7 +224,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-07-01 20:13:45 / Modified: 20:17:55" itemprop="dateCreated datePublished" datetime="2025-07-01T20:13:45+10:00">2025-07-01</time>
+      <time title="Created: 2025-07-10 01:03:04 / Modified: 01:04:51" itemprop="dateCreated datePublished" datetime="2025-07-10T01:03:04+10:00">2025-07-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -236,7 +236,7 @@
         </span>
           , 
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Two-Pointers/" itemprop="url" rel="index"><span itemprop="name">Two Pointers</span></a>
+          <a href="/categories/Algorithms/Sorting/" itemprop="url" rel="index"><span itemprop="name">Sorting</span></a>
         </span>
     </span>
 
@@ -256,39 +256,41 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are given an integer array <code>height</code> of length <code>n</code>. There are <code>n</code> vertical lines drawn such that the two endpoints of the i-th line are <code>(i, 0)</code> and <code>(i, height[i])</code>.</p>
-<p>Find two lines that, together with the x-axis, form a container that holds the <strong>most water</strong>.</p>
-<p>Return the <strong>maximum amount of water</strong> a container can store.</p>
+    <div class="post-body" itemprop="articleBody"><h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an array of intervals where <code>intervals[i] = [start_i, end_i]</code>, merge <strong>all overlapping intervals</strong>, and return an array of the non-overlapping intervals that cover all the intervals in the input.</p>
 <p><strong>Example:</strong></p>
-<p><code>Input: height = [1,8,6,2,5,4,8,3,7]</code><br><code>Output: 49</code></p>
-<h2 id="💡-Naive-Approach-Brute-Force"><a href="#💡-Naive-Approach-Brute-Force" class="headerlink" title="💡 Naive Approach (Brute Force)"></a>💡 Naive Approach (Brute Force)</h2><p>Try every pair <code>(i, j)</code> and calculate the area between them.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Not efficient: O(n^2)</span></span><br><span class="line"><span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">area</span> <span class="operator">=</span> (j - i) * Math.min(height[i], height[j]);</span><br><span class="line">        max = Math.max(max, area);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: intervals = [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">Output: [[1,6],[8,10],[15,18]]</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h2 id="💡-Brute-Force-Not-Ideal"><a href="#💡-Brute-Force-Not-Ideal" class="headerlink" title="💡 Brute Force? Not Ideal"></a>💡 Brute Force? Not Ideal</h2><p>You could check every pair and try to merge, but:</p>
 <ul>
-<li>❌ Too slow for large inputs</li>
-<li>✅ Correct, but time complexity is <strong>O(n²)</strong></li>
+<li>You would need to compare all combinations</li>
+<li>❌ Time complexity is too high (O(n²) or worse)</li>
 </ul>
-<h2 id="💡-Optimal-Approach-Two-Pointers"><a href="#💡-Optimal-Approach-Two-Pointers" class="headerlink" title="💡 Optimal Approach (Two Pointers)"></a>💡 Optimal Approach (Two Pointers)</h2><p>Use two pointers from both ends and move the <strong>shorter line inward</strong>:</p>
-<ul>
-<li>At each step, compute area between <code>left</code> and <code>right</code></li>
-<li>Move the pointer with the <strong>shorter height</strong></li>
-<li>Keep track of the max area seen so far</li>
+<hr>
+<h2 id="💡-Optimal-Approach-Sort-Merge"><a href="#💡-Optimal-Approach-Sort-Merge" class="headerlink" title="💡 Optimal Approach: Sort + Merge"></a>💡 Optimal Approach: Sort + Merge</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><ol>
+<li><strong>Sort</strong> the intervals by start time</li>
+<li>Iterate through intervals:<ul>
+<li>If the current interval overlaps with the previous one, <strong>merge them</strong></li>
+<li>Otherwise, add the previous interval to result</li>
 </ul>
-<p>This gives us <strong>O(n)</strong> time.</p>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxArea</span><span class="params">(<span class="type">int</span>[] height)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> height.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxArea</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> Math.min(height[left], height[right]);</span><br><span class="line">            <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> right - left;</span><br><span class="line">            <span class="type">int</span> <span class="variable">area</span> <span class="operator">=</span> h * width;</span><br><span class="line">            maxArea = Math.max(maxArea, area);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Move the shorter line inward</span></span><br><span class="line">            <span class="keyword">if</span> (height[left] &lt; height[right]) &#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> maxArea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>This approach ensures that we process all intervals in a linear scan after sorting.</p>
+<hr>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] merge(<span class="type">int</span>[][] intervals) &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> intervals;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Sort intervals by start time</span></span><br><span class="line">        Arrays.sort(intervals, (a, b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="type">int</span>[]&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] current = intervals[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; intervals.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span>[] next = intervals[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (current[<span class="number">1</span>] &gt;= next[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// Merge overlapping intervals</span></span><br><span class="line">                current[<span class="number">1</span>] = Math.max(current[<span class="number">1</span>], next[<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result.add(current);</span><br><span class="line">                current = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.add(current); <span class="comment">// Add the last interval</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result.toArray(<span class="keyword">new</span> <span class="title class_">int</span>[result.size()][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n)<br> One pass using two pointers.</li>
-<li><strong>Space Complexity:</strong> O(1)<br> No extra space used.</li>
+<li><strong>Time Complexity:</strong> O(n log n)<br> For sorting the intervals</li>
+<li><strong>Space Complexity:</strong> O(n)<br> For the result list (output), auxiliary space is constant</li>
 </ul>
 <hr>
 <h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Two-pointer technique works because <strong>width shrinks</strong> as we move, so we must <strong>maximize height</strong> wisely.</li>
-<li>Brute-force fails time constraint; optimal method relies on <strong>greedy shrinking</strong> of shorter side.</li>
-<li>One of the most elegant sliding-window-style problems.</li>
+<li>This is a classic <strong>sort-then-scan</strong> problem</li>
+<li>Make sure to handle edge cases like fully nested intervals (e.g., [1,10], [2,5])</li>
+<li>Very common pattern in scheduling, calendar, and timeline problems</li>
 </ul>
 <blockquote>
-<p>This pattern is key for problems involving “max area”, “longest distance with constraint”, etc.</p>
+<p>Sorting followed by greedy merging is a powerful approach for interval problems.</p>
 </blockquote>
 
     </div>
@@ -302,21 +304,18 @@
               <a href="/tags/Daily-Challenge/" rel="tag"># Daily Challenge</a>
               <a href="/tags/LeetCode/" rel="tag"># LeetCode</a>
               <a href="/tags/Medium/" rel="tag"># Medium</a>
-              <a href="/tags/lc-11/" rel="tag"># lc-11</a>
+              <a href="/tags/lc-56/" rel="tag"># lc-56</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2025/06/30/Algorithm-Day04-Move-Zeroes-lc-283/" rel="prev" title="Algorithm-Day04-Move-Zeroes-lc#283">
-                  <i class="fa fa-angle-left"></i> Algorithm-Day04-Move-Zeroes-lc#283
+                <a href="/2025/07/08/Algorithm-Day13-Maximum-Subarray-lc-53/" rel="prev" title="Algorithm-Day13-Maximum-Subarray-lc-53">
+                  <i class="fa fa-angle-left"></i> Algorithm-Day13-Maximum-Subarray-lc-53
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2025/07/02/Algorithm-Day06-3Sum-lc-15/" rel="next" title="Algorithm-Day06-3Sum-lc#15">
-                  Algorithm-Day06-3Sum-lc#15 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
