@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">25</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,124 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/07/Algorithm-Day11-Sliding-Window-Maximum-lc-239/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/07/Algorithm-Day11-Sliding-Window-Maximum-lc-239/" class="post-title-link" itemprop="url">Algorithm-Day11-Sliding-Window-Maximum-lc-239</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-07 10:07:52 / Modified: 10:09:56" itemprop="dateCreated datePublished" datetime="2025-07-07T10:07:52+10:00">2025-07-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Sliding-Window/" itemprop="url" rel="index"><span itemprop="name">Sliding Window</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are given an array of integers <code>nums</code>, and there is a sliding window of size <code>k</code> that moves from the very left to the very right.</p>
+<p>Return the <strong>maximum value</strong> in each window as it slides.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,3,-1,-3,5,3,6,7], k = 3</span><br><span class="line">Output: [3,3,5,5,6,7]</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Brute-Force-Too-Slow"><a href="#💡-Brute-Force-Too-Slow" class="headerlink" title="💡 Brute Force (Too Slow)"></a>💡 Brute Force (Too Slow)</h2><p>For each window, scan the <code>k</code> elements to find the max.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// O(n * k)</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= nums.length - k; i++) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> Integer.MIN_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt; i + k; j++) &#123;</span><br><span class="line">        max = Math.max(max, nums[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    result.add(max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>✅ Works</li>
+<li>❌ Too slow when <code>nums.length</code> is large</li>
+</ul>
+<hr>
+<h2 id="💡-Optimal-Approach-Monotonic-Queue-Deque"><a href="#💡-Optimal-Approach-Monotonic-Queue-Deque" class="headerlink" title="💡 Optimal Approach: Monotonic Queue (Deque)"></a>💡 Optimal Approach: Monotonic Queue (Deque)</h2><h3 id="🧠-Key-Idea"><a href="#🧠-Key-Idea" class="headerlink" title="🧠 Key Idea"></a>🧠 Key Idea</h3><p>Use a <strong>deque (double-ended queue)</strong> to keep indices of elements in <strong>decreasing order</strong>:</p>
+<ul>
+<li>Front of deque always holds the index of the <strong>current maximum</strong></li>
+<li>Before adding a new index, remove all indices whose values are <strong>less than the current number</strong></li>
+<li>Remove indices that are <strong>out of the window</strong></li>
+</ul>
+<h3 id="✅-Why-a-deque"><a href="#✅-Why-a-deque" class="headerlink" title="✅ Why a deque?"></a>✅ Why a deque?</h3><p>It helps us maintain a “candidate list” for the maximum of the current window — always in O(1) time per operation.</p>
+<hr>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] maxSlidingWindow(<span class="type">int</span>[] nums, <span class="type">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || k == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] result = <span class="keyword">new</span> <span class="title class_">int</span>[nums.length - k + <span class="number">1</span>];</span><br><span class="line">        Deque&lt;Integer&gt; deque = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;(); <span class="comment">// store indices</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="comment">// Remove indices out of the current window</span></span><br><span class="line">            <span class="keyword">if</span> (!deque.isEmpty() &amp;&amp; deque.peekFirst() &lt;= i - k) &#123;</span><br><span class="line">                deque.pollFirst();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Remove smaller elements (they’ll never be max)</span></span><br><span class="line">            <span class="keyword">while</span> (!deque.isEmpty() &amp;&amp; nums[i] &gt;= nums[deque.peekLast()]) &#123;</span><br><span class="line">                deque.pollLast();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            deque.offerLast(i); <span class="comment">// Add current index</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">// Start recording results after first window is filled</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= k - <span class="number">1</span>) &#123;</span><br><span class="line">                result[i - k + <span class="number">1</span>] = nums[deque.peekFirst()];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n)<br> Each element is added and removed at most once from the deque</li>
+<li><strong>Space Complexity:</strong> O(k)<br> For the deque storing at most <code>k</code> elements</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>The <strong>monotonic queue</strong> is a powerful technique for max&#x2F;min in sliding windows</li>
+<li>Much more efficient than brute force (O(n) vs O(n × k))</li>
+<li>Common pattern in other problems like <code>lc-862</code>, <code>lc-1438</code>, and <code>lc-1425</code></li>
+</ul>
+<blockquote>
+<p>When dealing with “sliding window max&#x2F;min”, always think of using a deque to maintain order.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1241,120 +1359,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/06/27/Algorithm-Day01-Two-Sum-lc-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/06/27/Algorithm-Day01-Two-Sum-lc-1/" class="post-title-link" itemprop="url">Algorithm_Day01_Two Sum_lc#1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-06-27 21:49:41 / Modified: 22:03:33" itemprop="dateCreated datePublished" datetime="2025-06-27T21:49:41+10:00">2025-06-27</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an array of integers <code>nums</code> and an integer <code>target</code>, return the indices of the two numbers such that they add up to <code>target</code>.</p>
-<p>You may assume that each input would have exactly one solution, and you may not use the same element twice.</p>
-<p>You can return the answer in any order.</p>
-<h2 id="💡-Naive-Approach-Brute-Force"><a href="#💡-Naive-Approach-Brute-Force" class="headerlink" title="💡 Naive Approach (Brute Force)"></a>💡 Naive Approach (Brute Force)</h2><p>The most straightforward idea is to check all pairs using two nested loops.<br>This guarantees we find the solution, but it’s inefficient for large arrays.</p>
-<h3 id="🔢-Java-Code-–-Brute-Force"><a href="#🔢-Java-Code-–-Brute-Force" class="headerlink" title="🔢 Java Code – Brute Force"></a>🔢 Java Code – Brute Force</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;i, j&#125;;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;&#125;; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="⏱-Complexity"><a href="#⏱-Complexity" class="headerlink" title="⏱ Complexity"></a>⏱ Complexity</h3><ul>
-<li><strong>Time Complexity:</strong> O(n²)</li>
-<li><strong>Space Complexity:</strong> O(1)</li>
-</ul>
-<p>⚠️ This solution <strong>does not scale</strong> — it fails performance constraints on large inputs.</p>
-<hr>
-<h2 id="💡-Optimized-Approach-Hash-Map"><a href="#💡-Optimized-Approach-Hash-Map" class="headerlink" title="💡 Optimized Approach (Hash Map)"></a>💡 Optimized Approach (Hash Map)</h2><p>To reduce time complexity, we use a hash map to store values we’ve seen and their indices.<br> While iterating, we check whether <code>target - current</code> has already been seen.</p>
-<h3 id="🔎-Key-Points"><a href="#🔎-Key-Points" class="headerlink" title="🔎 Key Points"></a>🔎 Key Points</h3><ul>
-<li>In practice, <strong>hash tables are fast</strong> — usually O(1) for most operations.</li>
-<li>Worst case happens when <strong>many keys collide</strong> (bad hash function or high load factor).</li>
-<li>Java’s <code>HashMap</code> uses a <strong>red-black tree</strong> (Deeper explanation will be covered in a future post.) for long collision chains (O(log n) worst case for search).</li>
-</ul>
-<h3 id="🔢-Java-Code-–-Hash-Map"><a href="#🔢-Java-Code-–-Hash-Map" class="headerlink" title="🔢 Java Code – Hash Map"></a>🔢 Java Code – Hash Map</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[] twoSum(<span class="type">int</span>[] nums, <span class="type">int</span> target) &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; seen = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(); <span class="comment">// hashtable always </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">complement</span> <span class="operator">=</span> target - nums[i];</span><br><span class="line">            <span class="keyword">if</span> (seen.containsKey(complement)) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;seen.get(complement), i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            seen.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">int</span>[] &#123;&#125;; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="⏱-Complexity-1"><a href="#⏱-Complexity-1" class="headerlink" title="⏱ Complexity"></a>⏱ Complexity</h3><ul>
-<li><strong>Time Complexity:</strong> O(n)</li>
-<li><strong>Space Complexity:</strong> O(n)</li>
-</ul>
-<p>✅ Efficient and suitable for large datasets.</p>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Always start with brute force to validate your logic.</li>
-<li>Then optimize using data structures like hash maps.</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
