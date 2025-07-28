@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.23.1","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="🧩 Problem DescriptionGiven the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.  Nodes that remain fewer than k at the end should remain in order. You m">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Algorithm-Day32-Reverse-Nodes-in-Group-lc-25">
+<meta property="og:url" content="http://example.com/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/index.html">
+<meta property="og:site_name" content="SvenStack">
+<meta property="og:description" content="🧩 Problem DescriptionGiven the head of a linked list, reverse the nodes of the list k at a time, and return the modified list.  Nodes that remain fewer than k at the end should remain in order. You m">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-07-28T08:12:13.000Z">
+<meta property="article:modified_time" content="2025-07-28T08:14:18.046Z">
+<meta property="article:author" content="Sven">
+<meta property="article:tag" content="Daily Challenge">
+<meta property="article:tag" content="Hard">
+<meta property="article:tag" content="Two Pointers">
+<meta property="article:tag" content="LinkedList">
+<meta property="article:tag" content="Recursion">
+<meta property="article:tag" content="lc-25">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/","path":"2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/","title":"Algorithm-Day32-Reverse-Nodes-in-Group-lc-25"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Algorithm-Day32-Reverse-Nodes-in-Group-lc-25 | SvenStack</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/motion.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">SvenStack</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Tech Share</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section">Home</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section">About</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section">Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section">Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section">Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%A7%A9-Problem-Description"><span class="nav-number">1.</span> <span class="nav-text">🧩 Problem Description</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%F0%9F%92%AC-Example"><span class="nav-number">1.1.</span> <span class="nav-text">💬 Example</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%A1-Intuition"><span class="nav-number">2.</span> <span class="nav-text">💡 Intuition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A2-Java-Code-Recursive"><span class="nav-number">3.</span> <span class="nav-text">🔢 Java Code (Recursive)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%81-Java-Code-Iterative-with-Dummy-Node"><span class="nav-number">4.</span> <span class="nav-text">🔁 Java Code (Iterative with Dummy Node)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%8F%B1-Time-and-Space-Complexity"><span class="nav-number">5.</span> <span class="nav-text">⏱ Time and Space Complexity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E2%9C%8D%EF%B8%8F-Summary"><span class="nav-number">6.</span> <span class="nav-text">✍️ Summary</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sven"
+      src="/images/profile_compressed.png">
+  <p class="site-author-name" itemprop="name">Sven</p>
+  <div class="site-description" itemprop="description">Code. Learn. Evolve.</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives">
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SvenStack" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SvenStack" rel="noopener me" target="_blank">GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:svenye820@gmail.com" title="E-Mail → mailto:svenye820@gmail.com" rel="noopener me" target="_blank">E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Algorithm-Day32-Reverse-Nodes-in-Group-lc-25 | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Algorithm-Day32-Reverse-Nodes-in-Group-lc-25
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-28 18:12:13 / Modified: 18:14:18" itemprop="dateCreated datePublished" datetime="2025-07-28T18:12:13+10:00">2025-07-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>head</code> of a linked list, reverse the nodes of the list <strong>k at a time</strong>, and return the modified list.</p>
+<ul>
+<li>Nodes that remain fewer than <code>k</code> at the end should <strong>remain in order</strong>.</li>
+<li>You <strong>may not</strong> alter the values in the list’s nodes — only node pointers may be changed.</li>
+</ul>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,3,4,5], k = 3</span><br><span class="line">Output: [3,2,1,4,5]</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is an extension of basic linked list reversal.</p>
+<ul>
+<li>Reversing <strong>k nodes</strong> at a time → similar to <code>lc-206</code>, but in segments.</li>
+<li>Key steps:<ol>
+<li>Check if at least <code>k</code> nodes remain.</li>
+<li>Reverse <code>k</code> nodes.</li>
+<li>Recurse or loop to the next <code>k</code>-group.</li>
+</ol>
+</li>
+</ul>
+<p>✅ Use a helper function to reverse a portion of the list.</p>
+<hr>
+<h2 id="🔢-Java-Code-Recursive"><a href="#🔢-Java-Code-Recursive" class="headerlink" title="🔢 Java Code (Recursive)"></a>🔢 Java Code (Recursive)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseKGroup</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Check if we have at least k nodes</span></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span> &amp;&amp; count &lt; k) &#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (count &lt; k) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2: Reverse k nodes</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">prev</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">nextTemp</span> <span class="operator">=</span> curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = nextTemp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 3: Recursively reverse next k group</span></span><br><span class="line">        head.next = reverseKGroup(curr, k);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔁-Java-Code-Iterative-with-Dummy-Node"><a href="#🔁-Java-Code-Iterative-with-Dummy-Node" class="headerlink" title="🔁 Java Code (Iterative with Dummy Node)"></a>🔁 Java Code (Iterative with Dummy Node)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseKGroup</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">prevGroupEnd</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">kth</span> <span class="operator">=</span> getKthNode(prevGroupEnd, k);</span><br><span class="line">            <span class="keyword">if</span> (kth == <span class="literal">null</span>) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">groupStart</span> <span class="operator">=</span> prevGroupEnd.next;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">nextGroupStart</span> <span class="operator">=</span> kth.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Reverse current k-group</span></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">prev</span> <span class="operator">=</span> kth.next, curr = groupStart;</span><br><span class="line">            <span class="keyword">while</span> (curr != nextGroupStart) &#123;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> curr.next;</span><br><span class="line">                curr.next = prev;</span><br><span class="line">                prev = curr;</span><br><span class="line">                curr = tmp;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Connect with previous part</span></span><br><span class="line">            prevGroupEnd.next = kth;</span><br><span class="line">            prevGroupEnd = groupStart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ListNode <span class="title function_">getKthNode</span><span class="params">(ListNode curr, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span> &amp;&amp; k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n), each node is visited once</li>
+<li><strong>Space Complexity:</strong><ul>
+<li>Recursive: O(n&#x2F;k) recursion stack</li>
+<li>Iterative: O(1)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Advanced linked list problem — combines <strong>segment reversal</strong>, <strong>pointer manipulation</strong>, and <strong>recursion&#x2F;looping</strong>.</li>
+<li>You must understand <code>lc-206</code> (reverse linked list) first.</li>
+<li>Mastering this problem improves your skill with pointer operations.</li>
+</ul>
+<blockquote>
+<p>Start from simpler problems like lc-24, then build up to this level. Great interview question!</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Daily-Challenge/" rel="tag"># Daily Challenge</a>
+              <a href="/tags/Hard/" rel="tag"># Hard</a>
+              <a href="/tags/Two-Pointers/" rel="tag"># Two Pointers</a>
+              <a href="/tags/LinkedList/" rel="tag"># LinkedList</a>
+              <a href="/tags/Recursion/" rel="tag"># Recursion</a>
+              <a href="/tags/lc-25/" rel="tag"># lc-25</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/07/27/Algorithm-Day31-Swap-Nodes-in-Pairs-lc-24/" rel="prev" title="Algorithm-Day31-Swap-Nodes-in-Pairs-lc-24">
+                  <i class="fa fa-angle-left"></i> Algorithm-Day31-Swap-Nodes-in-Pairs-lc-24
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Sven</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
