@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">33</span>
+          <span class="site-state-item-count">34</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">44</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,131 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/20/Algorithm-Day24-Palindrome-Linked-List-lc-234/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/20/Algorithm-Day24-Palindrome-Linked-List-lc-234/" class="post-title-link" itemprop="url">Algorithm-Day24-Palindrome-Linked-List-lc-234</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-20 18:07:51 / Modified: 18:09:53" itemprop="dateCreated datePublished" datetime="2025-07-20T18:07:51+10:00">2025-07-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the head of a singly linked list, return <code>true</code> if it is a <strong>palindrome</strong>, or <code>false</code> otherwise.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: 1 → 2 → 2 → 1</span><br><span class="line">Output: true</span><br><span class="line"></span><br><span class="line">Input: 1 → 2</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Brute-Force-Idea"><a href="#💡-Brute-Force-Idea" class="headerlink" title="💡 Brute Force Idea"></a>💡 Brute Force Idea</h2><ul>
+<li>Store values in a list or array.</li>
+<li>Check if the list is a palindrome.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">    List&lt;Integer&gt; vals = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (head != <span class="literal">null</span>) &#123;</span><br><span class="line">        vals.add(head.val);</span><br><span class="line">        head = head.next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, j = vals.size() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!vals.get(i).equals(vals.get(j))) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        i++;</span><br><span class="line">        j--;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Time:</strong> O(n)</li>
+<li><strong>Space:</strong> O(n)</li>
+<li>✅ Easy to implement, but not in-place.</li>
+</ul>
+<hr>
+<h2 id="💡-Optimal-Approach-In-Place-O-1-Space"><a href="#💡-Optimal-Approach-In-Place-O-1-Space" class="headerlink" title="💡 Optimal Approach (In-Place, O(1) Space)"></a>💡 Optimal Approach (In-Place, O(1) Space)</h2><h3 id="✨-Strategy"><a href="#✨-Strategy" class="headerlink" title="✨ Strategy"></a>✨ Strategy</h3><ol>
+<li>Find the middle of the list (fast and slow pointers).</li>
+<li>Reverse the second half.</li>
+<li>Compare the two halves.</li>
+<li>(Optional) Restore the list.</li>
+</ol>
+<hr>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isPalindrome</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Find middle</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head, fast = head;</span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2: Reverse second half</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">secondHalf</span> <span class="operator">=</span> reverse(slow);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 3: Compare</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">p1</span> <span class="operator">=</span> head, p2 = secondHalf;</span><br><span class="line">        <span class="keyword">while</span> (p2 != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p1.val != p2.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            p1 = p1.next;</span><br><span class="line">            p2 = p2.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ListNode <span class="title function_">reverse</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">prev</span> <span class="operator">=</span> <span class="literal">null</span>, curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">nextTemp</span> <span class="operator">=</span> curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = nextTemp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n)</li>
+<li><strong>Space Complexity:</strong> O(1)</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Key techniques used:<ul>
+<li>Fast&#x2F;slow pointer</li>
+<li>In-place list reversal</li>
+<li>Two-pointer comparison</li>
+</ul>
+</li>
+<li>This approach keeps space minimal while maintaining correctness.</li>
+</ul>
+<blockquote>
+<p>This is a great example of combining several core linked list techniques in a single elegant solution.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1263,124 +1388,6 @@
 </ul>
 <blockquote>
 <p>Understand both the logic and implementation of reverse-in-place operations — this comes up in multiple array and string questions!</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/10/Algorithm-Day14-Merge-Intervals-lc-56/" class="post-title-link" itemprop="url">Algorithm-Day14-Merge-Intervals-lc-56</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-10 01:03:04 / Modified: 01:04:51" itemprop="dateCreated datePublished" datetime="2025-07-10T01:03:04+10:00">2025-07-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Sorting/" itemprop="url" rel="index"><span itemprop="name">Sorting</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an array of intervals where <code>intervals[i] = [start_i, end_i]</code>, merge <strong>all overlapping intervals</strong>, and return an array of the non-overlapping intervals that cover all the intervals in the input.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: intervals = [[1,3],[2,6],[8,10],[15,18]]</span><br><span class="line">Output: [[1,6],[8,10],[15,18]]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Brute-Force-Not-Ideal"><a href="#💡-Brute-Force-Not-Ideal" class="headerlink" title="💡 Brute Force? Not Ideal"></a>💡 Brute Force? Not Ideal</h2><p>You could check every pair and try to merge, but:</p>
-<ul>
-<li>You would need to compare all combinations</li>
-<li>❌ Time complexity is too high (O(n²) or worse)</li>
-</ul>
-<hr>
-<h2 id="💡-Optimal-Approach-Sort-Merge"><a href="#💡-Optimal-Approach-Sort-Merge" class="headerlink" title="💡 Optimal Approach: Sort + Merge"></a>💡 Optimal Approach: Sort + Merge</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><ol>
-<li><strong>Sort</strong> the intervals by start time</li>
-<li>Iterate through intervals:<ul>
-<li>If the current interval overlaps with the previous one, <strong>merge them</strong></li>
-<li>Otherwise, add the previous interval to result</li>
-</ul>
-</li>
-</ol>
-<p>This approach ensures that we process all intervals in a linear scan after sorting.</p>
-<hr>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span>[][] merge(<span class="type">int</span>[][] intervals) &#123;</span><br><span class="line">        <span class="keyword">if</span> (intervals.length &lt;= <span class="number">1</span>) <span class="keyword">return</span> intervals;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Sort intervals by start time</span></span><br><span class="line">        Arrays.sort(intervals, (a, b) -&gt; Integer.compare(a[<span class="number">0</span>], b[<span class="number">0</span>]));</span><br><span class="line"></span><br><span class="line">        List&lt;<span class="type">int</span>[]&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] current = intervals[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; intervals.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span>[] next = intervals[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (current[<span class="number">1</span>] &gt;= next[<span class="number">0</span>]) &#123;</span><br><span class="line">                <span class="comment">// Merge overlapping intervals</span></span><br><span class="line">                current[<span class="number">1</span>] = Math.max(current[<span class="number">1</span>], next[<span class="number">1</span>]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result.add(current);</span><br><span class="line">                current = next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        result.add(current); <span class="comment">// Add the last interval</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result.toArray(<span class="keyword">new</span> <span class="title class_">int</span>[result.size()][]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n log n)<br> For sorting the intervals</li>
-<li><strong>Space Complexity:</strong> O(n)<br> For the result list (output), auxiliary space is constant</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This is a classic <strong>sort-then-scan</strong> problem</li>
-<li>Make sure to handle edge cases like fully nested intervals (e.g., [1,10], [2,5])</li>
-<li>Very common pattern in scheduling, calendar, and timeline problems</li>
-</ul>
-<blockquote>
-<p>Sorting followed by greedy merging is a powerful approach for interval problems.</p>
 </blockquote>
 
       
