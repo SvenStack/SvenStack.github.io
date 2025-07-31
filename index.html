@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">49</span>
+        <span class="site-state-item-count">52</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,133 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/01/Algorithm-Day36-LRU-Cache-lc-146/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/01/Algorithm-Day36-LRU-Cache-lc-146/" class="post-title-link" itemprop="url">Algorithm-Day36-LRU-Cache-lc-146</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-01 07:47:05 / Modified: 07:48:48" itemprop="dateCreated datePublished" datetime="2025-08-01T07:47:05+10:00">2025-08-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Design/" itemprop="url" rel="index"><span itemprop="name">Design</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Design a data structure that follows the <strong>Least Recently Used (LRU)</strong> cache policy.</p>
+<p>Implement the <code>LRUCache</code> class:</p>
+<ul>
+<li><code>LRUCache(int capacity)</code> initializes the cache with a positive size <code>capacity</code>.</li>
+<li><code>int get(int key)</code> returns the value of the key if it exists, otherwise returns <code>-1</code>.</li>
+<li><code>void put(int key, int value)</code> updates the value of the key. If the number of keys exceeds the capacity, evict the <strong>least recently used</strong> key.</li>
+</ul>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[&quot;LRUCache&quot;, &quot;put&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;put&quot;, &quot;get&quot;, &quot;get&quot;, &quot;get&quot;]</span><br><span class="line">[[2], [1,1], [2,2], [1], [3,3], [2], [4,4], [1], [3], [4]]</span><br><span class="line">Output:</span><br><span class="line">[null, null, null, 1, null, -1, null, -1, 3, 4]</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>To achieve <strong>O(1)</strong> time complexity for both <code>get</code> and <code>put</code>, use:</p>
+<ul>
+<li>A <strong>HashMap</strong> to store key → node</li>
+<li>A <strong>Doubly Linked List</strong> to track the usage order  <ul>
+<li>Most recently used at the front  </li>
+<li>Least recently used at the end</li>
+</ul>
+</li>
+</ul>
+<p>When a key is accessed:</p>
+<ul>
+<li>Move it to the front of the list<br>When inserting:</li>
+<li>If at capacity, remove the tail (least recently used)</li>
+</ul>
+<hr>
+<h2 id="🔢-Java-Code-Custom-Doubly-Linked-List"><a href="#🔢-Java-Code-Custom-Doubly-Linked-List" class="headerlink" title="🔢 Java Code (Custom Doubly Linked List)"></a>🔢 Java Code (Custom Doubly Linked List)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">Node</span> &#123;</span><br><span class="line">        <span class="type">int</span> key, value;</span><br><span class="line">        Node prev, next;</span><br><span class="line">        Node(<span class="type">int</span> k, <span class="type">int</span> v) &#123;</span><br><span class="line">            key = k;</span><br><span class="line">            value = v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="type">int</span> capacity;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, Node&gt; cache;</span><br><span class="line">    <span class="keyword">private</span> Node head, tail;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">LRUCache</span><span class="params">(<span class="type">int</span> capacity)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.capacity = capacity;</span><br><span class="line">        cache = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Dummy head and tail</span></span><br><span class="line">        head = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        tail = <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        head.next = tail;</span><br><span class="line">        tail.prev = head;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">get</span><span class="params">(<span class="type">int</span> key)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!cache.containsKey(key)) <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> cache.get(key);</span><br><span class="line">        moveToHead(node);</span><br><span class="line">        <span class="keyword">return</span> node.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">put</span><span class="params">(<span class="type">int</span> key, <span class="type">int</span> value)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cache.containsKey(key)) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">node</span> <span class="operator">=</span> cache.get(key);</span><br><span class="line">            node.value = value;</span><br><span class="line">            moveToHead(node);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (cache.size() == capacity) &#123;</span><br><span class="line">                <span class="type">Node</span> <span class="variable">lru</span> <span class="operator">=</span> tail.prev;</span><br><span class="line">                remove(lru);</span><br><span class="line">                cache.remove(lru.key);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="type">Node</span> <span class="variable">newNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(key, value);</span><br><span class="line">            cache.put(key, newNode);</span><br><span class="line">            addToHead(newNode);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Doubly Linked List helpers</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        node.prev.next = node.next;</span><br><span class="line">        node.next.prev = node.prev;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">addToHead</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        node.next = head.next;</span><br><span class="line">        node.prev = head;</span><br><span class="line">        head.next.prev = node;</span><br><span class="line">        head.next = node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">moveToHead</span><span class="params">(Node node)</span> &#123;</span><br><span class="line">        remove(node);</span><br><span class="line">        addToHead(node);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong><ul>
+<li><code>get</code>: O(1)</li>
+<li><code>put</code>: O(1)</li>
+</ul>
+</li>
+<li><strong>Space Complexity:</strong> O(capacity)</li>
+</ul>
+<hr>
+<h2 id="🧠-Summary"><a href="#🧠-Summary" class="headerlink" title="🧠 Summary"></a>🧠 Summary</h2><ul>
+<li>Combines a <strong>HashMap</strong> (for O(1) access) and a <strong>Doubly Linked List</strong> (for O(1) insert&#x2F;delete).</li>
+<li>A great example of <strong>system design + data structure</strong> synergy.</li>
+<li>Common interview favorite!</li>
+</ul>
+<blockquote>
+<p>Know this one cold — it’s the basis for many real-world cache systems (like Redis, in-memory caching, etc.)</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1258,138 +1385,6 @@
 </ul>
 <blockquote>
 <p>One of the most fundamental problems to master for linked list and recursion.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/22/Algorithm-Day26-Linked-List-Cycle-II-lc142/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/22/Algorithm-Day26-Linked-List-Cycle-II-lc142/" class="post-title-link" itemprop="url">Algorithm-Day26-Linked-List-Cycle-II-lc142</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-07-22 00:14:07" itemprop="dateCreated datePublished" datetime="2025-07-22T00:14:07+10:00">2025-07-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-07-21 23:16:08" itemprop="dateModified" datetime="2025-07-21T23:16:08+10:00">2025-07-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>head</code> of a linked list, return the <strong>node where the cycle begins</strong>.<br>If there is no cycle, return <code>null</code>.</p>
-<p>You must <strong>not modify the list</strong>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [3,2,0,-4], pos = 1 (tail connects to node at index 1)</span><br><span class="line">Output: Node with value 2</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Step-1-Detect-Cycle-Using-Two-Pointers"><a href="#💡-Step-1-Detect-Cycle-Using-Two-Pointers" class="headerlink" title="💡 Step 1: Detect Cycle Using Two Pointers"></a>💡 Step 1: Detect Cycle Using Two Pointers</h2><p>Use Floyd’s Cycle Detection (Tortoise and Hare):</p>
-<ul>
-<li><code>slow</code> moves one step, <code>fast</code> moves two steps.</li>
-<li>If they ever meet, there’s a cycle.</li>
-<li>✅ Already used in <a href="../lc-141">lc-141</a></li>
-</ul>
-<hr>
-<h2 id="💡-Step-2-Find-Entry-Point-of-the-Cycle"><a href="#💡-Step-2-Find-Entry-Point-of-the-Cycle" class="headerlink" title="💡 Step 2: Find Entry Point of the Cycle"></a>💡 Step 2: Find Entry Point of the Cycle</h2><h3 id="✨-Key-Insight"><a href="#✨-Key-Insight" class="headerlink" title="✨ Key Insight"></a>✨ Key Insight</h3><p>Once <code>slow</code> and <code>fast</code> meet:</p>
-<ul>
-<li>Start a new pointer <code>ptr1</code> from head.</li>
-<li>Start a second pointer <code>ptr2</code> from where <code>slow</code> and <code>fast</code> met.</li>
-<li>Move both one step at a time.</li>
-<li>They will meet at the <strong>cycle entry</strong>.</li>
-</ul>
-<p>📌 Why it works:<br>Let:</p>
-<ul>
-<li><code>L1</code> &#x3D; distance from head to cycle start  </li>
-<li><code>L2</code> &#x3D; distance from cycle start to meeting point  </li>
-<li><code>C</code> &#x3D; length of the cycle</li>
-</ul>
-<p>Then:<br><code>2(L1 + L2) = L1 + L2 + kC ⟹ L1 = kC - L2</code><br>So moving <code>L1</code> from head and <code>L2</code> from meeting point leads to cycle start.</p>
-<hr>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">detectCycle</span><span class="params">(ListNode head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span> || head.next == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">slow</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">fast</span> <span class="operator">=</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Detect cycle</span></span><br><span class="line">        <span class="keyword">while</span> (fast != <span class="literal">null</span> &amp;&amp; fast.next != <span class="literal">null</span>) &#123;</span><br><span class="line">            slow = slow.next;</span><br><span class="line">            fast = fast.next.next;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (slow == fast) &#123;</span><br><span class="line">                <span class="comment">// Step 2: Find entry</span></span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">entry</span> <span class="operator">=</span> head;</span><br><span class="line">                <span class="keyword">while</span> (entry != slow) &#123;</span><br><span class="line">                    entry = entry.next;</span><br><span class="line">                    slow = slow.next;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> entry;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n)</li>
-<li><strong>Space Complexity:</strong> O(1)</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>First detect cycle with two pointers.</li>
-<li>Then find the node where cycle begins by moving a new pointer from <code>head</code>.</li>
-<li>No extra memory needed — all in-place.</li>
-</ul>
-<blockquote>
-<p>This is one of the most elegant applications of two-pointer technique in linked lists. Master it!</p>
 </blockquote>
 
       
