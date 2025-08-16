@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">49</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">71</span>
+        <span class="site-state-item-count">73</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/16/Algorithm-Day49-Path-Sum-III-lc-437/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/16/Algorithm-Day49-Path-Sum-III-lc-437/" class="post-title-link" itemprop="url">LeetCode 437. Path Sum III</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-16 21:00:00 / Modified: 10:20:24" itemprop="dateCreated datePublished" datetime="2025-08-16T21:00:00+10:00">2025-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree and an integer <code>targetSum</code>, return the <strong>number of paths</strong> where the sum of the node values in the path equals <code>targetSum</code>.</p>
+<p>The path <strong>does not need to start or end at the root or a leaf</strong>, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The paths that sum to 8 are:</span><br><span class="line">- 5 → 3</span><br><span class="line">- 5 → 2 → 1</span><br><span class="line">- -3 → 11</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1], targetSum = 1</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-1-DFS-Brute-Force"><a href="#💡-Approach-1-DFS-Brute-Force" class="headerlink" title="💡 Approach 1: DFS (Brute Force)"></a>💡 Approach 1: DFS (Brute Force)</h2><p>The most straightforward solution is:</p>
+<ul>
+<li>For each node, start a DFS to find all downward paths whose sum equals <code>targetSum</code>.</li>
+<li>This results in O(n²) time complexity in the worst case.</li>
+</ul>
+<hr>
+<h3 id="🔢-Java-Code-Brute-Force"><a href="#🔢-Java-Code-Brute-Force" class="headerlink" title="🔢 Java Code (Brute Force)"></a>🔢 Java Code (Brute Force)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pathSum</span><span class="params">(TreeNode root, <span class="type">int</span> targetSum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> countFromNode(root, targetSum) </span><br><span class="line">               + pathSum(root.left, targetSum) </span><br><span class="line">               + pathSum(root.right, targetSum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">countFromNode</span><span class="params">(TreeNode node, <span class="type">long</span> targetSum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (node.val == targetSum) count++;</span><br><span class="line">        count += countFromNode(node.left, targetSum - node.val);</span><br><span class="line">        count += countFromNode(node.right, targetSum - node.val);</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-2-Prefix-Sum-HashMap-Optimized"><a href="#💡-Approach-2-Prefix-Sum-HashMap-Optimized" class="headerlink" title="💡 Approach 2: Prefix Sum + HashMap (Optimized)"></a>💡 Approach 2: Prefix Sum + HashMap (Optimized)</h2><p>We can reduce time complexity to <strong>O(n)</strong> by:</p>
+<ul>
+<li>Maintaining a prefix sum map that stores <code>(currentSum → frequency)</code>.</li>
+<li>At each node, we calculate how many previous prefix sums satisfy:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentSum - targetSum = somePreviousPrefix</span><br></pre></td></tr></table></figure></li>
+<li>Update the map during DFS and backtrack after visiting children.</li>
+</ul>
+<hr>
+<h3 id="🔢-Java-Code-Optimized"><a href="#🔢-Java-Code-Optimized" class="headerlink" title="🔢 Java Code (Optimized)"></a>🔢 Java Code (Optimized)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pathSum</span><span class="params">(TreeNode root, <span class="type">int</span> targetSum)</span> &#123;</span><br><span class="line">        Map&lt;Long, Integer&gt; prefixSumMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        prefixSumMap.put(<span class="number">0L</span>, <span class="number">1</span>); <span class="comment">// Base case: sum = 0 occurs once</span></span><br><span class="line">        <span class="keyword">return</span> dfs(root, <span class="number">0L</span>, targetSum, prefixSumMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(TreeNode node, <span class="type">long</span> currSum, <span class="type">int</span> targetSum, Map&lt;Long, Integer&gt; map)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        currSum += node.val;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> map.getOrDefault(currSum - targetSum, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        map.put(currSum, map.getOrDefault(currSum, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        count += dfs(node.left, currSum, targetSum, map);</span><br><span class="line">        count += dfs(node.right, currSum, targetSum, map);</span><br><span class="line"></span><br><span class="line">        map.put(currSum, map.get(currSum) - <span class="number">1</span>); <span class="comment">// backtrack</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><p><strong>Brute Force</strong>  </p>
+<ul>
+<li>Time: O(n²) in worst case  </li>
+<li>Space: O(h) recursion stack</li>
+</ul>
+<p><strong>Prefix Sum Optimized</strong>  </p>
+<ul>
+<li>Time: O(n) — visiting each node once  </li>
+<li>Space: O(n) — prefix sum map and recursion stack</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li><strong>Brute Force</strong>: Try all starting points → simple but slow.  </li>
+<li><strong>Prefix Sum</strong>: Tracks how many ways we can reach <code>targetSum</code> efficiently.  </li>
+<li>Related problems:<ul>
+<li><code>lc-112</code> — Path Sum</li>
+<li><code>lc-113</code> — Path Sum II</li>
+<li><code>lc-437</code> — Path Sum III (this one)</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1206,119 +1338,6 @@
 <blockquote>
 <p>Often paired with <code>lc-100</code>, <code>lc-226</code>, and other binary tree symmetry&#x2F;mirroring problems.</p>
 </blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/04/Algorithm-Day39-Invert-Binary-Tree-lc-226/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/04/Algorithm-Day39-Invert-Binary-Tree-lc-226/" class="post-title-link" itemprop="url">Algorithm-Day39-Invert-Binary-Tree-lc-226</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-04 00:14:04 / Modified: 00:16:20" itemprop="dateCreated datePublished" datetime="2025-08-04T00:14:04+10:00">2025-08-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, <strong>invert</strong> the tree, and return its root.</p>
-<blockquote>
-<p>Inverting a binary tree means swapping every left and right child recursively.</p>
-</blockquote>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [4,2,7,1,3,6,9]</span><br><span class="line">Output: [4,7,2,9,6,3,1]</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Approach-Recursive-DFS"><a href="#💡-Approach-Recursive-DFS" class="headerlink" title="💡 Approach: Recursive DFS"></a>💡 Approach: Recursive DFS</h2><p>We recursively invert left and right subtrees, then swap them.</p>
-<hr>
-<h3 id="🔢-Java-Code-Recursive"><a href="#🔢-Java-Code-Recursive" class="headerlink" title="🔢 Java Code (Recursive)"></a>🔢 Java Code (Recursive)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">invertTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> invertTree(root.left);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> invertTree(root.right);</span><br><span class="line"></span><br><span class="line">        root.left = right;</span><br><span class="line">        root.right = left;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-Iterative-BFS-Queue"><a href="#💡-Approach-Iterative-BFS-Queue" class="headerlink" title="💡 Approach: Iterative BFS (Queue)"></a>💡 Approach: Iterative BFS (Queue)</h2><p>You can also invert using <strong>level-order traversal</strong> with a queue.</p>
-<hr>
-<h3 id="🔢-Java-Code-Iterative-BFS"><a href="#🔢-Java-Code-Iterative-BFS" class="headerlink" title="🔢 Java Code (Iterative BFS)"></a>🔢 Java Code (Iterative BFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">invertTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">curr</span> <span class="operator">=</span> queue.poll();</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Swap left and right</span></span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">temp</span> <span class="operator">=</span> curr.left;</span><br><span class="line">            curr.left = curr.right;</span><br><span class="line">            curr.right = temp;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (curr.left != <span class="literal">null</span>) queue.offer(curr.left);</span><br><span class="line">            <span class="keyword">if</span> (curr.right != <span class="literal">null</span>) queue.offer(curr.right);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — visit every node once</li>
-<li><strong>Space Complexity:</strong><ul>
-<li>Recursive: O(h) (call stack)</li>
-<li>Iterative: O(w) (queue width)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Simple yet classic recursion problem.</li>
-<li>Test your understanding of binary tree traversal.</li>
-<li>Also seen in real-world scenarios like image mirror effects.</li>
-</ul>
 
       
     </div>
