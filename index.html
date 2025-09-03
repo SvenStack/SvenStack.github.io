@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">63</span>
+          <span class="site-state-item-count">64</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">97</span>
+        <span class="site-state-item-count">99</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,134 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/02/Algorithm-Day64-Search-Insert-Position-lc-35/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/02/Algorithm-Day64-Search-Insert-Position-lc-35/" class="post-title-link" itemprop="url">Algorithm Day64 - Search Insert Position</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-02 21:00:00" itemprop="dateCreated datePublished" datetime="2025-09-02T21:00:00+10:00">2025-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-03 21:21:06" itemprop="dateModified" datetime="2025-09-03T21:21:06+10:00">2025-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Search/" itemprop="url" rel="index"><span itemprop="name">Binary Search</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a <strong>sorted array</strong> of distinct integers and a target value, return the <strong>index</strong> if the target is found.<br>If not, return the index where it would be if it were inserted in order.  </p>
+<p>You must write an algorithm with <strong>O(log n)</strong> runtime complexity.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,3,5,6], target = 5</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,3,5,6], target = 2</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,3,5,6], target = 7</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>The array is <strong>sorted</strong>, so binary search is the best choice.  </p>
+<ul>
+<li>Maintain two pointers <code>left</code> and <code>right</code>.  </li>
+<li>While <code>left &lt;= right</code>, check the middle value.  </li>
+<li>If <code>nums[mid] == target</code>, return <code>mid</code>.  </li>
+<li>If <code>nums[mid] &lt; target</code>, move <code>left = mid + 1</code>.  </li>
+<li>Else move <code>right = mid - 1</code>.</li>
+</ul>
+<p>Finally, <code>left</code> will be the correct insert position.</p>
+<hr>
+<h2 id="🔢-Java-Code-Binary-Search"><a href="#🔢-Java-Code-Binary-Search" class="headerlink" title="🔢 Java Code (Binary Search)"></a>🔢 Java Code (Binary Search)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">searchInsert</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> mid;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> left; <span class="comment">// insert position</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(log n) due to binary search.  </li>
+<li><strong>Space:</strong> O(1) since no extra memory is used.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use <strong>binary search</strong> instead of linear scan.  </li>
+<li>If target not found, the correct insert position is <code>left</code>.</li>
+</ul>
+<p><strong>Related problems</strong>  </p>
+<ul>
+<li><code>lc-34</code> — Find First and Last Position of Element in Sorted Array  </li>
+<li><code>lc-704</code> — Binary Search</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1237,148 +1365,6 @@
 <li><code>lc-212</code> — Word Search II  </li>
 <li><code>lc-648</code> — Replace Words  </li>
 <li><code>lc-720</code> — Longest Word in Dictionary</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/19/Algorithm-Day54-Course-Schedule-lc-207/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/19/Algorithm-Day54-Course-Schedule-lc-207/" class="post-title-link" itemprop="url">LeetCode 207. Course Schedule</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2025-08-19 21:00:00" itemprop="dateCreated datePublished" datetime="2025-08-19T21:00:00+10:00">2025-08-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2025-08-20 22:55:42" itemprop="dateModified" datetime="2025-08-20T22:55:42+10:00">2025-08-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Graph/" itemprop="url" rel="index"><span itemprop="name">Graph</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>There are <code>numCourses</code> courses labeled from <code>0</code> to <code>numCourses - 1</code>.<br>You are given an array <code>prerequisites</code> where <code>prerequisites[i] = [a, b]</code> indicates that <strong>to take course <code>a</code> you must first take course <code>b</code></strong>.</p>
-<p>Return <code>true</code> if you can finish all courses. Otherwise, return <code>false</code>.</p>
-<p>This is essentially asking whether the directed graph has a <strong>cycle</strong>. If there is <strong>no cycle</strong>, a topological ordering exists and you can finish all courses.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: numCourses = 2, prerequisites = [[1,0]]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: Take course 0 first, then course 1.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: numCourses = 2, prerequisites = [[1,0],[0,1]]</span><br><span class="line">Output: false</span><br><span class="line">Explanation: 0 depends on 1 and 1 depends on 0 → cycle.</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-1-Kahn’s-Algorithm-BFS-Topological-Sort"><a href="#💡-Approach-1-Kahn’s-Algorithm-BFS-Topological-Sort" class="headerlink" title="💡 Approach 1: Kahn’s Algorithm (BFS Topological Sort)"></a>💡 Approach 1: Kahn’s Algorithm (BFS Topological Sort)</h2><ul>
-<li>Build adjacency list and <strong>in-degree</strong> array.  </li>
-<li>Push all nodes with in-degree <code>0</code> into a queue.  </li>
-<li>Pop from queue, decrement in-degree of neighbors, and push any that drop to <code>0</code>.  </li>
-<li>If we process <strong>all</strong> nodes, there is no cycle; otherwise, a cycle exists.</li>
-</ul>
-<h3 id="🔢-Java-Code-BFS"><a href="#🔢-Java-Code-BFS" class="headerlink" title="🔢 Java Code (BFS)"></a>🔢 Java Code (BFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canFinish</span><span class="params">(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites)</span> &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++) graph.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] indeg = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> p[<span class="number">0</span>], b = p[<span class="number">1</span>];</span><br><span class="line">            graph.get(b).add(a);</span><br><span class="line">            indeg[a]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++) <span class="keyword">if</span> (indeg[i] == <span class="number">0</span>) q.offer(i);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">taken</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (!q.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">cur</span> <span class="operator">=</span> q.poll();</span><br><span class="line">            taken++;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> nxt : graph.get(cur)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (--indeg[nxt] == <span class="number">0</span>) q.offer(nxt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> taken == numCourses;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-2-DFS-Cycle-Detection-3-color-visiting-states"><a href="#💡-Approach-2-DFS-Cycle-Detection-3-color-visiting-states" class="headerlink" title="💡 Approach 2: DFS Cycle Detection (3-color &#x2F; visiting states)"></a>💡 Approach 2: DFS Cycle Detection (3-color &#x2F; visiting states)</h2><ul>
-<li>Maintain a <code>state[]</code> array: <code>0 = unvisited</code>, <code>1 = visiting</code>, <code>2 = visited</code>.  </li>
-<li>During DFS, if we reach a node marked <code>visiting (1)</code>, we found a cycle.  </li>
-<li>If DFS finishes without back edges, there is no cycle.</li>
-</ul>
-<h3 id="🔢-Java-Code-DFS"><a href="#🔢-Java-Code-DFS" class="headerlink" title="🔢 Java Code (DFS)"></a>🔢 Java Code (DFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">canFinish</span><span class="params">(<span class="type">int</span> numCourses, <span class="type">int</span>[][] prerequisites)</span> &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; graph = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++) graph.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;());</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span>[] p : prerequisites) graph.get(p[<span class="number">1</span>]).add(p[<span class="number">0</span>]);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] state = <span class="keyword">new</span> <span class="title class_">int</span>[numCourses];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numCourses; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (state[i] == <span class="number">0</span> &amp;&amp; hasCycle(i, graph, state)) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">hasCycle</span><span class="params">(<span class="type">int</span> u, List&lt;List&lt;Integer&gt;&gt; g, <span class="type">int</span>[] state)</span> &#123;</span><br><span class="line">        state[u] = <span class="number">1</span>; <span class="comment">// visiting</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> v : g.get(u)) &#123;</span><br><span class="line">            <span class="keyword">if</span> (state[v] == <span class="number">1</span>) <span class="keyword">return</span> <span class="literal">true</span>;           <span class="comment">// back edge</span></span><br><span class="line">            <span class="keyword">if</span> (state[v] == <span class="number">0</span> &amp;&amp; hasCycle(v, g, state)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        state[u] = <span class="number">2</span>; <span class="comment">// visited</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>BFS (Kahn)</strong>:  <ul>
-<li>Time: O(V + E)  </li>
-<li>Space: O(V + E) for graph + queue + indegree</li>
-</ul>
-</li>
-<li><strong>DFS</strong>:  <ul>
-<li>Time: O(V + E)  </li>
-<li>Space: O(V + E) for graph + recursion stack</li>
-</ul>
-</li>
-</ul>
-<p><code>V = numCourses</code>, <code>E = len(prerequisites)</code>.</p>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>The problem reduces to <strong>cycle detection</strong> in a directed graph.  </li>
-<li><strong>Kahn (BFS)</strong> is usually simplest when you just need a yes&#x2F;no; it also gives a topo order.  </li>
-<li><strong>DFS 3-color</strong> is elegant and stack-based.  </li>
-<li>Pick based on your preference and constraints.</li>
-</ul>
-<p><strong>Related problems</strong></p>
-<ul>
-<li><code>lc-210</code> — Course Schedule II (return topological order)  </li>
-<li><code>lc-261</code> — Graph Valid Tree (undirected)  </li>
-<li><code>lc-802</code> — Find Eventual Safe States</li>
 </ul>
 
       
