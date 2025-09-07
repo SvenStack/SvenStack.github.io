@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">102</span>
+        <span class="site-state-item-count">103</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,121 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/03/Algorithm-Day38-Maximum-Depth-of-Binary-Tree-lc-104/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/03/Algorithm-Day38-Maximum-Depth-of-Binary-Tree-lc-104/" class="post-title-link" itemprop="url">Algorithm-Day38-Maximum-Depth-of-Binary-Tree-lc-104</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-03 18:30:02 / Modified: 18:32:11" itemprop="dateCreated datePublished" datetime="2025-08-03T18:30:02+10:00">2025-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, return <strong>its maximum depth</strong>.</p>
+<blockquote>
+<p>A binary tree’s <strong>maximum depth</strong> is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+</blockquote>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,9,20,null,null,15,7]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Approach-1-Recursive-DFS"><a href="#💡-Approach-1-Recursive-DFS" class="headerlink" title="💡 Approach 1: Recursive DFS"></a>💡 Approach 1: Recursive DFS</h2><p>We can recursively compute the depth of left and right subtrees, then take the maximum of the two.</p>
+<hr>
+<h3 id="🔢-Java-Code-Recursive-DFS"><a href="#🔢-Java-Code-Recursive-DFS" class="headerlink" title="🔢 Java Code (Recursive DFS)"></a>🔢 Java Code (Recursive DFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + Math.max(maxDepth(root.left), maxDepth(root.right));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-2-Iterative-BFS-Level-Order"><a href="#💡-Approach-2-Iterative-BFS-Level-Order" class="headerlink" title="💡 Approach 2: Iterative BFS (Level Order)"></a>💡 Approach 2: Iterative BFS (Level Order)</h2><p>We can use a queue to perform level-order traversal and count how many levels exist.</p>
+<hr>
+<h3 id="🔢-Java-Code-BFS"><a href="#🔢-Java-Code-BFS" class="headerlink" title="🔢 Java Code (BFS)"></a>🔢 Java Code (BFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxDepth</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        <span class="type">int</span> <span class="variable">depth</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">levelSize</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            depth++;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; levelSize; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>) queue.offer(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>) queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> depth;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n) — visit every node once</li>
+<li><strong>Space Complexity:</strong><ul>
+<li>Recursive: O(h) call stack</li>
+<li>BFS: O(w) for the queue (w &#x3D; max width of the tree)</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Depth-first (recursive) is elegant and concise</li>
+<li>Level-order (BFS) gives more control (e.g., per-level info)</li>
+<li>Know both for interviews and practical use</li>
+</ul>
+<blockquote>
+<p>Tree depth is foundational — used in balancing, recursion limits, and more.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1277,120 +1392,6 @@
 </ul>
 <blockquote>
 <p>Learn this if you want to understand how division could be implemented in systems without direct hardware division support.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/24/Algorithm-Day28-Add-Two-Numbers-lc-2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/24/Algorithm-Day28-Add-Two-Numbers-lc-2/" class="post-title-link" itemprop="url">Algorithm-Day28-Add-Two-Numbers-lc-2</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-24 13:17:04 / Modified: 13:24:22" itemprop="dateCreated datePublished" datetime="2025-07-24T13:17:04+10:00">2025-07-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are given two <strong>non-empty</strong> linked lists representing two non-negative integers.<br>The digits are stored in <strong>reverse order</strong>, and each node contains a single digit.</p>
-<p>Add the two numbers and return the sum as a linked list.</p>
-<p><strong>You may assume the two numbers do not contain any leading zero, except the number 0 itself.</strong></p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: l1 = [2,4,3], l2 = [5,6,4]</span><br><span class="line">Output: [7,0,8]</span><br><span class="line"></span><br><span class="line">Explanation:</span><br><span class="line">342 + 465 = 807</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><ul>
-<li>Since the numbers are stored in <strong>reverse</strong>, we can simulate digit-by-digit addition like grade school.</li>
-<li>Maintain a <code>carry</code> variable for overflow.</li>
-<li>Traverse both lists and construct the result list.</li>
-</ul>
-<hr>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">addTwoNumbers</span><span class="params">(ListNode l1, ListNode l2)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>);  <span class="comment">// Dummy head</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curr</span> <span class="operator">=</span> dummy;</span><br><span class="line">        <span class="type">int</span> <span class="variable">carry</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (l1 != <span class="literal">null</span> || l2 != <span class="literal">null</span> || carry &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> carry;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (l1 != <span class="literal">null</span>) &#123;</span><br><span class="line">                sum += l1.val;</span><br><span class="line">                l1 = l1.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (l2 != <span class="literal">null</span>) &#123;</span><br><span class="line">                sum += l2.val;</span><br><span class="line">                l2 = l2.next;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            carry = sum / <span class="number">10</span>;</span><br><span class="line">            curr.next = <span class="keyword">new</span> <span class="title class_">ListNode</span>(sum % <span class="number">10</span>);</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(max(n, m)) — traverses both lists once</li>
-<li><strong>Space Complexity:</strong> O(max(n, m)) — result list size</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This is a classic <strong>linked list</strong> and <strong>math simulation</strong> problem.</li>
-<li>Be comfortable managing carry and dummy nodes.</li>
-<li>Appears frequently in interviews and serves as a great test of logic + list handling.</li>
-</ul>
-<blockquote>
-<p>For follow-ups, consider:</p>
-<ul>
-<li>BigInteger usage (if languages allow)</li>
-<li>Lists in forward order (<code>lc-445</code>)</li>
-</ul>
 </blockquote>
 
       
