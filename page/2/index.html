@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">103</span>
+        <span class="site-state-item-count">104</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,132 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/25/Algorithm-Day60-Generate-Parentheses-lc-22/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/25/Algorithm-Day60-Generate-Parentheses-lc-22/" class="post-title-link" itemprop="url">Algorithm Day60 - Generate Parentheses (lc-22)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-08-25 21:00:00" itemprop="dateCreated datePublished" datetime="2025-08-25T21:00:00+10:00">2025-08-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-08-29 22:33:06" itemprop="dateModified" datetime="2025-08-29T22:33:06+10:00">2025-08-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Backtracking/" itemprop="url" rel="index"><span itemprop="name">Backtracking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given <code>n</code> pairs of parentheses, write a function to generate all combinations of well-formed parentheses.</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 3</span><br><span class="line">Output: [&quot;((()))&quot;,&quot;(()())&quot;,&quot;(())()&quot;,&quot;()(())&quot;,&quot;()()()&quot;]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 1</span><br><span class="line">Output: [&quot;()&quot;]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-Backtracking"><a href="#💡-Approach-Backtracking" class="headerlink" title="💡 Approach: Backtracking"></a>💡 Approach: Backtracking</h2><p>We need to ensure:</p>
+<ul>
+<li>We never place <code>&#39;)&#39;</code> unless there is a matching <code>&#39;(&#39;</code> available.</li>
+<li>The number of <code>&#39;(&#39;</code> used cannot exceed <code>n</code>.</li>
+<li>The number of <code>&#39;)&#39;</code> cannot exceed the number of <code>&#39;(&#39;</code> at any point.</li>
+</ul>
+<p>So the recursive function tracks:</p>
+<ul>
+<li><code>open</code>: how many <code>&#39;(&#39;</code> have been used.</li>
+<li><code>close</code>: how many <code>&#39;)&#39;</code> have been used.</li>
+</ul>
+<p>Valid recursion continues while <code>open &lt;= n</code> and <code>close &lt;= open</code>.</p>
+<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">generateParenthesis</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        backtrack(res, <span class="string">&quot;&quot;</span>, <span class="number">0</span>, <span class="number">0</span>, n);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(List&lt;String&gt; res, String cur, <span class="type">int</span> open, <span class="type">int</span> close, <span class="type">int</span> max)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (cur.length() == max * <span class="number">2</span>) &#123;</span><br><span class="line">            res.add(cur);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (open &lt; max) &#123;</span><br><span class="line">            backtrack(res, cur + <span class="string">&quot;(&quot;</span>, open + <span class="number">1</span>, close, max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (close &lt; open) &#123;</span><br><span class="line">            backtrack(res, cur + <span class="string">&quot;)&quot;</span>, open, close + <span class="number">1</span>, max);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(4^n &#x2F; √n), which is the Catalan number count.  </li>
+<li><strong>Space:</strong> O(n) recursion depth + output size.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Classic <strong>backtracking</strong> problem generating balanced parentheses.  </li>
+<li>Use counts of <code>open</code> and <code>close</code> to ensure validity.  </li>
+<li>Total solutions &#x3D; <strong>nth Catalan number</strong>.</li>
+</ul>
+<p><strong>Related problems</strong>:</p>
+<ul>
+<li><code>lc-301</code> — Remove Invalid Parentheses  </li>
+<li><code>lc-856</code> — Score of Parentheses  </li>
+<li><code>lc-678</code> — Valid Parenthesis String</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1278,126 +1404,6 @@
 <li><code>lc-112</code> — Path Sum</li>
 <li><code>lc-113</code> — Path Sum II</li>
 <li><code>lc-437</code> — Path Sum III (this one)</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/16/Algorithm-Day50-Lowest-Common-Ancestor-of-a-Binary-Tree-lc-236/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/16/Algorithm-Day50-Lowest-Common-Ancestor-of-a-Binary-Tree-lc-236/" class="post-title-link" itemprop="url">LeetCode 236. Lowest Common Ancestor of a Binary Tree</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-16 21:00:00 / Modified: 10:26:09" itemprop="dateCreated datePublished" datetime="2025-08-16T21:00:00+10:00">2025-08-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a binary tree, find the <strong>lowest common ancestor (LCA)</strong> of two given nodes <code>p</code> and <code>q</code>.</p>
-<blockquote>
-<p>The <strong>lowest common ancestor</strong> is defined between two nodes <code>p</code> and <code>q</code> as the lowest node in the tree that has both <code>p</code> and <code>q</code> as descendants (where we allow a node to be a descendant of itself).</p>
-</blockquote>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The LCA of nodes 5 and 1 is 3.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4</span><br><span class="line">Output: 5</span><br><span class="line">Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself.</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-Recursive-DFS"><a href="#💡-Approach-Recursive-DFS" class="headerlink" title="💡 Approach: Recursive DFS"></a>💡 Approach: Recursive DFS</h2><p>We traverse the binary tree recursively:</p>
-<ul>
-<li>If the current node is <code>null</code>, return <code>null</code>.</li>
-<li>If the current node matches <code>p</code> or <code>q</code>, return it.</li>
-<li>Recursively search left and right subtrees.</li>
-<li>If both left and right return non-null, the current node is the LCA.</li>
-<li>Otherwise, return the non-null child.</li>
-</ul>
-<hr>
-<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;&#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">lowestCommonAncestor</span><span class="params">(TreeNode root, TreeNode p, TreeNode q)</span> &#123;&#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span> || root == p || root == q) &#123;&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">left</span> <span class="operator">=</span> lowestCommonAncestor(root.left, p, q);</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">right</span> <span class="operator">=</span> lowestCommonAncestor(root.right, p, q);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (left != <span class="literal">null</span> &amp;&amp; right != <span class="literal">null</span>) &#123;&#123;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        &#125;&#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left != <span class="literal">null</span> ? left : right;</span><br><span class="line">    &#125;&#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — visiting each node once</li>
-<li><strong>Space Complexity:</strong> O(h) — recursion stack, where h is the tree height</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This is a <strong>classic DFS + recursion</strong> problem on binary trees.</li>
-<li>We find the split point where <code>p</code> and <code>q</code> diverge in different subtrees.</li>
-<li>Related problems:<ul>
-<li><code>lc-235</code> — LCA of a BST (simpler due to BST property)</li>
-<li><code>lc-236</code> — LCA of any binary tree (this one)</li>
 </ul>
 </li>
 </ul>
