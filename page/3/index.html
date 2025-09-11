@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-count">71</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">105</span>
+        <span class="site-state-item-count">106</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,135 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/17/Algorithm-Day51-Binary-Tree-Maximum-Path-Sum-lc-124/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/17/Algorithm-Day51-Binary-Tree-Maximum-Path-Sum-lc-124/" class="post-title-link" itemprop="url">LeetCode 124. Binary Tree Maximum Path Sum</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-17 21:00:00 / Modified: 15:45:16" itemprop="dateCreated datePublished" datetime="2025-08-17T21:00:00+10:00">2025-08-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, return the <strong>maximum path sum</strong> of the tree.</p>
+<blockquote>
+<p>A <strong>path</strong> is any sequence of nodes where each pair of adjacent nodes has an edge connecting them.<br>A path <strong>does not need to pass through the root</strong> and <strong>cannot</strong> revisit a node.<br>The path sum is the <strong>sum of node values</strong> along the path.</p>
+</blockquote>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3]</span><br><span class="line">Output: 6</span><br><span class="line">Explanation: The maximum path is 2 → 1 → 3.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [-10,9,20,null,null,15,7]</span><br><span class="line">Output: 42</span><br><span class="line">Explanation: The maximum path is 15 → 20 → 7.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>At each node, there are two different concepts:</p>
+<ol>
+<li><p><strong>Max Gain to Parent</strong> (what we can return upward):<br><code>max(node.val, node.val + leftGain, node.val + rightGain)</code>  </p>
+<ul>
+<li>This represents the best one-side path that can be extended by the parent.</li>
+</ul>
+</li>
+<li><p><strong>Max Path Through Node</strong> (candidate for global answer):<br><code>node.val + max(0, leftGain) + max(0, rightGain)</code>  </p>
+<ul>
+<li>When a path goes <strong>through</strong> the current node and <strong>uses both sides</strong> (if beneficial).  </li>
+<li>Negative gains should be treated as 0 (i.e., <strong>discard</strong> them).</li>
+</ul>
+</li>
+</ol>
+<p>We do a postorder DFS to compute gains bottom-up while maintaining a <strong>global maximum</strong>.</p>
+<hr>
+<h2 id="🔢-Java-Code-DFS-Global-Tracking"><a href="#🔢-Java-Code-DFS-Global-Tracking" class="headerlink" title="🔢 Java Code (DFS + Global Tracking)"></a>🔢 Java Code (DFS + Global Tracking)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">maxSum</span> <span class="operator">=</span> Integer.MIN_VALUE;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxPathSum</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        gain(root);</span><br><span class="line">        <span class="keyword">return</span> maxSum;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">gain</span><span class="params">(TreeNode node)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">leftGain</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, gain(node.left));</span><br><span class="line">        <span class="type">int</span> <span class="variable">rightGain</span> <span class="operator">=</span> Math.max(<span class="number">0</span>, gain(node.right));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Path that passes through current node using both sides</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">pathThrough</span> <span class="operator">=</span> node.val + leftGain + rightGain;</span><br><span class="line">        maxSum = Math.max(maxSum, pathThrough);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Return the max gain to parent: choose one side to extend</span></span><br><span class="line">        <span class="keyword">return</span> node.val + Math.max(leftGain, rightGain);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n) — each node is visited once.</li>
+<li><strong>Space Complexity:</strong> O(h) — recursion stack, where <code>h</code> is the height of the tree (O(n) worst case).</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use <strong>postorder DFS</strong> to compute the best <strong>upward gain</strong> and update a <strong>global maximum</strong> with the <strong>through-node</strong> path.  </li>
+<li>Discard negative gains with <code>Math.max(0, ...)</code> so they don’t depress the total.  </li>
+<li>Classic pattern: **“return to parent” vs <strong>update global answer</strong>.</li>
+</ul>
+<p><strong>Related problems</strong></p>
+<ul>
+<li><code>lc-543</code> — Diameter of Binary Tree (length vs sum idea)  </li>
+<li><code>lc-687</code> — Longest Univalue Path  </li>
+<li><code>lc-437</code> — Path Sum III</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1241,124 +1370,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/06/Algorithm-Day41-Diameter-of-Binary-Tree-lc-543/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/06/Algorithm-Day41-Diameter-of-Binary-Tree-lc-543/" class="post-title-link" itemprop="url">Algorithm-Day41-Diameter-of-Binary-Tree-lc-543</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-06 06:41:36 / Modified: 06:46:35" itemprop="dateCreated datePublished" datetime="2025-08-06T06:41:36+10:00">2025-08-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, return the <strong>length of the diameter</strong> of the tree.</p>
-<blockquote>
-<p>The <strong>diameter</strong> of a binary tree is the length of the <strong>longest path</strong> between any two nodes. This path may or may not pass through the root.</p>
-</blockquote>
-<p><strong>Note:</strong> The length is measured by the number of edges between nodes.</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,3,4,5]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
-
-<p>Explanation:</p>
-<ul>
-<li>Longest path is [4 → 2 → 1 → 3], which has 3 edges.</li>
-</ul>
-<hr>
-<h2 id="💡-Approach-DFS-with-Depth-Tracking"><a href="#💡-Approach-DFS-with-Depth-Tracking" class="headerlink" title="💡 Approach: DFS with Depth Tracking"></a>💡 Approach: DFS with Depth Tracking</h2><ul>
-<li>At each node, the longest path <strong>through</strong> that node is:<br><code>leftDepth + rightDepth</code></li>
-<li>We update a global maximum diameter during traversal.</li>
-</ul>
-<hr>
-<h3 id="🔢-Java-Code-Recursive-DFS"><a href="#🔢-Java-Code-Recursive-DFS" class="headerlink" title="🔢 Java Code (Recursive DFS)"></a>🔢 Java Code (Recursive DFS)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="variable">diameter</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">diameterOfBinaryTree</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        depth(root);</span><br><span class="line">        <span class="keyword">return</span> diameter;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">depth</span><span class="params">(TreeNode node)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> depth(node.left);</span><br><span class="line">        <span class="type">int</span> <span class="variable">right</span> <span class="operator">=</span> depth(node.right);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Update global diameter</span></span><br><span class="line">        diameter = Math.max(diameter, left + right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> + Math.max(left, right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — visit every node once</li>
-<li><strong>Space Complexity:</strong> O(h) — recursion stack, where h &#x3D; height of tree</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This problem is about recognizing the <strong>non-root longest path</strong> possibility.</li>
-<li>Track the <strong>depths</strong> of subtrees and compute diameters along the way.</li>
-<li>A great example of combining <strong>DFS + global tracking</strong>.</li>
-</ul>
-<blockquote>
-<p>Pattern also appears in path sum and subtree depth problems. Master it well.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="Previous page" aria-label="Previous page" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" title="Next page" aria-label="Next page" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
