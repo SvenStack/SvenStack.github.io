@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-count">73</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">19</span>
+        <span class="site-state-item-count">20</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">107</span>
+        <span class="site-state-item-count">108</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,134 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/01/Algorithm-Day63-N-Queens-lc-51/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/01/Algorithm-Day63-N-Queens-lc-51/" class="post-title-link" itemprop="url">Algorithm Day63 - N-Queens</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-09-01 21:00:00" itemprop="dateCreated datePublished" datetime="2025-09-01T21:00:00+10:00">2025-09-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-09-02 06:56:36" itemprop="dateModified" datetime="2025-09-02T06:56:36+10:00">2025-09-02</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Backtracking/" itemprop="url" rel="index"><span itemprop="name">Backtracking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>The <strong>n-queens puzzle</strong> is the problem of placing <code>n</code> queens on an <code>n x n</code> chessboard such that no two queens attack each other.<br>Return <em>all distinct solutions</em> to the n-queens puzzle.  </p>
+<p>Each solution contains a distinct board configuration of the queen placements, represented as an array of strings, where <code>&#39;Q&#39;</code> and <code>&#39;.&#39;</code> indicate a queen and an empty space, respectively.</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 4</span><br><span class="line">Output: [</span><br><span class="line"> [&quot;.Q..&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;..Q.&quot;],</span><br><span class="line"> [&quot;..Q.&quot;,</span><br><span class="line">  &quot;Q...&quot;,</span><br><span class="line">  &quot;...Q&quot;,</span><br><span class="line">  &quot;.Q..&quot;]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: n = 1</span><br><span class="line">Output: [[&quot;Q&quot;]]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is a <strong>classic backtracking problem</strong>.<br>We need to try placing queens row by row, ensuring each placement is valid:</p>
+<ol>
+<li>A queen cannot share the same column.  </li>
+<li>A queen cannot share the same diagonal.</li>
+</ol>
+<p>We backtrack:</p>
+<ul>
+<li>Place a queen in a valid column for the current row.  </li>
+<li>Move to the next row.  </li>
+<li>If all rows are filled, store the board as one solution.</li>
+</ul>
+<hr>
+<h2 id="🔢-Java-Code-Backtracking"><a href="#🔢-Java-Code-Backtracking" class="headerlink" title="🔢 Java Code (Backtracking)"></a>🔢 Java Code (Backtracking)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;String&gt;&gt; <span class="title function_">solveNQueens</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">        List&lt;List&lt;String&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="type">char</span>[][] board = <span class="keyword">new</span> <span class="title class_">char</span>[n][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span>[] row : board) Arrays.fill(row, <span class="string">&#x27;.&#x27;</span>);</span><br><span class="line">        backtrack(res, board, <span class="number">0</span>);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(List&lt;List&lt;String&gt;&gt; res, <span class="type">char</span>[][] board, <span class="type">int</span> row)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (row == board.length) &#123;</span><br><span class="line">            res.add(construct(board));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">col</span> <span class="operator">=</span> <span class="number">0</span>; col &lt; board.length; col++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (isValid(board, row, col)) &#123;</span><br><span class="line">                board[row][col] = <span class="string">&#x27;Q&#x27;</span>;</span><br><span class="line">                backtrack(res, board, row + <span class="number">1</span>);</span><br><span class="line">                board[row][col] = <span class="string">&#x27;.&#x27;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(<span class="type">char</span>[][] board, <span class="type">int</span> row, <span class="type">int</span> col)</span> &#123;</span><br><span class="line">        <span class="comment">// check column</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; row; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i][col] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// check upper-left diagonal</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> row - <span class="number">1</span>, j = col - <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>; i--, j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i][j] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// check upper-right diagonal</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> row - <span class="number">1</span>, j = col + <span class="number">1</span>; i &gt;= <span class="number">0</span> &amp;&amp; j &lt; board.length; i--, j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (board[i][j] == <span class="string">&#x27;Q&#x27;</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; <span class="title function_">construct</span><span class="params">(<span class="type">char</span>[][] board)</span> &#123;</span><br><span class="line">        List&lt;String&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span>[] row : board) res.add(<span class="keyword">new</span> <span class="title class_">String</span>(row));</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><p>Let <code>n</code> be the board size:</p>
+<ul>
+<li><strong>Time:</strong> O(n!) — Each row has up to <code>n</code> choices, pruning reduces but worst case exponential.  </li>
+<li><strong>Space:</strong> O(n^2) for board + O(n) recursion depth.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use <strong>backtracking</strong> to try placing queens row by row.  </li>
+<li>Check <strong>columns and diagonals</strong> for validity.  </li>
+<li>Collect solutions when all rows are filled.</li>
+</ul>
+<p><strong>Related problems</strong>  </p>
+<ul>
+<li><code>lc-52</code> — N-Queens II (count solutions)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1251,137 +1379,6 @@
 <li><code>lc-210</code> — Course Schedule II (return topological order)  </li>
 <li><code>lc-261</code> — Graph Valid Tree (undirected)  </li>
 <li><code>lc-802</code> — Find Eventual Safe States</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/18/Algorithm-Day52-Number-of-Islands-lc-200/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/18/Algorithm-Day52-Number-of-Islands-lc-200/" class="post-title-link" itemprop="url">LeetCode 200. Number of Islands</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-18 21:00:00 / Modified: 00:19:23" itemprop="dateCreated datePublished" datetime="2025-08-18T21:00:00+10:00">2025-08-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Graph/" itemprop="url" rel="index"><span itemprop="name">Graph</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an <code>m x n</code> 2D binary grid <code>grid</code> which represents a map of <code>&#39;1&#39;</code>s (land) and <code>&#39;0&#39;</code>s (water), return the <strong>number of islands</strong>.</p>
-<blockquote>
-<p>An <strong>island</strong> is formed by connecting adjacent lands <strong>horizontally or vertically</strong>.<br>You may assume all four edges of the grid are surrounded by water.</p>
-</blockquote>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;1&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;]</span><br><span class="line">]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: grid = [</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;1&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;],</span><br><span class="line">  [&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;1&quot;,&quot;1&quot;]</span><br><span class="line">]</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is a <strong>connected components counting problem</strong> on a grid.</p>
-<ul>
-<li>Each <code>&#39;1&#39;</code> is land.  </li>
-<li>We can run <strong>DFS</strong> or <strong>BFS</strong> from every unvisited <code>&#39;1&#39;</code>.  </li>
-<li>Every time we start a new search, it means we found a new island.  </li>
-<li>Mark visited cells as <code>&#39;0&#39;</code> to avoid double counting.</li>
-</ul>
-<hr>
-<h2 id="🔢-Java-Code-DFS"><a href="#🔢-Java-Code-DFS" class="headerlink" title="🔢 Java Code (DFS)"></a>🔢 Java Code (DFS)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">numIslands</span><span class="params">(<span class="type">char</span>[][] grid)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> grid.length, n = grid[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (grid[i][j] == <span class="string">&#x27;1&#x27;</span>) &#123;</span><br><span class="line">                    dfs(grid, i, j);</span><br><span class="line">                    count++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">dfs</span><span class="params">(<span class="type">char</span>[][] grid, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= grid.length || j &gt;= grid[<span class="number">0</span>].length || grid[i][j] == <span class="string">&#x27;0&#x27;</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        grid[i][j] = <span class="string">&#x27;0&#x27;</span>; <span class="comment">// mark visited</span></span><br><span class="line">        dfs(grid, i + <span class="number">1</span>, j);</span><br><span class="line">        dfs(grid, i - <span class="number">1</span>, j);</span><br><span class="line">        dfs(grid, i, j + <span class="number">1</span>);</span><br><span class="line">        dfs(grid, i, j - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔄-Alternative-Approaches"><a href="#🔄-Alternative-Approaches" class="headerlink" title="🔄 Alternative Approaches"></a>🔄 Alternative Approaches</h2><ul>
-<li><strong>BFS with Queue</strong> instead of recursion.  </li>
-<li><strong>Union-Find (Disjoint Set Union)</strong>: Treat each land cell as a node, union adjacent lands, then count distinct sets.</li>
-</ul>
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(m × n) — each cell is visited at most once.  </li>
-<li><strong>Space Complexity:</strong>  <ul>
-<li>O(m × n) worst-case recursion depth (DFS stack).  </li>
-<li>O(min(m, n)) for BFS queue.  </li>
-<li>Union-Find requires O(m × n) extra memory.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Classic <strong>flood fill</strong> problem.  </li>
-<li>Each DFS&#x2F;BFS call explores one island fully.  </li>
-<li>Count how many times we start a new DFS&#x2F;BFS.</li>
-</ul>
-<p><strong>Related problems</strong></p>
-<ul>
-<li><code>lc-695</code> — Max Area of Island  </li>
-<li><code>lc-463</code> — Island Perimeter  </li>
-<li><code>lc-733</code> — Flood Fill</li>
 </ul>
 
       
