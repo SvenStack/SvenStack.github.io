@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">74</span>
+          <span class="site-state-item-count">75</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">109</span>
+        <span class="site-state-item-count">112</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,130 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/05/Algorithm-Day65-Search-a-2D-Matrix-lc-74/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/05/Algorithm-Day65-Search-a-2D-Matrix-lc-74/" class="post-title-link" itemprop="url">Algorithm Day65 - Search a 2D Matrix</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-09-05 19:00:00 / Modified: 19:51:04" itemprop="dateCreated datePublished" datetime="2025-09-05T19:00:00+10:00">2025-09-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Search/" itemprop="url" rel="index"><span itemprop="name">Binary Search</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are given an <code>m x n</code> integer matrix <code>matrix</code> with the following properties:  </p>
+<ol>
+<li>Each row is sorted in ascending order.  </li>
+<li>The first integer of each row is greater than the last integer of the previous row.</li>
+</ol>
+<p>Given an integer <code>target</code>, return <code>true</code> if <code>target</code> is in the matrix or <code>false</code> otherwise.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 3</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,3,5,7],[10,11,16,20],[23,30,34,60]], target = 13</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>The matrix has a <strong>special structure</strong>:  </p>
+<ul>
+<li>If we flatten it into a single array, it is fully sorted.  </li>
+<li>Thus, we can apply <strong>binary search</strong> over the virtual array.</li>
+</ul>
+<p>Mapping from index in flattened array:  </p>
+<ul>
+<li><code>row = mid / n</code>  </li>
+<li><code>col = mid % n</code></li>
+</ul>
+<hr>
+<h2 id="🔢-Java-Code-Binary-Search"><a href="#🔢-Java-Code-Binary-Search" class="headerlink" title="🔢 Java Code (Binary Search)"></a>🔢 Java Code (Binary Search)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">searchMatrix</span><span class="params">(<span class="type">int</span>[][] matrix, <span class="type">int</span> target)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> matrix.length, n = matrix[<span class="number">0</span>].length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = m * n - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (left &lt;= right) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">            <span class="type">int</span> <span class="variable">value</span> <span class="operator">=</span> matrix[mid / n][mid % n];</span><br><span class="line">            <span class="keyword">if</span> (value == target) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (value &lt; target) &#123;</span><br><span class="line">                left = mid + <span class="number">1</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                right = mid - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(log(m × n)) — binary search on <code>m*n</code> elements.  </li>
+<li><strong>Space:</strong> O(1) — only pointers are used.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Flatten the 2D matrix into a sorted 1D array conceptually.  </li>
+<li>Apply <strong>binary search</strong> on indices.</li>
+</ul>
+<p><strong>Related problems</strong>  </p>
+<ul>
+<li><code>lc-240</code> — Search a 2D Matrix II  </li>
+<li><code>lc-33</code> — Search in Rotated Sorted Array</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1248,123 +1372,6 @@
 <li><code>lc-77</code> — Combinations  </li>
 <li><code>lc-78</code> — Subsets  </li>
 <li><code>lc-90</code> — Subsets II</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/21/Algorithm-Day55-Implement-Trie-(Prefix-Tree)-lc-208/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/21/Algorithm-Day55-Implement-Trie-(Prefix-Tree)-lc-208/" class="post-title-link" itemprop="url">LeetCode 208. Implement Trie (Prefix Tree)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-21 21:00:00 / Modified: 18:55:26" itemprop="dateCreated datePublished" datetime="2025-08-21T21:00:00+10:00">2025-08-21</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Trie/" itemprop="url" rel="index"><span itemprop="name">Trie</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>A <strong>trie</strong> (pronounced <em>try</em>) or prefix tree is a tree data structure used to efficiently store and search strings in a dataset of strings.</p>
-<p>Implement the <code>Trie</code> class:</p>
-<ul>
-<li><code>Trie()</code> initializes the object.</li>
-<li><code>void insert(String word)</code> inserts the string <code>word</code> into the trie.</li>
-<li><code>boolean search(String word)</code> returns <code>true</code> if the string <code>word</code> is in the trie (i.e., was inserted before), and <code>false</code> otherwise.</li>
-<li><code>boolean startsWith(String prefix)</code> returns <code>true</code> if there is a previously inserted string <code>word</code> that starts with the given prefix.</li>
-</ul>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">[&quot;Trie&quot;,&quot;insert&quot;,&quot;search&quot;,&quot;search&quot;,&quot;startsWith&quot;,&quot;insert&quot;,&quot;search&quot;]</span><br><span class="line">[[],[&quot;apple&quot;],[&quot;apple&quot;],[&quot;app&quot;],[&quot;app&quot;],[&quot;app&quot;],[&quot;app&quot;]]</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">[null,null,true,false,true,null,true]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-Trie-Node-Structure"><a href="#💡-Approach-Trie-Node-Structure" class="headerlink" title="💡 Approach: Trie Node Structure"></a>💡 Approach: Trie Node Structure</h2><p>We build a tree where each node contains up to 26 children (for each lowercase letter).<br>Each node also keeps a boolean flag <code>isEnd</code> to mark the end of a word.</p>
-<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Trie</span> &#123;</span><br><span class="line">    <span class="keyword">class</span> <span class="title class_">TrieNode</span> &#123;</span><br><span class="line">        TrieNode[] children;</span><br><span class="line">        <span class="type">boolean</span> isEnd;</span><br><span class="line"></span><br><span class="line">        TrieNode() &#123;</span><br><span class="line">            children = <span class="keyword">new</span> <span class="title class_">TrieNode</span>[<span class="number">26</span>];</span><br><span class="line">            isEnd = <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TrieNode root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Trie</span><span class="params">()</span> &#123;</span><br><span class="line">        root = <span class="keyword">new</span> <span class="title class_">TrieNode</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">insert</span><span class="params">(String word)</span> &#123;</span><br><span class="line">        <span class="type">TrieNode</span> <span class="variable">node</span> <span class="operator">=</span> root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : word.toCharArray()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (node.children[idx] == <span class="literal">null</span>) &#123;</span><br><span class="line">                node.children[idx] = <span class="keyword">new</span> <span class="title class_">TrieNode</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            node = node.children[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        node.isEnd = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">search</span><span class="params">(String word)</span> &#123;</span><br><span class="line">        <span class="type">TrieNode</span> <span class="variable">node</span> <span class="operator">=</span> root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : word.toCharArray()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (node.children[idx] == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            node = node.children[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> node.isEnd;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">startsWith</span><span class="params">(String prefix)</span> &#123;</span><br><span class="line">        <span class="type">TrieNode</span> <span class="variable">node</span> <span class="operator">=</span> root;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : prefix.toCharArray()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">idx</span> <span class="operator">=</span> c - <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (node.children[idx] == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            node = node.children[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>Insert</strong>: O(L), where L &#x3D; length of the word  </li>
-<li><strong>Search</strong>: O(L)  </li>
-<li><strong>StartsWith</strong>: O(P), where P &#x3D; length of the prefix  </li>
-<li><strong>Space</strong>: O(N * L), where N &#x3D; number of words, L &#x3D; average word length</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Trie is a powerful data structure for string searching.  </li>
-<li>Operations are efficient: O(L).  </li>
-<li>Widely used in autocomplete, spell check, IP routing, and word games.</li>
-</ul>
-<p><strong>Related problems</strong>:</p>
-<ul>
-<li><code>lc-211</code> — Design Add and Search Words Data Structure  </li>
-<li><code>lc-212</code> — Word Search II  </li>
-<li><code>lc-648</code> — Replace Words  </li>
-<li><code>lc-720</code> — Longest Word in Dictionary</li>
 </ul>
 
       
