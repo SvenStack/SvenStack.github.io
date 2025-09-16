@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-count">77</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-count">24</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">114</span>
+        <span class="site-state-item-count">116</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,120 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/21/Algorithm-Day58-Letter-Combinations-of-a-Phone-Number-lc-17/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/21/Algorithm-Day58-Letter-Combinations-of-a-Phone-Number-lc-17/" class="post-title-link" itemprop="url">LeetCode 17. Letter Combinations of a Phone Number</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-08-21 22:15:00" itemprop="dateCreated datePublished" datetime="2025-08-21T22:15:00+10:00">2025-08-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-08-24 22:39:33" itemprop="dateModified" datetime="2025-08-24T22:39:33+10:00">2025-08-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Backtracking/" itemprop="url" rel="index"><span itemprop="name">Backtracking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a string containing digits from <code>2-9</code> inclusive, return all possible letter combinations that the number could represent.<br>Return the answer in <strong>any order</strong>.</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: digits = &quot;23&quot;</span><br><span class="line">Output: [&quot;ad&quot;,&quot;ae&quot;,&quot;af&quot;,&quot;bd&quot;,&quot;be&quot;,&quot;bf&quot;,&quot;cd&quot;,&quot;ce&quot;,&quot;cf&quot;]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-Backtracking"><a href="#💡-Approach-Backtracking" class="headerlink" title="💡 Approach: Backtracking"></a>💡 Approach: Backtracking</h2><p>This is a <strong>classic backtracking problem</strong>.<br>Each digit corresponds to a set of characters (phone keypad mapping).<br>We explore all possible combinations by building strings recursively.</p>
+<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String[] KEYS = &#123;</span><br><span class="line">        <span class="string">&quot;&quot;</span>,    <span class="string">&quot;&quot;</span>,    <span class="string">&quot;abc&quot;</span>,  <span class="string">&quot;def&quot;</span>, <span class="string">&quot;ghi&quot;</span>, </span><br><span class="line">        <span class="string">&quot;jkl&quot;</span>, <span class="string">&quot;mno&quot;</span>, <span class="string">&quot;pqrs&quot;</span>, <span class="string">&quot;tuv&quot;</span>, <span class="string">&quot;wxyz&quot;</span></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> List&lt;String&gt; <span class="title function_">letterCombinations</span><span class="params">(String digits)</span> &#123;</span><br><span class="line">        List&lt;String&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (digits == <span class="literal">null</span> || digits.length() == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line">        backtrack(digits, <span class="number">0</span>, <span class="keyword">new</span> <span class="title class_">StringBuilder</span>(), result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(String digits, <span class="type">int</span> index, StringBuilder path, List&lt;String&gt; result)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index == digits.length()) &#123;</span><br><span class="line">            result.add(path.toString());</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">letters</span> <span class="operator">=</span> KEYS[digits.charAt(index) - <span class="string">&#x27;0&#x27;</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : letters.toCharArray()) &#123;</span><br><span class="line">            path.append(c);</span><br><span class="line">            backtrack(digits, index + <span class="number">1</span>, path, result);</span><br><span class="line">            path.deleteCharAt(path.length() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time</strong>: O(4^n) → each digit can map to up to 4 letters  </li>
+<li><strong>Space</strong>: O(n) recursion depth</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Maps digits to characters based on phone keypad.  </li>
+<li>Uses <strong>backtracking</strong> to explore all valid combinations.  </li>
+<li>Very common interview question.</li>
+</ul>
+<p><strong>Related problems</strong>:</p>
+<ul>
+<li><code>lc-22</code> — Generate Parentheses  </li>
+<li><code>lc-39</code> — Combination Sum  </li>
+<li><code>lc-46</code> — Permutations  </li>
+<li><code>lc-78</code> — Subsets</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1291,114 +1405,6 @@
 <li>Related problems:<ul>
 <li><code>lc-106</code> — Construct from Inorder and Postorder</li>
 <li><code>lc-889</code> — Construct from Preorder and Postorder</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/12/Algorithm-Day47-Flatten-Binary-Tree-to-Linked-List-lc-114/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/12/Algorithm-Day47-Flatten-Binary-Tree-to-Linked-List-lc-114/" class="post-title-link" itemprop="url">Algorithm-Day47-Flatten-Binary-Tree-to-Linked-List-lc-114</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-12 20:29:05 / Modified: 20:30:26" itemprop="dateCreated datePublished" datetime="2025-08-12T20:29:05+10:00">2025-08-12</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, flatten it to a <strong>linked list in-place</strong>.<br>The linked list should follow the <strong>same order as a pre-order traversal</strong>.</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,5,3,4,null,6]</span><br><span class="line">Output: [1,null,2,null,3,null,4,null,5,null,6]</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Approach-1-Reverse-Preorder-DFS"><a href="#💡-Approach-1-Reverse-Preorder-DFS" class="headerlink" title="💡 Approach 1: Reverse Preorder DFS"></a>💡 Approach 1: Reverse Preorder DFS</h2><p>We can do a reverse preorder traversal (right → left → root) and keep track of the <strong>previous node</strong> to build the flattened list.</p>
-<hr>
-<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">TreeNode</span> <span class="variable">prev</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">flatten</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        flatten(root.right);</span><br><span class="line">        flatten(root.left);</span><br><span class="line">        root.right = prev;</span><br><span class="line">        root.left = <span class="literal">null</span>;</span><br><span class="line">        prev = root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Approach-2-Iterative-with-Stack"><a href="#💡-Approach-2-Iterative-with-Stack" class="headerlink" title="💡 Approach 2: Iterative with Stack"></a>💡 Approach 2: Iterative with Stack</h2><p>We can also simulate preorder traversal using a stack and rearrange pointers.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">flatten</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        Stack&lt;TreeNode&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        stack.push(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!stack.isEmpty()) &#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">curr</span> <span class="operator">=</span> stack.pop();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (curr.right != <span class="literal">null</span>) stack.push(curr.right);</span><br><span class="line">            <span class="keyword">if</span> (curr.left != <span class="literal">null</span>) stack.push(curr.left);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (!stack.isEmpty()) &#123;</span><br><span class="line">                curr.right = stack.peek();</span><br><span class="line">            &#125;</span><br><span class="line">            curr.left = <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — visiting all nodes once.</li>
-<li><strong>Space Complexity:</strong> O(h) for recursion &#x2F; stack (O(n) in worst case).</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Reverse preorder DFS is a neat trick because it avoids extra temporary storage.</li>
-<li>Iterative stack solution is more explicit and easier to debug.</li>
-<li>Related problems:<ul>
-<li><code>lc-116</code> — Populating Next Right Pointers in Each Node</li>
-<li><code>lc-430</code> — Flatten a Multilevel Doubly Linked List</li>
 </ul>
 </li>
 </ul>
