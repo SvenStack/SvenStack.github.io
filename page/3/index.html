@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">77</span>
+          <span class="site-state-item-count">78</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">116</span>
+        <span class="site-state-item-count">118</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,114 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/23/Algorithm-Day57-Subsets-lc-78/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/23/Algorithm-Day57-Subsets-lc-78/" class="post-title-link" itemprop="url">LeetCode 78. Subsets</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-23 12:00:00 / Modified: 10:16:21" itemprop="dateCreated datePublished" datetime="2025-08-23T12:00:00+10:00">2025-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Backtracking/" itemprop="url" rel="index"><span itemprop="name">Backtracking</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an integer array <code>nums</code> of unique elements, return <em>all possible subsets (the power set)</em>.<br>The solution set must not contain duplicate subsets.</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3]</span><br><span class="line">Output: [[],[1],[2],[3],[1,2],[1,3],[2,3],[1,2,3]]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-Backtracking"><a href="#💡-Approach-Backtracking" class="headerlink" title="💡 Approach: Backtracking"></a>💡 Approach: Backtracking</h2><p>We explore each element’s choice: include or exclude.<br>Alternatively, we can also use <strong>bitmask enumeration</strong>.</p>
+<h3 id="🔢-Java-Code-Backtracking"><a href="#🔢-Java-Code-Backtracking" class="headerlink" title="🔢 Java Code (Backtracking)"></a>🔢 Java Code (Backtracking)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">subsets</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        backtrack(nums, <span class="number">0</span>, <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(), result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">backtrack</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> start, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; result)</span> &#123;</span><br><span class="line">        result.add(<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;(path));</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> start; i &lt; nums.length; i++) &#123;</span><br><span class="line">            path.add(nums[i]);</span><br><span class="line">            backtrack(nums, i + <span class="number">1</span>, path, result);</span><br><span class="line">            path.remove(path.size() - <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time</strong>: O(n × 2^n) → there are 2^n subsets, each takes up to O(n) to copy  </li>
+<li><strong>Space</strong>: O(n) recursion depth (excluding output storage)</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Generates the <strong>power set</strong> of <code>nums</code>.  </li>
+<li>Backtracking and bitmasking are both standard approaches.  </li>
+<li>Useful in combinatorial problems.</li>
+</ul>
+<p><strong>Related problems</strong>:</p>
+<ul>
+<li><code>lc-90</code> — Subsets II (with duplicates)  </li>
+<li><code>lc-46</code> — Permutations  </li>
+<li><code>lc-39</code> — Combination Sum  </li>
+<li><code>lc-40</code> — Combination Sum II</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1290,121 +1398,6 @@
 <li>Related problems:<ul>
 <li><code>lc-235</code> — LCA of a BST (simpler due to BST property)</li>
 <li><code>lc-236</code> — LCA of any binary tree (this one)</li>
-</ul>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/13/Algorithm-Day48-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal-lc-105/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/13/Algorithm-Day48-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal-lc-105/" class="post-title-link" itemprop="url">Algorithm-Day48-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal-lc-105</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-13 21:11:23 / Modified: 21:12:37" itemprop="dateCreated datePublished" datetime="2025-08-13T21:11:23+10:00">2025-08-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given two integer arrays <code>preorder</code> and <code>inorder</code> where:</p>
-<ul>
-<li><code>preorder</code> is the preorder traversal of a binary tree</li>
-<li><code>inorder</code> is the inorder traversal of the same tree</li>
-</ul>
-<p>Construct and return the <strong>binary tree</strong>.</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]</span><br><span class="line">Output: [3,9,20,null,null,15,7]</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Approach-DFS-HashMap-for-Index-Lookup"><a href="#💡-Approach-DFS-HashMap-for-Index-Lookup" class="headerlink" title="💡 Approach: DFS + HashMap for Index Lookup"></a>💡 Approach: DFS + HashMap for Index Lookup</h2><p><strong>Key Observations:</strong></p>
-<ol>
-<li>In preorder traversal, the <strong>first element</strong> is always the root.</li>
-<li>In inorder traversal, elements to the <strong>left</strong> of root belong to the left subtree, and elements to the <strong>right</strong> belong to the right subtree.</li>
-<li>We can use a <strong>HashMap</strong> to store value → index mappings in inorder array for O(1) splits.</li>
-</ol>
-<hr>
-<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Map&lt;Integer, Integer&gt; inorderIndexMap;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> preorderIndex;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(<span class="type">int</span>[] preorder, <span class="type">int</span>[] inorder)</span> &#123;</span><br><span class="line">        inorderIndexMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        preorderIndex = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; inorder.length; i++) &#123;</span><br><span class="line">            inorderIndexMap.put(inorder[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> build(preorder, <span class="number">0</span>, inorder.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TreeNode <span class="title function_">build</span><span class="params">(<span class="type">int</span>[] preorder, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">rootVal</span> <span class="operator">=</span> preorder[preorderIndex++];</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(rootVal);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">inorderIndex</span> <span class="operator">=</span> inorderIndexMap.get(rootVal);</span><br><span class="line"></span><br><span class="line">        root.left = build(preorder, left, inorderIndex - <span class="number">1</span>);</span><br><span class="line">        root.right = build(preorder, inorderIndex + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — each node is created once, and index lookup is O(1).</li>
-<li><strong>Space Complexity:</strong> O(n) — for recursion stack and hashmap.</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This is a classic <strong>divide and conquer</strong> problem.</li>
-<li>Preorder gives root order, inorder gives subtree boundaries.</li>
-<li>Related problems:<ul>
-<li><code>lc-106</code> — Construct from Inorder and Postorder</li>
-<li><code>lc-889</code> — Construct from Preorder and Postorder</li>
 </ul>
 </li>
 </ul>
