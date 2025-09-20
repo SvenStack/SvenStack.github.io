@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">79</span>
+          <span class="site-state-item-count">80</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">119</span>
+        <span class="site-state-item-count">120</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/05/Algorithm-Day40-Symmetric-Tree-lc-101/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/05/Algorithm-Day40-Symmetric-Tree-lc-101/" class="post-title-link" itemprop="url">Algorithm-Day40-Symmetric-Tree-lc-101</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-05 22:32:15 / Modified: 22:33:48" itemprop="dateCreated datePublished" datetime="2025-08-05T22:32:15+10:00">2025-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, <strong>check whether it is a mirror of itself</strong> (i.e., symmetric around its center).</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,2,3,4,4,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p>Symmetric ✅</p>
+<hr>
+<h2 id="💡-Approach-1-Recursive-Comparison"><a href="#💡-Approach-1-Recursive-Comparison" class="headerlink" title="💡 Approach 1: Recursive Comparison"></a>💡 Approach 1: Recursive Comparison</h2><p>We define a helper function <code>isMirror(left, right)</code> to check whether two subtrees are mirror images of each other.</p>
+<hr>
+<h3 id="🔢-Java-Code-Recursive"><a href="#🔢-Java-Code-Recursive" class="headerlink" title="🔢 Java Code (Recursive)"></a>🔢 Java Code (Recursive)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> isMirror(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isMirror</span><span class="params">(TreeNode t1, TreeNode t2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t1 == <span class="literal">null</span> &amp;&amp; t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (t1 == <span class="literal">null</span> || t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> (t1.val == t2.val)</span><br><span class="line">            &amp;&amp; isMirror(t1.left, t2.right)</span><br><span class="line">            &amp;&amp; isMirror(t1.right, t2.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-2-Iterative-BFS-with-Queue"><a href="#💡-Approach-2-Iterative-BFS-with-Queue" class="headerlink" title="💡 Approach 2: Iterative (BFS with Queue)"></a>💡 Approach 2: Iterative (BFS with Queue)</h2><p>We can also use a queue to compare nodes level by level.</p>
+<hr>
+<h3 id="🔢-Java-Code-Iterative"><a href="#🔢-Java-Code-Iterative" class="headerlink" title="🔢 Java Code (Iterative)"></a>🔢 Java Code (Iterative)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root.left);</span><br><span class="line">        queue.offer(root.right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">t1</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">t2</span> <span class="operator">=</span> queue.poll();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="literal">null</span> &amp;&amp; t2 == <span class="literal">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="literal">null</span> || t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1.val != t2.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            queue.offer(t1.left);</span><br><span class="line">            queue.offer(t2.right);</span><br><span class="line">            queue.offer(t1.right);</span><br><span class="line">            queue.offer(t2.left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n) — visit each node once</li>
+<li><strong>Space Complexity:</strong><ul>
+<li>Recursive: O(h)</li>
+<li>Iterative: O(w) for queue</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use recursion for elegant, clear code.</li>
+<li>Iterative is slightly more verbose but stack-safe.</li>
+<li>Understand the <strong>mirror condition</strong>:<ul>
+<li><code>left.left == right.right</code></li>
+<li><code>left.right == right.left</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Often paired with <code>lc-100</code>, <code>lc-226</code>, and other binary tree symmetry&#x2F;mirroring problems.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1261,121 +1380,6 @@
 </ul>
 <blockquote>
 <p>Dummy nodes make linked list problems so much easier — use them!</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/26/Algorithm-Day30-Remove-Nth-Node-From-End-of-List-lc-19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/26/Algorithm-Day30-Remove-Nth-Node-From-End-of-List-lc-19/" class="post-title-link" itemprop="url">Algorithm-Day30-Remove-Nth-Node-From-End-of-List-lc-19</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-26 13:05:47 / Modified: 13:07:42" itemprop="dateCreated datePublished" datetime="2025-07-26T13:05:47+10:00">2025-07-26</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>head</code> of a linked list, remove the <strong>n-th node from the end</strong> of the list and return its head.</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,3,4,5], n = 2</span><br><span class="line">Output: [1,2,3,5]</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>Use the <strong>two-pointer</strong> technique:</p>
-<ol>
-<li>Move <code>first</code> pointer <code>n</code> steps ahead.</li>
-<li>Then move both <code>first</code> and <code>second</code> together until <code>first</code> reaches the end.</li>
-<li>Now <code>second</code> is just <strong>before</strong> the node to delete.</li>
-</ol>
-<p>✅ Trick: use a <strong>dummy node</strong> before head to simplify edge cases like deleting the head.</p>
-<hr>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">removeNthFromEnd</span><span class="params">(ListNode head, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">first</span> <span class="operator">=</span> dummy;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">second</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Move first n+1 steps to maintain gap</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            first = first.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Move both pointers</span></span><br><span class="line">        <span class="keyword">while</span> (first != <span class="literal">null</span>) &#123;</span><br><span class="line">            first = first.next;</span><br><span class="line">            second = second.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Skip the target node</span></span><br><span class="line">        second.next = second.next.next;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(L), where L is the length of the list</li>
-<li><strong>Space Complexity:</strong> O(1)</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Two-pointer pattern is super useful for problems involving relative positions.</li>
-<li>Using a dummy node helps avoid corner-case bugs when deleting the head.</li>
-<li>This technique appears frequently — make sure you’re confident with it.</li>
-</ul>
-<blockquote>
-<p>Similar problems include:</p>
-<ul>
-<li><code>lc-876</code>: Middle of the Linked List</li>
-<li><code>lc-160</code>: Intersection of Two Linked Lists</li>
-<li><code>lc-234</code>: Palindrome Linked List</li>
-</ul>
 </blockquote>
 
       
