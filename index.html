@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">83</span>
+          <span class="site-state-item-count">84</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">125</span>
+        <span class="site-state-item-count">126</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/24/Algorithm-Day84-House-Robber-lc-198/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/09/24/Algorithm-Day84-House-Robber-lc-198/" class="post-title-link" itemprop="url">Algorithm Day84 - House Robber</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-09-24 18:00:00 / Modified: 18:36:10" itemprop="dateCreated datePublished" datetime="2025-09-24T18:00:00+10:00">2025-09-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed.<br>The only constraint is: adjacent houses cannot be robbed on the same night.  </p>
+<p>Given an integer array <code>nums</code> representing the amount of money of each house, return the <strong>maximum amount of money you can rob tonight</strong> without alerting the police.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3,1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: Rob house 1 (1) + house 3 (3).</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,7,9,3,1]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation: Rob house 1 (2) + house 3 (9) + house 5 (1).</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is a <strong>dynamic programming</strong> problem.<br>At each house <code>i</code>, you decide to either:</p>
+<ul>
+<li>Rob it → value &#x3D; <code>nums[i] + dp[i-2]</code></li>
+<li>Skip it → value &#x3D; <code>dp[i-1]</code></li>
+</ul>
+<p>Transition formula:  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = max(dp[i-1], dp[i-2] + nums[i])</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔢-Java-Code-DP-Optimized"><a href="#🔢-Java-Code-DP-Optimized" class="headerlink" title="🔢 Java Code (DP Optimized)"></a>🔢 Java Code (DP Optimized)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">prev2</span> <span class="operator">=</span> nums[<span class="number">0</span>];   <span class="comment">// dp[i-2]</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">prev1</span> <span class="operator">=</span> Math.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]); <span class="comment">// dp[i-1]</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">curr</span> <span class="operator">=</span> Math.max(prev1, prev2 + nums[i]);</span><br><span class="line">            prev2 = prev1;</span><br><span class="line">            prev1 = curr;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> prev1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(n) — one pass through houses.  </li>
+<li><strong>Space:</strong> O(1) — only two variables stored.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>A classic DP problem.  </li>
+<li>Transition: <code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code>.  </li>
+<li>Space can be optimized to O(1).</li>
+</ul>
+<p><strong>Related problems</strong>  </p>
+<ul>
+<li><code>lc-213</code> — House Robber II  </li>
+<li><code>lc-337</code> — House Robber III</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1269,124 +1388,6 @@
 <li><code>lc-347</code> — Top K Frequent Elements  </li>
 <li><code>lc-973</code> — K Closest Points to Origin  </li>
 <li><code>lc-703</code> — Kth Largest Element in a Stream</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/14/Algorithm-Day74-Largest-Rectangle-in-Histogram-lc-84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/14/Algorithm-Day74-Largest-Rectangle-in-Histogram-lc-84/" class="post-title-link" itemprop="url">Algorithm Day74 - Largest Rectangle in Histogram</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-09-14 08:00:00 / Modified: 08:44:35" itemprop="dateCreated datePublished" datetime="2025-09-14T08:00:00+10:00">2025-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Monotonic-Stack/" itemprop="url" rel="index"><span itemprop="name">Monotonic Stack</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an array of integers <code>heights</code> representing the histogram’s bar height where the width of each bar is 1, return <em>the area of the largest rectangle in the histogram</em>.  </p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: heights = [2,1,5,6,2,3]</span><br><span class="line">Output: 10</span><br><span class="line">Explanation: The largest rectangle is formed by bars with height 5 and 6, width = 2 → area = 10.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: heights = [2,4]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>We want to find the <strong>largest rectangle area</strong> in a histogram.<br>A <strong>monotonic increasing stack</strong> helps track the left and right boundaries for each bar:  </p>
-<ul>
-<li>Traverse the bars.  </li>
-<li>While current height is less than the top of stack, pop from stack and calculate area.  </li>
-<li>Area &#x3D; poppedHeight * (currentIndex - stackTopAfterPop - 1).  </li>
-<li>Push current index onto the stack.  </li>
-<li>Add sentinel 0 at the end to flush out remaining bars.</li>
-</ul>
-<hr>
-<h2 id="🔢-Java-Code-Monotonic-Stack"><a href="#🔢-Java-Code-Monotonic-Stack" class="headerlink" title="🔢 Java Code (Monotonic Stack)"></a>🔢 Java Code (Monotonic Stack)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">largestRectangleArea</span><span class="params">(<span class="type">int</span>[] heights)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> heights.length;</span><br><span class="line">        Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxArea</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">h</span> <span class="operator">=</span> (i == n ? <span class="number">0</span> : heights[i]);</span><br><span class="line">            <span class="keyword">while</span> (!stack.isEmpty() &amp;&amp; h &lt; heights[stack.peek()]) &#123;</span><br><span class="line">                <span class="type">int</span> <span class="variable">height</span> <span class="operator">=</span> heights[stack.pop()];</span><br><span class="line">                <span class="type">int</span> <span class="variable">width</span> <span class="operator">=</span> stack.isEmpty() ? i : i - stack.peek() - <span class="number">1</span>;</span><br><span class="line">                maxArea = Math.max(maxArea, height * width);</span><br><span class="line">            &#125;</span><br><span class="line">            stack.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> maxArea;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>Time:</strong> O(n) — each bar pushed and popped at most once.  </li>
-<li><strong>Space:</strong> O(n) — stack storage.</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Use <strong>monotonic increasing stack</strong> to efficiently compute rectangle areas.  </li>
-<li>Each bar defines a rectangle extended until a smaller bar appears.</li>
-</ul>
-<p><strong>Related problems</strong>  </p>
-<ul>
-<li><code>lc-85</code> — Maximal Rectangle  </li>
-<li><code>lc-42</code> — Trapping Rain Water  </li>
-<li><code>lc-239</code> — Sliding Window Maximum</li>
 </ul>
 
       
