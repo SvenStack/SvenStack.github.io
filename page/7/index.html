@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">88</span>
+          <span class="site-state-item-count">89</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">130</span>
+        <span class="site-state-item-count">131</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,135 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/25/Algorithm-Day29-Divide-Two-Integers-lc-29/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/25/Algorithm-Day29-Divide-Two-Integers-lc-29/" class="post-title-link" itemprop="url">Algorithm-Day29-Divide-Two-Integers-lc-29</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-07-25 00:25:51" itemprop="dateCreated datePublished" datetime="2025-07-25T00:25:51+10:00">2025-07-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-07-24 23:27:52" itemprop="dateModified" datetime="2025-07-24T23:27:52+10:00">2025-07-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Bit-Manipulation/" itemprop="url" rel="index"><span itemprop="name">Bit Manipulation</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <hr>
+<h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given two integers <code>dividend</code> and <code>divisor</code>, divide them <strong>without</strong> using multiplication, division, or mod operator.</p>
+<p>Return the <strong>quotient</strong> after dividing <code>dividend</code> by <code>divisor</code>.</p>
+<p>The result should be <strong>truncated</strong> toward zero (i.e., 8.9 → 8, -8.9 → -8).</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Input: dividend = 10, divisor = 3</span><br><span class="line">Output: 3</span><br><span class="line"></span><br><span class="line">Input: dividend = 7, divisor = -3</span><br><span class="line">Output: -2</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⚠️-Constraints"><a href="#⚠️-Constraints" class="headerlink" title="⚠️ Constraints"></a>⚠️ Constraints</h2><ul>
+<li>You must <strong>not</strong> use <code>*</code>, <code>/</code>, or <code>%</code>.</li>
+<li>Range of inputs: <code>-2³¹ ≤ dividend, divisor ≤ 2³¹ - 1</code></li>
+<li>If result overflows (<code>&gt; 2³¹ - 1</code>), return <code>2³¹ - 1</code></li>
+</ul>
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>To simulate division:</p>
+<ul>
+<li>Keep <strong>subtracting the divisor</strong> from dividend until the dividend is smaller than divisor.</li>
+<li>To speed up, use <strong>bit shifting</strong> (double the divisor each time).</li>
+</ul>
+<p>This is like long division: find the largest multiple of divisor that fits in dividend.</p>
+<hr>
+<h2 id="🔢-Java-Code-Bit-Manipulation"><a href="#🔢-Java-Code-Bit-Manipulation" class="headerlink" title="🔢 Java Code (Bit Manipulation)"></a>🔢 Java Code (Bit Manipulation)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">divide</span><span class="params">(<span class="type">int</span> dividend, <span class="type">int</span> divisor)</span> &#123;</span><br><span class="line">        <span class="comment">// Edge case: overflow</span></span><br><span class="line">        <span class="keyword">if</span> (dividend == Integer.MIN_VALUE &amp;&amp; divisor == -<span class="number">1</span>) <span class="keyword">return</span> Integer.MAX_VALUE;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Use long to prevent overflow during shifting</span></span><br><span class="line">        <span class="type">long</span> <span class="variable">a</span> <span class="operator">=</span> Math.abs((<span class="type">long</span>) dividend);</span><br><span class="line">        <span class="type">long</span> <span class="variable">b</span> <span class="operator">=</span> Math.abs((<span class="type">long</span>) divisor);</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (a &gt;= b) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="variable">temp</span> <span class="operator">=</span> b;</span><br><span class="line">            <span class="type">int</span> <span class="variable">multiple</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (a &gt;= (temp &lt;&lt; <span class="number">1</span>)) &#123;</span><br><span class="line">                temp &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">                multiple &lt;&lt;= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            a -= temp;</span><br><span class="line">            result += multiple;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Determine sign</span></span><br><span class="line">        <span class="keyword">return</span> (dividend &gt; <span class="number">0</span>) == (divisor &gt; <span class="number">0</span>) ? result : -result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(log N) — where N is <code>|dividend|</code></li>
+<li><strong>Space Complexity:</strong> O(1)</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>No multiplication, division, or modulus — use <strong>bit shifts</strong> and <strong>subtraction</strong>.</li>
+<li>Carefully handle:<ul>
+<li><strong>Negative numbers</strong></li>
+<li><strong>Edge cases</strong> like <code>Integer.MIN_VALUE / -1</code></li>
+</ul>
+</li>
+<li>This is a good exercise in <strong>low-level arithmetic logic</strong>.</li>
+</ul>
+<blockquote>
+<p>Learn this if you want to understand how division could be implemented in systems without direct hardware division support.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1284,122 +1413,6 @@
 </ul>
 <blockquote>
 <p>Mastering in-place matrix tricks helps with both interviews and real-world image manipulation tasks.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/15/Algorithm-Day19-Spiral-Matrix-lc-54/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/15/Algorithm-Day19-Spiral-Matrix-lc-54/" class="post-title-link" itemprop="url">Algorithm-Day19-Spiral-Matrix-lc-54</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-15 09:45:42 / Modified: 09:47:22" itemprop="dateCreated datePublished" datetime="2025-07-15T09:45:42+10:00">2025-07-15</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Matrix/" itemprop="url" rel="index"><span itemprop="name">Matrix</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an <code>m x n</code> matrix, return all elements of the matrix in <strong>spiral order</strong>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-Layer-by-Layer-Traversal"><a href="#💡-Approach-Layer-by-Layer-Traversal" class="headerlink" title="💡 Approach: Layer-by-Layer Traversal"></a>💡 Approach: Layer-by-Layer Traversal</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><p>We maintain four boundaries:</p>
-<ul>
-<li><code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></li>
-</ul>
-<p>At each step:</p>
-<ol>
-<li>Traverse from <code>left</code> to <code>right</code> along <code>top</code>.</li>
-<li>Traverse from <code>top + 1</code> to <code>bottom</code> along <code>right</code>.</li>
-<li>Traverse from <code>right - 1</code> to <code>left</code> along <code>bottom</code> (only if <code>top &lt; bottom</code>).</li>
-<li>Traverse from <code>bottom - 1</code> to <code>top + 1</code> along <code>left</code> (only if <code>left &lt; right</code>).</li>
-</ol>
-<p>After each step, we shrink the boundaries inward.</p>
-<hr>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (matrix == <span class="literal">null</span> || matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (top &lt;= bottom &amp;&amp; left &lt;= right) &#123;</span><br><span class="line">            <span class="comment">// Traverse from left to right</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> left; j &lt;= right; j++) &#123;</span><br><span class="line">                result.add(matrix[top][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            top++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Traverse from top to bottom</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top; i &lt;= bottom; i++) &#123;</span><br><span class="line">                result.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            right--;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (top &lt;= bottom) &#123;</span><br><span class="line">                <span class="comment">// Traverse from right to left</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> right; j &gt;= left; j--) &#123;</span><br><span class="line">                    result.add(matrix[bottom][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                bottom--;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (left &lt;= right) &#123;</span><br><span class="line">                <span class="comment">// Traverse from bottom to top</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom; i &gt;= top; i--) &#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(m × n)<br> Each cell is visited exactly once.</li>
-<li><strong>Space Complexity:</strong> O(1) extra space<br> (excluding output list)</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Boundary shrinking is a classic matrix traversal technique.</li>
-<li>Spiral order appears in related problems like <code>Spiral Matrix II</code> (filling numbers), <code>lc-59</code>.</li>
-<li>Make sure to check conditions carefully when shrinking boundaries to avoid duplicates.</li>
-</ul>
-<blockquote>
-<p>Matrix traversal patterns (row-wise, column-wise, spiral, zigzag) are common interview topics — good to master!</p>
 </blockquote>
 
       
