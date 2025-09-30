@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">89</span>
+          <span class="site-state-item-count">90</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">131</span>
+        <span class="site-state-item-count">133</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,124 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/06/Algorithm-Day10-Subarray-Sum-Equals-K-lc-560/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/06/Algorithm-Day10-Subarray-Sum-Equals-K-lc-560/" class="post-title-link" itemprop="url">Algorithm-Day10-Subarray-Sum-Equals-K-lc-560</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-06 00:53:50 / Modified: 00:57:38" itemprop="dateCreated datePublished" datetime="2025-07-06T00:53:50+10:00">2025-07-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Prefix-Sum/" itemprop="url" rel="index"><span itemprop="name">Prefix Sum</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an array of integers <code>nums</code> and an integer <code>k</code>, return the <strong>total number of continuous subarrays</strong> whose sum equals to <code>k</code>.</p>
+<p><strong>Example:</strong></p>
+<p>Input: nums &#x3D; [1,1,1], k &#x3D; 2<br>Output: 2</p>
+<h2 id="💡-Brute-Force-Too-Slow"><a href="#💡-Brute-Force-Too-Slow" class="headerlink" title="💡 Brute Force (Too Slow)"></a>💡 Brute Force (Too Slow)</h2><p>Try every subarray and compute its sum.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Time: O(n^2)</span></span><br><span class="line"><span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>; start &lt; nums.length; start++) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> start; end &lt; nums.length; end++) &#123;</span><br><span class="line">        sum += nums[end];</span><br><span class="line">        <span class="keyword">if</span> (sum == k) count++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>❌ Time complexity: O(n²)</li>
+<li>Works only for small inputs</li>
+</ul>
+<hr>
+<h2 id="💡-Optimized-Approach-Prefix-Sum-HashMap"><a href="#💡-Optimized-Approach-Prefix-Sum-HashMap" class="headerlink" title="💡 Optimized Approach: Prefix Sum + HashMap"></a>💡 Optimized Approach: Prefix Sum + HashMap</h2><h3 id="✨-Key-Insight"><a href="#✨-Key-Insight" class="headerlink" title="✨ Key Insight"></a>✨ Key Insight</h3><p>If we know the <strong>prefix sum</strong> up to index <code>i</code> is <code>sum</code>, and we previously saw a prefix sum of <code>sum - k</code>,<br> then the subarray between those two indices sums to <code>k</code>.</p>
+<h3 id="✅-Steps"><a href="#✅-Steps" class="headerlink" title="✅ Steps"></a>✅ Steps</h3><ul>
+<li>Use a <code>Map&lt;Integer, Integer&gt;</code> to count how many times each prefix sum has occurred.</li>
+<li>At each step:<ul>
+<li>Add current number to running sum</li>
+<li>Check if <code>sum - k</code> has appeared before → it means a subarray with sum &#x3D; k ends here</li>
+<li>Add <code>sum</code> to the map</li>
+</ul>
+</li>
+</ul>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">subarraySum</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        Map&lt;Integer, Integer&gt; prefixCount = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        prefixCount.put(<span class="number">0</span>, <span class="number">1</span>); <span class="comment">// Important: one way to get sum = 0 before starting</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">sum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            sum += num;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (prefixCount.containsKey(sum - k)) &#123;</span><br><span class="line">                count += prefixCount.get(sum - k);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            prefixCount.put(sum, prefixCount.getOrDefault(sum, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n)<br> One pass through the array</li>
+<li><strong>Space Complexity:</strong> O(n)<br> For the prefix sum map</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Prefix sum is a powerful technique for cumulative problems</li>
+<li>The hash map tracks all possible sums we’ve seen so far</li>
+<li>Key trick: initialize the map with <code>&#123;0:1&#125;</code> to handle cases where subarray starts at index 0</li>
+</ul>
+<blockquote>
+<p>This is a high-frequency interview question and a foundation for other problems like <code>Longest Subarray Sum</code>, <code>Count of Subarrays With Sum Divisible by K</code>, etc.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
