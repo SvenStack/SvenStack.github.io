@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">91</span>
+          <span class="site-state-item-count">92</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">134</span>
+        <span class="site-state-item-count">136</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,132 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/18/Algorithm-Day22-Intersection-of-Two-Linked-Lists-lc-160/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/18/Algorithm-Day22-Intersection-of-Two-Linked-Lists-lc-160/" class="post-title-link" itemprop="url">Algorithm-Day22-Intersection-of-Two-Linked-Lists-lc-160</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-18 00:43:08 / Modified: 00:44:13" itemprop="dateCreated datePublished" datetime="2025-07-18T00:43:08+10:00">2025-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the heads of two singly linked lists <code>headA</code> and <code>headB</code>, return the node at which the two lists intersect.<br>If the two linked lists have no intersection at all, return <code>null</code>.</p>
+<p>The linked lists must retain their original structure after the function returns.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">A: 4 → 1 → 8 → 4 → 5</span><br><span class="line">B: 5 → 6 → 1 → 8 → 4 → 5</span><br><span class="line">Output: Reference to node with value 8</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Brute-Force-Not-Ideal"><a href="#💡-Brute-Force-Not-Ideal" class="headerlink" title="💡 Brute Force (Not Ideal)"></a>💡 Brute Force (Not Ideal)</h2><ul>
+<li>Compare every node from <code>headA</code> with every node from <code>headB</code>.</li>
+<li>Time: O(m × n)</li>
+<li>❌ Inefficient</li>
+</ul>
+<hr>
+<h2 id="💡-Optimal-Approach-Two-Pointers"><a href="#💡-Optimal-Approach-Two-Pointers" class="headerlink" title="💡 Optimal Approach: Two Pointers"></a>💡 Optimal Approach: Two Pointers</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><ul>
+<li>Use two pointers <code>pA</code> and <code>pB</code>.</li>
+<li>Traverse both lists:<ul>
+<li>If <code>pA</code> reaches end, redirect it to <code>headB</code>.</li>
+<li>If <code>pB</code> reaches end, redirect it to <code>headA</code>.</li>
+</ul>
+</li>
+<li>They will either meet at the intersection node or both become <code>null</code> (no intersection).</li>
+</ul>
+<p>Why it works:</p>
+<ul>
+<li>Both pointers traverse exactly <code>m + n</code> steps.</li>
+</ul>
+<hr>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">getIntersectionNode</span><span class="params">(ListNode headA, ListNode headB)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (headA == <span class="literal">null</span> || headB == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pA</span> <span class="operator">=</span> headA;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">pB</span> <span class="operator">=</span> headB;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (pA != pB) &#123;</span><br><span class="line">            pA = (pA == <span class="literal">null</span>) ? headB : pA.next;</span><br><span class="line">            pB = (pB == <span class="literal">null</span>) ? headA : pB.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> pA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(m + n)</li>
+<li><strong>Space Complexity:</strong> O(1)</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>This is a textbook <strong>two-pointer technique</strong> for linked lists.</li>
+<li>Avoids using extra space like hash sets.</li>
+<li>Useful for related problems such as:<ul>
+<li><code>lc-142: Linked List Cycle II</code></li>
+<li><code>lc-21: Merge Two Sorted Lists</code></li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Pointer redirection is a simple yet powerful technique when dealing with linked lists of unequal lengths.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1243,129 +1369,6 @@
 </ul>
 <blockquote>
 <p>If you understand this pattern, problems like “maximum profit”, “maximum product”, and “max subarray length” will feel much easier.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/08/Algorithm-Day12-Minimum-Window-Substring-lc-76/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/08/Algorithm-Day12-Minimum-Window-Substring-lc-76/" class="post-title-link" itemprop="url">Algorithm-Day12-Minimum-Window-Substring-lc-76</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-08 09:50:04 / Modified: 09:51:52" itemprop="dateCreated datePublished" datetime="2025-07-08T09:50:04+10:00">2025-07-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Sliding-Window/" itemprop="url" rel="index"><span itemprop="name">Sliding Window</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given two strings <code>s</code> and <code>t</code>, return the <strong>minimum window substring</strong> of <code>s</code> such that every character in <code>t</code> (including duplicates) is included in the window.</p>
-<p>If there is no such substring, return the empty string <code>&quot;&quot;</code>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;ADOBECODEBANC&quot;, t = &quot;ABC&quot;</span><br><span class="line">Output: &quot;BANC&quot;</span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h2 id="💡-Brute-Force-Not-Efficient"><a href="#💡-Brute-Force-Not-Efficient" class="headerlink" title="💡 Brute Force? Not Efficient"></a>💡 Brute Force? Not Efficient</h2><p>Try all substrings of <code>s</code> and check if they contain all characters of <code>t</code>.</p>
-<ul>
-<li>Time: O(n³)</li>
-<li>❌ Way too slow</li>
-</ul>
-<hr>
-<h2 id="💡-Optimal-Approach-Sliding-Window-Hash-Map"><a href="#💡-Optimal-Approach-Sliding-Window-Hash-Map" class="headerlink" title="💡 Optimal Approach: Sliding Window + Hash Map"></a>💡 Optimal Approach: Sliding Window + Hash Map</h2><h3 id="🧠-Key-Ideas"><a href="#🧠-Key-Ideas" class="headerlink" title="🧠 Key Ideas"></a>🧠 Key Ideas</h3><ul>
-<li>Use a <strong>sliding window</strong> defined by two pointers: <code>left</code> and <code>right</code></li>
-<li>Expand the window to the right until all required characters are included</li>
-<li>Then try to <strong>shrink</strong> the window from the left to find the minimum</li>
-<li>Track character <strong>counts</strong> using hash maps</li>
-</ul>
-<hr>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">minWindow</span><span class="params">(String s, String t)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() &lt; t.length()) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        Map&lt;Character, Integer&gt; need = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : t.toCharArray()) &#123;</span><br><span class="line">            need.put(c, need.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Map&lt;Character, Integer&gt; window = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">valid</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">minLen</span> <span class="operator">=</span> Integer.MAX_VALUE;</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (right &lt; s.length()) &#123;</span><br><span class="line">            <span class="type">char</span> <span class="variable">c</span> <span class="operator">=</span> s.charAt(right++);</span><br><span class="line">            <span class="keyword">if</span> (need.containsKey(c)) &#123;</span><br><span class="line">                window.put(c, window.getOrDefault(c, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (window.get(c).intValue() == need.get(c).intValue()) &#123;</span><br><span class="line">                    valid++;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Try to shrink the window</span></span><br><span class="line">            <span class="keyword">while</span> (valid == need.size()) &#123;</span><br><span class="line">                <span class="keyword">if</span> (right - left &lt; minLen) &#123;</span><br><span class="line">                    minLen = right - left;</span><br><span class="line">                    start = left;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="type">char</span> <span class="variable">d</span> <span class="operator">=</span> s.charAt(left++);</span><br><span class="line">                <span class="keyword">if</span> (need.containsKey(d)) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (window.get(d).intValue() == need.get(d).intValue()) &#123;</span><br><span class="line">                        valid--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    window.put(d, window.get(d) - <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> minLen == Integer.MAX_VALUE ? <span class="string">&quot;&quot;</span> : s.substring(start, start + minLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n + m)<br> Where <code>n</code> is length of <code>s</code>, <code>m</code> is length of <code>t</code></li>
-<li><strong>Space Complexity:</strong> O(m)<br> For the hash maps tracking counts</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>A classic and <strong>foundational</strong> sliding window problem</li>
-<li>Mastering this helps with problems like:<ul>
-<li><code>lc-567 (Permutation in String)</code></li>
-<li><code>lc-438 (Find All Anagrams)</code></li>
-<li><code>lc-239 (Sliding Window Maximum)</code></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Key challenge: tracking when the window becomes valid and shrinking it optimally.</p>
 </blockquote>
 
       
