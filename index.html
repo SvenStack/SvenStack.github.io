@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-count">97</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-count">34</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">139</span>
+        <span class="site-state-item-count">140</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,109 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/12/Algorithm-Day97-Single-Number-lc-136/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/12/Algorithm-Day97-Single-Number-lc-136/" class="post-title-link" itemprop="url">Algorithm Day97 - Single Number</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-12 10:00:00 / Modified: 10:30:16" itemprop="dateCreated datePublished" datetime="2025-10-12T10:00:00+11:00">2025-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/Bit-Manipulation/" itemprop="url" rel="index"><span itemprop="name">Bit Manipulation</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 136 - Single Number</strong><br>Given a non-empty array of integers <code>nums</code>, every element appears twice except for one. Find that single one.  </p>
+<p>You must implement a solution with <strong>linear runtime complexity</strong> and use only <strong>constant extra space</strong>.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [4,1,2,1,2]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>This problem can be elegantly solved using the <strong>XOR (^)</strong> operation.<br>Key properties of XOR:</p>
+<ul>
+<li><code>a ^ a = 0</code></li>
+<li><code>a ^ 0 = a</code></li>
+<li>XOR is commutative and associative</li>
+</ul>
+<p>Thus, when we XOR all numbers together, pairs cancel out, leaving only the unique number.</p>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">nums = [4, 1, 2, 1, 2]</span><br><span class="line">4 ^ 1 ^ 2 ^ 1 ^ 2 = 4</span><br></pre></td></tr></table></figure>
+
+<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">singleNumber</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            result ^= num;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
+<li><strong>Time:</strong> O(n) — iterate once through the array  </li>
+<li><strong>Space:</strong> O(1) — only one variable used</li>
+</ul>
+<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>A perfect example of how bitwise operations simplify logic and improve efficiency.<br>The XOR trick is commonly used in array problems involving pairs and uniqueness detection.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1257,123 +1360,6 @@
 <li>For large inputs, use the O(n log n) approach with <code>tails</code> + binary search (often called patience sorting).  </li>
 <li>The <code>tails</code> array stores the smallest possible tail for an increasing subsequence of each length; its size equals the LIS length.</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/28/Algorithm-Day87-Word-Break-lc-139/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/28/Algorithm-Day87-Word-Break-lc-139/" class="post-title-link" itemprop="url">Algorithm Day87 - Word Break</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-09-28 21:00:00 / Modified: 21:05:59" itemprop="dateCreated datePublished" datetime="2025-09-28T21:00:00+10:00">2025-09-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a string <code>s</code> and a dictionary of strings <code>wordDict</code>, return <code>true</code> if <code>s</code> can be segmented into a space-separated sequence of one or more dictionary words.  </p>
-<p>You may assume the dictionary does not contain duplicate words.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;leetcode&quot;, wordDict = [&quot;leet&quot;,&quot;code&quot;]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: &quot;leetcode&quot; -&gt; &quot;leet&quot; + &quot;code&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;applepenapple&quot;, wordDict = [&quot;apple&quot;,&quot;pen&quot;]</span><br><span class="line">Output: true</span><br><span class="line">Explanation: &quot;applepenapple&quot; -&gt; &quot;apple&quot; + &quot;pen&quot; + &quot;apple&quot;</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;catsandog&quot;, wordDict = [&quot;cats&quot;,&quot;dog&quot;,&quot;sand&quot;,&quot;and&quot;,&quot;cat&quot;]</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>We want to determine whether <code>s</code> can be split into valid words from <code>wordDict</code>. Two common approaches:</p>
-<ol>
-<li><p><strong>Dynamic Programming (DP)</strong>: Let <code>dp[i]</code> be <code>true</code> if <code>s[0..i)</code> can be segmented. For each <code>i</code>, check all possible previous cuts <code>j &lt; i</code> and if <code>dp[j]</code> is true and <code>s[j..i)</code> is in <code>wordDict</code>, set <code>dp[i] = true</code>.</p>
-</li>
-<li><p><strong>BFS &#x2F; Trie</strong>: Treat positions as nodes and edges when substring is a word; run BFS from position 0 to <code>n</code> to avoid redundant work.</p>
-</li>
-</ol>
-<p>DP is simple and efficient when implemented with a hash set for dictionary lookups and pruning via max word length.</p>
-<hr>
-<h2 id="🔢-Java-Code-DP"><a href="#🔢-Java-Code-DP" class="headerlink" title="🔢 Java Code (DP)"></a>🔢 Java Code (DP)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">wordBreak</span><span class="params">(String s, List&lt;String&gt; wordDict)</span> &#123;</span><br><span class="line">        Set&lt;String&gt; dict = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;(wordDict);</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">boolean</span>[] dp = <span class="keyword">new</span> <span class="title class_">boolean</span>[n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxLen</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (String w : wordDict) maxLen = Math.max(maxLen, w.length());</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> <span class="number">1</span>; l &lt;= maxLen &amp;&amp; l &lt;= i; l++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (!dp[i - l]) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (dict.contains(s.substring(i - l, i))) &#123;</span><br><span class="line">                    dp[i] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>Time:</strong> O(n * L) where <code>n</code> &#x3D; length of <code>s</code>, <code>L</code> &#x3D; max word length; substring&#x2F;hash lookups average O(1).  </li>
-<li><strong>Space:</strong> O(n) for DP array + O(m) for dictionary storage.</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>DP with dictionary lookup and max-word-length optimization is the standard solution.  </li>
-<li>BFS is an alternative that often performs well with proper visited pruning.</li>
-</ul>
-<p><strong>Related problems</strong>: <code>lc-140</code> (Word Break II), <code>lc-472</code> (Concatenated Words).</p>
 
       
     </div>
