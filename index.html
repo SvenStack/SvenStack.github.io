@@ -141,18 +141,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">98</span>
+          <span class="site-state-item-count">99</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories">
-        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-count">36</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">142</span>
+        <span class="site-state-item-count">144</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,122 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/14/Algorithm-Day99-Sort-Colors-lc-75/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/14/Algorithm-Day99-Sort-Colors-lc-75/" class="post-title-link" itemprop="url">Algorithm Day99 - Sort Colors</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-14 20:50:00 / Modified: 20:50:50" itemprop="dateCreated datePublished" datetime="2025-10-14T20:50:00+11:00">2025-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/Array/Two-Pointers/" itemprop="url" rel="index"><span itemprop="name">Two Pointers</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 75 - Sort Colors</strong><br>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong>in-place</strong> so that objects of the same color are adjacent, with the colors in the order <strong>red, white, and blue</strong>.</p>
+<p>We will use the integers <code>0</code>, <code>1</code>, and <code>2</code> to represent the colors red, white, and blue respectively.</p>
+<p>You must solve this problem <strong>without using the library’s sort function</strong>.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,0,2,1,1,0]</span><br><span class="line">Output: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>This is a <strong>Dutch National Flag problem</strong>, invented by Edsger Dijkstra.<br>We use <strong>three pointers</strong> to partition the array into three regions:</p>
+<ul>
+<li><code>0 ... low-1</code>: all 0s  </li>
+<li><code>low ... mid-1</code>: all 1s  </li>
+<li><code>high+1 ... end</code>: all 2s</li>
+</ul>
+<p>We iterate using <code>mid</code>:</p>
+<ul>
+<li>If <code>nums[mid] == 0</code>: swap with <code>low</code>, increment both <code>low</code> and <code>mid</code></li>
+<li>If <code>nums[mid] == 1</code>: just increment <code>mid</code></li>
+<li>If <code>nums[mid] == 2</code>: swap with <code>high</code>, decrement <code>high</code></li>
+</ul>
+<p>This ensures a one-pass, in-place sorting solution.</p>
+<hr>
+<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sortColors</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> <span class="number">0</span>, mid = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (mid &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == <span class="number">0</span>) &#123;</span><br><span class="line">                swap(nums, low++, mid++);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] == <span class="number">1</span>) &#123;</span><br><span class="line">                mid++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                swap(nums, mid, high--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
+<li><strong>Time:</strong> O(n) — Single pass through the array  </li>
+<li><strong>Space:</strong> O(1) — In-place swaps only</li>
+</ul>
+<hr>
+<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>This problem is a perfect example of <strong>in-place array manipulation</strong> using multiple pointers.<br>The Dutch National Flag algorithm is elegant, efficient, and a must-know for array partitioning problems.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1231,121 +1347,6 @@
 <li>Early exit if <code>dp[target]</code> becomes <code>true</code> during iteration.</li>
 </ul>
 <p><strong>Related problems</strong>: <code>lc-494</code> (Target Sum), <code>lc-216</code> (Combination Sum III), <code>lc-698</code> (Partition to K Equal Sum Subsets).</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/30/Algorithm-Day89-Maximum-Product-Subarray-lc-152/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/30/Algorithm-Day89-Maximum-Product-Subarray-lc-152/" class="post-title-link" itemprop="url">Algorithm Day89 - Maximum Product Subarray</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-09-30 07:00:00 / Modified: 07:53:38" itemprop="dateCreated datePublished" datetime="2025-09-30T07:00:00+10:00">2025-09-30</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an integer array <code>nums</code>, find the contiguous subarray within an array (containing at least one number) which has the largest product, and return the product.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,3,-2,4]</span><br><span class="line">Output: 6</span><br><span class="line">Explanation: [2,3] has the largest product 6.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [-2,0,-1]</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: The result cannot be 2 because [-2,-1] is not a contiguous subarray in this case.</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>Because the product of numbers is affected by the sign, a negative number can turn a small (negative) product into a large positive one, and vice versa. Therefore, at each position we need to track both the <strong>maximum</strong> and <strong>minimum</strong> product ending at that position.</p>
-<p>Let <code>maxF[i]</code> be the maximum product ending at <code>i</code>, and <code>minF[i]</code> the minimum product ending at <code>i</code>. Then:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">maxF[i] = max(nums[i], nums[i] * maxF[i-1], nums[i] * minF[i-1])</span><br><span class="line">minF[i] = min(nums[i], nums[i] * maxF[i-1], nums[i] * minF[i-1])</span><br></pre></td></tr></table></figure>
-
-<p>We can optimize space by keeping only previous <code>max</code> and <code>min</code> values.</p>
-<hr>
-<h2 id="🔢-Java-Code-DP-O-1-space"><a href="#🔢-Java-Code-DP-O-1-space" class="headerlink" title="🔢 Java Code (DP, O(1) space)"></a>🔢 Java Code (DP, O(1) space)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">maxProduct</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span> <span class="variable">maxProd</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">minProd</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="type">int</span> <span class="variable">ans</span> <span class="operator">=</span> nums[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> nums[i];</span><br><span class="line">            <span class="keyword">if</span> (x &lt; <span class="number">0</span>) &#123; <span class="comment">// swap when negative</span></span><br><span class="line">                <span class="type">int</span> <span class="variable">tmp</span> <span class="operator">=</span> maxProd;</span><br><span class="line">                maxProd = minProd;</span><br><span class="line">                minProd = tmp;</span><br><span class="line">            &#125;</span><br><span class="line">            maxProd = Math.max(x, maxProd * x);</span><br><span class="line">            minProd = Math.min(x, minProd * x);</span><br><span class="line">            ans = Math.max(ans, maxProd);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>Time:</strong> O(n) — single pass through the array.  </li>
-<li><strong>Space:</strong> O(1) — constant extra space.</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Track both maximum and minimum products at each step because negative numbers can flip signs.  </li>
-<li>Swap max&#x2F;min when encountering a negative number before updating.  </li>
-<li>Keep a running global maximum answer.</li>
-</ul>
-<p><strong>Related problems</strong>  </p>
-<ul>
-<li><code>lc-53</code> — Maximum Subarray (Kadane’s algorithm)  </li>
-<li><code>lc-918</code> — Maximum Sum Circular Subarray</li>
-</ul>
 
       
     </div>
