@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">102</span>
+          <span class="site-state-item-count">103</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">150</span>
+        <span class="site-state-item-count">152</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/09/Algorithm-Day43-Convert-Sorted-Array-To-Binary-Search-Tree-lc-108/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/09/Algorithm-Day43-Convert-Sorted-Array-To-Binary-Search-Tree-lc-108/" class="post-title-link" itemprop="url">Algorithm-Day43-Convert-Sorted-Array-To-Binary-Search-Tree-lc-108</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-09 08:30:22 / Modified: 08:31:42" itemprop="dateCreated datePublished" datetime="2025-08-09T08:30:22+10:00">2025-08-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Search-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Search Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an integer array <code>nums</code> where the elements are sorted in ascending order,<br>convert it into a <strong>height-balanced</strong> binary search tree.</p>
+<blockquote>
+<p>A height-balanced binary tree is a binary tree in which the depth of the two subtrees of every node never differs by more than one.</p>
+</blockquote>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [-10,-3,0,5,9]</span><br><span class="line">Output: [0,-3,9,-10,null,5]</span><br><span class="line">Explanation: [0,-3,9,-10,null,5] is one possible height-balanced BST.</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Approach-Divide-and-Conquer-DFS"><a href="#💡-Approach-Divide-and-Conquer-DFS" class="headerlink" title="💡 Approach: Divide and Conquer (DFS)"></a>💡 Approach: Divide and Conquer (DFS)</h2><ul>
+<li>The <strong>middle element</strong> of the sorted array becomes the root.</li>
+<li>Recursively:<ul>
+<li>Left subarray → left subtree</li>
+<li>Right subarray → right subtree</li>
+</ul>
+</li>
+<li>This ensures the tree is <strong>balanced</strong> because each split halves the problem.</li>
+</ul>
+<hr>
+<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">sortedArrayToBST</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> buildBST(nums, <span class="number">0</span>, nums.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TreeNode <span class="title function_">buildBST</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (left &gt; right) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">mid</span> <span class="operator">=</span> left + (right - left) / <span class="number">2</span>;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[mid]);</span><br><span class="line"></span><br><span class="line">        node.left = buildBST(nums, left, mid - <span class="number">1</span>);</span><br><span class="line">        node.right = buildBST(nums, mid + <span class="number">1</span>, right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n) — each element is processed exactly once.</li>
+<li><strong>Space Complexity:</strong> O(log n) — recursion depth (balanced tree).</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Classic <strong>divide &amp; conquer</strong> problem.</li>
+<li>Key to balance is picking the <strong>middle element</strong>.</li>
+<li>Same pattern appears in:<ul>
+<li><code>lc-109</code> (Sorted List to BST)</li>
+<li><code>lc-1382</code> (Balance a BST)</li>
+<li><code>lc-654</code> (Max Binary Tree — similar but different pivot choice)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Understanding this pattern is crucial for recursive tree construction problems.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1227,140 +1346,6 @@
 </ul>
 <blockquote>
 <p>Make sure you’ve mastered <code>lc-21</code> (merge two sorted lists) before this one — it’s the foundation of merging steps here.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/29/Algorithm-Day33-Copy-List-with-Random-Pointer-lc-138/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/29/Algorithm-Day33-Copy-List-with-Random-Pointer-lc-138/" class="post-title-link" itemprop="url">Algorithm-Day33-Copy-List-with-Random-Pointer-lc-138</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-29 07:05:34 / Modified: 07:07:51" itemprop="dateCreated datePublished" datetime="2025-07-29T07:05:34+10:00">2025-07-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>A linked list is given where each node has two pointers:</p>
-<ul>
-<li><code>next</code>: points to the next node</li>
-<li><code>random</code>: can point to any node in the list or be <code>null</code></li>
-</ul>
-<p>Return a <strong>deep copy</strong> of the list.</p>
-<p>Each node in the new list must have the <strong>same value</strong> and the same <code>random</code> structure — but must be <strong>a new node</strong>, not shared.</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input:</span><br><span class="line">Node1: val = 7, next = Node2, random = null</span><br><span class="line">Node2: val = 13, next = Node3, random = Node1</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">Output:</span><br><span class="line">Deep copy of the above structure</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Approach-1-HashMap-Mapping-Straightforward"><a href="#💡-Approach-1-HashMap-Mapping-Straightforward" class="headerlink" title="💡 Approach 1: HashMap Mapping (Straightforward)"></a>💡 Approach 1: HashMap Mapping (Straightforward)</h2><h3 id="✨-Idea"><a href="#✨-Idea" class="headerlink" title="✨ Idea"></a>✨ Idea</h3><ul>
-<li>Traverse original list, and use a <code>HashMap&lt;OldNode, NewNode&gt;</code> to:<ul>
-<li>Store the mapping between original nodes and copied ones</li>
-<li>After building the copy, set the <code>next</code> and <code>random</code> pointers</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="🔢-Java-Code-Using-HashMap"><a href="#🔢-Java-Code-Using-HashMap" class="headerlink" title="🔢 Java Code (Using HashMap)"></a>🔢 Java Code (Using HashMap)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Node <span class="title function_">copyRandomList</span><span class="params">(Node head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        Map&lt;Node, Node&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Create all nodes and store mapping</span></span><br><span class="line">        <span class="type">Node</span> <span class="variable">curr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            map.put(curr, <span class="keyword">new</span> <span class="title class_">Node</span>(curr.val));</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2: Assign next and random pointers</span></span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">copy</span> <span class="operator">=</span> map.get(curr);</span><br><span class="line">            copy.next = map.get(curr.next);</span><br><span class="line">            copy.random = map.get(curr.random);</span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> map.get(head);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Time Complexity:</strong> O(n)</li>
-<li><strong>Space Complexity:</strong> O(n) — due to the map</li>
-</ul>
-<hr>
-<h2 id="💡-Approach-2-Interleaving-Nodes-O-1-Extra-Space"><a href="#💡-Approach-2-Interleaving-Nodes-O-1-Extra-Space" class="headerlink" title="💡 Approach 2: Interleaving Nodes (O(1) Extra Space)"></a>💡 Approach 2: Interleaving Nodes (O(1) Extra Space)</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><ol>
-<li>Clone each node and <strong>insert it right after the original</strong>:<ul>
-<li><code>A → A&#39; → B → B&#39; → ...</code></li>
-</ul>
-</li>
-<li>Assign random pointers:<br> <code>A&#39;.random = A.random.next</code></li>
-<li>Detach the new list from the original</li>
-</ol>
-<hr>
-<h2 id="🔢-Java-Code-No-Extra-Space"><a href="#🔢-Java-Code-No-Extra-Space" class="headerlink" title="🔢 Java Code (No Extra Space)"></a>🔢 Java Code (No Extra Space)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> Node <span class="title function_">copyRandomList</span><span class="params">(Node head)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Clone and insert nodes</span></span><br><span class="line">        <span class="type">Node</span> <span class="variable">curr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">clone</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(curr.val);</span><br><span class="line">            clone.next = curr.next;</span><br><span class="line">            curr.next = clone;</span><br><span class="line">            curr = clone.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2: Assign random pointers</span></span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (curr.random != <span class="literal">null</span>) &#123;</span><br><span class="line">                curr.next.random = curr.random.next;</span><br><span class="line">            &#125;</span><br><span class="line">            curr = curr.next.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 3: Detach the clone list</span></span><br><span class="line">        <span class="type">Node</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Node</span>(<span class="number">0</span>);</span><br><span class="line">        <span class="type">Node</span> <span class="variable">copyCurr</span> <span class="operator">=</span> dummy;</span><br><span class="line">        curr = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="type">Node</span> <span class="variable">clone</span> <span class="operator">=</span> curr.next;</span><br><span class="line">            copyCurr.next = clone;</span><br><span class="line">            copyCurr = clone;</span><br><span class="line"></span><br><span class="line">            curr.next = clone.next;  <span class="comment">// Restore original list</span></span><br><span class="line">            curr = curr.next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Time Complexity:</strong> O(n)</li>
-<li><strong>Space Complexity:</strong> O(1)</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Understand how to maintain relationships with <code>.random</code> using either:<ul>
-<li>Hash map mapping (<code>O(n)</code> space)</li>
-<li>Interleaved list strategy (<code>O(1)</code> space)</li>
-</ul>
-</li>
-<li>This is a <strong>deep copy</strong> problem with pointer manipulation — commonly tested in interviews</li>
-</ul>
-<blockquote>
-<p>Practice building clones of linked structures while preserving complex references. This is a great test of both logic and implementation skill.</p>
 </blockquote>
 
       
