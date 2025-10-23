@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">152</span>
+        <span class="site-state-item-count">153</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,142 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/07/Algorithm-Day94-Longest-Palindromic-Substring-lc-5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/07/Algorithm-Day94-Longest-Palindromic-Substring-lc-5/" class="post-title-link" itemprop="url">Algorithm Day94 - Longest Palindromic Substring</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-07 21:00:00 / Modified: 23:02:27" itemprop="dateCreated datePublished" datetime="2025-10-07T21:00:00+11:00">2025-10-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a string <code>s</code>, return the longest palindromic substring in <code>s</code>.</p>
+<p>A palindrome is a string that reads the same backward as forward.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Explanation: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>We can solve this using <strong>Dynamic Programming</strong> or <strong>Expand Around Center</strong>.</p>
+<h3 id="🔹-Approach-1-—-Expand-Around-Center"><a href="#🔹-Approach-1-—-Expand-Around-Center" class="headerlink" title="🔹 Approach 1 — Expand Around Center"></a>🔹 Approach 1 — Expand Around Center</h3><p>Every palindrome mirrors around its center.<br>There can be <strong>2n - 1 centers</strong> (between characters and at characters).</p>
+<p>Expand from each center until it’s no longer a palindrome.</p>
+<hr>
+<h2 id="🔢-Java-Code-Expand-Around-Center"><a href="#🔢-Java-Code-Expand-Around-Center" class="headerlink" title="🔢 Java Code (Expand Around Center)"></a>🔢 Java Code (Expand Around Center)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">longestPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="literal">null</span> || s.length() &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">len1</span> <span class="operator">=</span> expandFromCenter(s, i, i);     <span class="comment">// odd-length</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">len2</span> <span class="operator">=</span> expandFromCenter(s, i, i + <span class="number">1</span>); <span class="comment">// even-length</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> Math.max(len1, len2);</span><br><span class="line">            <span class="keyword">if</span> (len &gt; end - start) &#123;</span><br><span class="line">                start = i - (len - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">                end = i + len / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(start, end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">expandFromCenter</span><span class="params">(String s, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">0</span> &amp;&amp; right &lt; s.length() &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">            left--;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right - left - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="🔹-Approach-2-—-Dynamic-Programming"><a href="#🔹-Approach-2-—-Dynamic-Programming" class="headerlink" title="🔹 Approach 2 — Dynamic Programming"></a>🔹 Approach 2 — Dynamic Programming</h3><p>Let <code>dp[i][j]</code> mean whether substring <code>s[i..j]</code> is a palindrome.<br>Transition rule:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = (s[i] == s[j]) &amp;&amp; (j - i &lt; 3 || dp[i + 1][j - 1])</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🔢-Java-Code-Dynamic-Programming"><a href="#🔢-Java-Code-Dynamic-Programming" class="headerlink" title="🔢 Java Code (Dynamic Programming)"></a>🔢 Java Code (Dynamic Programming)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">longestPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">boolean</span>[][] dp = <span class="keyword">new</span> <span class="title class_">boolean</span>[n][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, maxLen = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i) == s.charAt(j) &amp;&amp; (j - i &lt; <span class="number">3</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>])) &#123;</span><br><span class="line">                    dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxLen) &#123;</span><br><span class="line">                        maxLen = j - i + <span class="number">1</span>;</span><br><span class="line">                        start = i;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(start, start + maxLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Time Complexity</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Expand Around Center</td>
+<td>O(n²)</td>
+<td>O(1)</td>
+</tr>
+<tr>
+<td>Dynamic Programming</td>
+<td>O(n²)</td>
+<td>O(n²)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Expand around every center or use DP.  </li>
+<li>Palindrome means symmetry around a center.  </li>
+<li>Expand method is simpler and more space-efficient.</li>
+</ul>
+<p><strong>Related problems:</strong>  </p>
+<ul>
+<li><code>lc-516</code> (Longest Palindromic Subsequence)  </li>
+<li><code>lc-647</code> (Palindromic Substrings)</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1255,125 +1391,6 @@
 <ul>
 <li><code>lc-139</code> — Word Break  </li>
 <li><code>lc-322</code> — Coin Change</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/24/Algorithm-Day84-House-Robber-lc-198/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/24/Algorithm-Day84-House-Robber-lc-198/" class="post-title-link" itemprop="url">Algorithm Day84 - House Robber</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-09-24 18:00:00 / Modified: 18:36:10" itemprop="dateCreated datePublished" datetime="2025-09-24T18:00:00+10:00">2025-09-24</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed.<br>The only constraint is: adjacent houses cannot be robbed on the same night.  </p>
-<p>Given an integer array <code>nums</code> representing the amount of money of each house, return the <strong>maximum amount of money you can rob tonight</strong> without alerting the police.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [1,2,3,1]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: Rob house 1 (1) + house 3 (3).</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,7,9,3,1]</span><br><span class="line">Output: 12</span><br><span class="line">Explanation: Rob house 1 (2) + house 3 (9) + house 5 (1).</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is a <strong>dynamic programming</strong> problem.<br>At each house <code>i</code>, you decide to either:</p>
-<ul>
-<li>Rob it → value &#x3D; <code>nums[i] + dp[i-2]</code></li>
-<li>Skip it → value &#x3D; <code>dp[i-1]</code></li>
-</ul>
-<p>Transition formula:  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = max(dp[i-1], dp[i-2] + nums[i])</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔢-Java-Code-DP-Optimized"><a href="#🔢-Java-Code-DP-Optimized" class="headerlink" title="🔢 Java Code (DP Optimized)"></a>🔢 Java Code (DP Optimized)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">rob</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">1</span>) <span class="keyword">return</span> nums[<span class="number">0</span>];</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span> <span class="variable">prev2</span> <span class="operator">=</span> nums[<span class="number">0</span>];   <span class="comment">// dp[i-2]</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">prev1</span> <span class="operator">=</span> Math.max(nums[<span class="number">0</span>], nums[<span class="number">1</span>]); <span class="comment">// dp[i-1]</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">2</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">curr</span> <span class="operator">=</span> Math.max(prev1, prev2 + nums[i]);</span><br><span class="line">            prev2 = prev1;</span><br><span class="line">            prev1 = curr;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> prev1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>Time:</strong> O(n) — one pass through houses.  </li>
-<li><strong>Space:</strong> O(1) — only two variables stored.</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>A classic DP problem.  </li>
-<li>Transition: <code>dp[i] = max(dp[i-1], dp[i-2] + nums[i])</code>.  </li>
-<li>Space can be optimized to O(1).</li>
-</ul>
-<p><strong>Related problems</strong>  </p>
-<ul>
-<li><code>lc-213</code> — House Robber II  </li>
-<li><code>lc-337</code> — House Robber III</li>
 </ul>
 
       

@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">103</span>
+          <span class="site-state-item-count">104</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">152</span>
+        <span class="site-state-item-count">153</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,128 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/23/Algorithm-Day104-String-to-Integer-atoi-lc-8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/23/Algorithm-Day104-String-to-Integer-atoi-lc-8/" class="post-title-link" itemprop="url">Algorithm Day104 - String to Integer</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-23 23:00:00 / Modified: 23:05:59" itemprop="dateCreated datePublished" datetime="2025-10-23T23:00:00+11:00">2025-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p><strong>LeetCode 8 - String to Integer (atoi)</strong><br>Implement the <code>myAtoi(string s)</code> function, which converts a string to a 32-bit signed integer (similar to C&#x2F;C++’s <code>atoi</code> function).</p>
+<p>The algorithm follows these steps:</p>
+<ol>
+<li>Read and ignore leading whitespaces.</li>
+<li>Check if the next character is <code>+</code> or <code>-</code> (determine the sign).</li>
+<li>Read digits until a non-digit character or end of string.</li>
+<li>Clamp the result within the 32-bit integer range.</li>
+</ol>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;42&quot;</span><br><span class="line">Output: 42</span><br><span class="line"></span><br><span class="line">Input: s = &quot;   -42&quot;</span><br><span class="line">Output: -42</span><br><span class="line"></span><br><span class="line">Input: s = &quot;4193 with words&quot;</span><br><span class="line">Output: 4193</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-First-Thought-Use-Built-in-Functions"><a href="#💡-First-Thought-Use-Built-in-Functions" class="headerlink" title="💡 First Thought (Use Built-in Functions)"></a>💡 First Thought (Use Built-in Functions)</h2><p>One might think of using <code>Integer.parseInt()</code> or similar methods,<br>but those cannot handle invalid formats and overflow gracefully.<br>We need to implement the parsing logic manually.</p>
+<hr>
+<h2 id="⚙️-Optimized-Approach-—-Manual-Parsing"><a href="#⚙️-Optimized-Approach-—-Manual-Parsing" class="headerlink" title="⚙️ Optimized Approach — Manual Parsing"></a>⚙️ Optimized Approach — Manual Parsing</h2><p>We manually iterate through the string, handle spaces, sign, digits, and overflow.</p>
+<h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">myAtoi</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>, n = s.length();</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; s.charAt(i) == <span class="string">&#x27; &#x27;</span>) i++; <span class="comment">// skip spaces</span></span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">sign</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (i &lt; n &amp;&amp; (s.charAt(i) == <span class="string">&#x27;+&#x27;</span> || s.charAt(i) == <span class="string">&#x27;-&#x27;</span>)) &#123;</span><br><span class="line">            sign = (s.charAt(i) == <span class="string">&#x27;-&#x27;</span>) ? -<span class="number">1</span> : <span class="number">1</span>;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &lt; n &amp;&amp; Character.isDigit(s.charAt(i))) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">digit</span> <span class="operator">=</span> s.charAt(i) - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">            <span class="keyword">if</span> (result &gt; (Integer.MAX_VALUE - digit) / <span class="number">10</span>)</span><br><span class="line">                <span class="keyword">return</span> (sign == <span class="number">1</span>) ? Integer.MAX_VALUE : Integer.MIN_VALUE;</span><br><span class="line">            result = result * <span class="number">10</span> + digit;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result * sign;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱️-Complexity-Analysis"><a href="#⏱️-Complexity-Analysis" class="headerlink" title="⏱️ Complexity Analysis"></a>⏱️ Complexity Analysis</h2><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Parse string</td>
+<td>O(n)</td>
+<td>O(1)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧠-Key-Takeaways"><a href="#🧠-Key-Takeaways" class="headerlink" title="🧠 Key Takeaways"></a>🧠 Key Takeaways</h2><ul>
+<li>Manual parsing ensures <strong>robust handling</strong> of edge cases (overflow, invalid input).  </li>
+<li>Remember to check integer boundaries before multiplication.  </li>
+<li>Similar to C’s <code>atoi()</code> but safer for modern applications.</li>
+</ul>
+<hr>
+<p>📘 <em>Next Step:</em> We’ll continue exploring <strong>string-to-number conversion</strong> problems next.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1181,142 +1303,6 @@
 <li>Space optimization to 1D is possible by careful ordering.</li>
 </ul>
 <p><strong>Related problems:</strong> <code>lc-583</code> (Delete Operation for Two Strings), <code>lc-718</code> (Maximum Length of Repeated Subarray).</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/07/Algorithm-Day94-Longest-Palindromic-Substring-lc-5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/07/Algorithm-Day94-Longest-Palindromic-Substring-lc-5/" class="post-title-link" itemprop="url">Algorithm Day94 - Longest Palindromic Substring</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-10-07 21:00:00 / Modified: 23:02:27" itemprop="dateCreated datePublished" datetime="2025-10-07T21:00:00+11:00">2025-10-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given a string <code>s</code>, return the longest palindromic substring in <code>s</code>.</p>
-<p>A palindrome is a string that reads the same backward as forward.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;babad&quot;</span><br><span class="line">Output: &quot;bab&quot;</span><br><span class="line">Explanation: &quot;aba&quot; is also a valid answer.</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;cbbd&quot;</span><br><span class="line">Output: &quot;bb&quot;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>We can solve this using <strong>Dynamic Programming</strong> or <strong>Expand Around Center</strong>.</p>
-<h3 id="🔹-Approach-1-—-Expand-Around-Center"><a href="#🔹-Approach-1-—-Expand-Around-Center" class="headerlink" title="🔹 Approach 1 — Expand Around Center"></a>🔹 Approach 1 — Expand Around Center</h3><p>Every palindrome mirrors around its center.<br>There can be <strong>2n - 1 centers</strong> (between characters and at characters).</p>
-<p>Expand from each center until it’s no longer a palindrome.</p>
-<hr>
-<h2 id="🔢-Java-Code-Expand-Around-Center"><a href="#🔢-Java-Code-Expand-Around-Center" class="headerlink" title="🔢 Java Code (Expand Around Center)"></a>🔢 Java Code (Expand Around Center)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">longestPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (s == <span class="literal">null</span> || s.length() &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, end = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">len1</span> <span class="operator">=</span> expandFromCenter(s, i, i);     <span class="comment">// odd-length</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">len2</span> <span class="operator">=</span> expandFromCenter(s, i, i + <span class="number">1</span>); <span class="comment">// even-length</span></span><br><span class="line">            <span class="type">int</span> <span class="variable">len</span> <span class="operator">=</span> Math.max(len1, len2);</span><br><span class="line">            <span class="keyword">if</span> (len &gt; end - start) &#123;</span><br><span class="line">                start = i - (len - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">                end = i + len / <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(start, end + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">expandFromCenter</span><span class="params">(String s, <span class="type">int</span> left, <span class="type">int</span> right)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (left &gt;= <span class="number">0</span> &amp;&amp; right &lt; s.length() &amp;&amp; s.charAt(left) == s.charAt(right)) &#123;</span><br><span class="line">            left--;</span><br><span class="line">            right++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> right - left - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h3 id="🔹-Approach-2-—-Dynamic-Programming"><a href="#🔹-Approach-2-—-Dynamic-Programming" class="headerlink" title="🔹 Approach 2 — Dynamic Programming"></a>🔹 Approach 2 — Dynamic Programming</h3><p>Let <code>dp[i][j]</code> mean whether substring <code>s[i..j]</code> is a palindrome.<br>Transition rule:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = (s[i] == s[j]) &amp;&amp; (j - i &lt; 3 || dp[i + 1][j - 1])</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔢-Java-Code-Dynamic-Programming"><a href="#🔢-Java-Code-Dynamic-Programming" class="headerlink" title="🔢 Java Code (Dynamic Programming)"></a>🔢 Java Code (Dynamic Programming)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">longestPalindrome</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">boolean</span>[][] dp = <span class="keyword">new</span> <span class="title class_">boolean</span>[n][n];</span><br><span class="line">        <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> <span class="number">0</span>, maxLen = <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> n - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> i; j &lt; n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (s.charAt(i) == s.charAt(j) &amp;&amp; (j - i &lt; <span class="number">3</span> || dp[i + <span class="number">1</span>][j - <span class="number">1</span>])) &#123;</span><br><span class="line">                    dp[i][j] = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">if</span> (j - i + <span class="number">1</span> &gt; maxLen) &#123;</span><br><span class="line">                        maxLen = j - i + <span class="number">1</span>;</span><br><span class="line">                        start = i;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> s.substring(start, start + maxLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><table>
-<thead>
-<tr>
-<th>Approach</th>
-<th>Time Complexity</th>
-<th>Space Complexity</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Expand Around Center</td>
-<td>O(n²)</td>
-<td>O(1)</td>
-</tr>
-<tr>
-<td>Dynamic Programming</td>
-<td>O(n²)</td>
-<td>O(n²)</td>
-</tr>
-</tbody></table>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Expand around every center or use DP.  </li>
-<li>Palindrome means symmetry around a center.  </li>
-<li>Expand method is simpler and more space-efficient.</li>
-</ul>
-<p><strong>Related problems:</strong>  </p>
-<ul>
-<li><code>lc-516</code> (Longest Palindromic Subsequence)  </li>
-<li><code>lc-647</code> (Palindromic Substrings)</li>
-</ul>
 
       
     </div>
