@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">105</span>
+          <span class="site-state-item-count">106</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">154</span>
+        <span class="site-state-item-count">155</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,130 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/25/Algorithm-Day106-Regular-Expression-Matching-lc-10/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/25/Algorithm-Day106-Regular-Expression-Matching-lc-10/" class="post-title-link" itemprop="url">Algorithm Day106 - Regular Expression Matching</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-25 23:50:00 / Modified: 23:56:46" itemprop="dateCreated datePublished" datetime="2025-10-25T23:50:00+11:00">2025-10-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="LC-10-Regular-Expression-Matching"><a href="#LC-10-Regular-Expression-Matching" class="headerlink" title="LC-10 Regular Expression Matching"></a>LC-10 Regular Expression Matching</h1><h2 id="📌-Problem"><a href="#📌-Problem" class="headerlink" title="📌 Problem"></a>📌 Problem</h2><p>Implement regular expression matching with support for ‘.’ and ‘*’ where:</p>
+<ul>
+<li>‘.’ Matches any single character.</li>
+<li>‘*’ Matches zero or more of the preceding element.</li>
+</ul>
+<p>The matching should cover the entire input string (not partial).</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;aa&quot;, p = &quot;a&quot;</span><br><span class="line">Output: false</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;aa&quot;, p = &quot;a*&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;ab&quot;, p = &quot;.*&quot;</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition-Brute-Force"><a href="#💡-Intuition-Brute-Force" class="headerlink" title="💡 Intuition &amp; Brute Force"></a>💡 Intuition &amp; Brute Force</h2><p>A naive recursive solution tries all possibilities for ‘*’ (match zero, one, multiple). This leads to exponential time in the worst case.</p>
+<p>Key observation for DP: define dp[i][j] &#x3D; whether s[0..i) matches p[0..j). Build up using smaller prefixes.</p>
+<hr>
+<h2 id="✅-Optimized-Solution-Dynamic-Programming"><a href="#✅-Optimized-Solution-Dynamic-Programming" class="headerlink" title="✅ Optimized Solution (Dynamic Programming)"></a>✅ Optimized Solution (Dynamic Programming)</h2><p>Transitions:</p>
+<ol>
+<li><p>If p[j-1] is a normal char or ‘.’, then:<br>dp[i][j] &#x3D; dp[i-1][j-1] &amp;&amp; (p[j-1] &#x3D;&#x3D; s[i-1] || p[j-1] &#x3D;&#x3D; ‘.’)</p>
+</li>
+<li><p>If p[j-1] &#x3D;&#x3D; ‘*’, it stands for zero or more of p[j-2]:</p>
+<ul>
+<li>Zero occurrence: dp[i][j] &#x3D; dp[i][j-2]</li>
+<li>One or more: if p[j-2] matches s[i-1], dp[i][j] &#x3D; dp[i-1][j]</li>
+</ul>
+</li>
+</ol>
+<p>Initialize dp[0][0] &#x3D; true, and handle patterns like a*, a<em>b</em> that can match empty string.</p>
+<hr>
+<h2 id="🔢-Java-Code-DP"><a href="#🔢-Java-Code-DP" class="headerlink" title="🔢 Java Code (DP)"></a>🔢 Java Code (DP)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isMatch</span><span class="params">(String s, String p)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> s.length(), n = p.length();</span><br><span class="line">        <span class="type">boolean</span>[][] dp = <span class="keyword">new</span> <span class="title class_">boolean</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Patterns like a*, a*b* can match empty string</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">2</span>; j &lt;= n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (p.charAt(j - <span class="number">1</span>) == <span class="string">&#x27;*&#x27;</span>) &#123;</span><br><span class="line">                dp[<span class="number">0</span>][j] = dp[<span class="number">0</span>][j - <span class="number">2</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="type">char</span> <span class="variable">pc</span> <span class="operator">=</span> p.charAt(j - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (pc == <span class="string">&#x27;.&#x27;</span> || pc == s.charAt(i - <span class="number">1</span>)) &#123;</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (pc == <span class="string">&#x27;*&#x27;</span>) &#123;</span><br><span class="line">                    <span class="comment">// zero occurrence</span></span><br><span class="line">                    dp[i][j] = dp[i][j - <span class="number">2</span>];</span><br><span class="line">                    <span class="comment">// one or more occurrence</span></span><br><span class="line">                    <span class="type">char</span> <span class="variable">pprev</span> <span class="operator">=</span> p.charAt(j - <span class="number">2</span>);</span><br><span class="line">                    <span class="keyword">if</span> (pprev == <span class="string">&#x27;.&#x27;</span> || pprev == s.charAt(i - <span class="number">1</span>)) &#123;</span><br><span class="line">                        dp[i][j] = dp[i][j] || dp[i - <span class="number">1</span>][j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(m × n) where m &#x3D; s.length(), n &#x3D; p.length().  </li>
+<li><strong>Space:</strong> O(m × n) for DP table.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use DP to avoid exponential recursion.  </li>
+<li>Carefully handle ‘*’ by considering zero or multiple occurrences.  </li>
+<li>Initialization for empty string vs pattern is important.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1188,112 +1312,6 @@
 <li><strong>Space:</strong> O(1) — only one variable used</li>
 </ul>
 <h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>A perfect example of how bitwise operations simplify logic and improve efficiency.<br>The XOR trick is commonly used in array problems involving pairs and uniqueness detection.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/10/Algorithm-Day96-Edit-Distance-lc-72/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/10/Algorithm-Day96-Edit-Distance-lc-72/" class="post-title-link" itemprop="url">Algorithm Day96 - Edit Distance</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-10-10 22:00:00 / Modified: 22:10:25" itemprop="dateCreated datePublished" datetime="2025-10-10T22:00:00+11:00">2025-10-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 72 - Edit Distance</strong><br>Given two strings <code>word1</code> and <code>word2</code>, return the <em>minimum number of operations</em> required to convert <code>word1</code> to <code>word2</code>.<br>You have the following three operations permitted:</p>
-<ul>
-<li>Insert a character</li>
-<li>Delete a character</li>
-<li>Replace a character</li>
-</ul>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: word1 = &quot;horse&quot;, word2 = &quot;ros&quot;</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:</span><br><span class="line">horse -&gt; rorse (replace &#x27;h&#x27; with &#x27;r&#x27;)</span><br><span class="line">rorse -&gt; rose (remove &#x27;r&#x27;)</span><br><span class="line">rose -&gt; ros (remove &#x27;e&#x27;)</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>This is a <strong>classic dynamic programming</strong> problem.<br>We define <code>dp[i][j]</code> as the minimum number of operations required to convert the first <code>i</code> characters of <code>word1</code> into the first <code>j</code> characters of <code>word2</code>.</p>
-<h3 id="DP-Transition"><a href="#DP-Transition" class="headerlink" title="DP Transition"></a>DP Transition</h3><p>If the characters match (<code>word1[i-1] == word2[j-1]</code>):  </p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = dp[i-1][j-1]</span><br></pre></td></tr></table></figure>
-<p>Otherwise:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dp[i][j] = 1 + min(</span><br><span class="line">    dp[i-1][j],   // delete</span><br><span class="line">    dp[i][j-1],   // insert</span><br><span class="line">    dp[i-1][j-1]  // replace</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<h3 id="Base-Cases"><a href="#Base-Cases" class="headerlink" title="Base Cases"></a>Base Cases</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dp[0][j] = j  // need j insertions</span><br><span class="line">dp[i][0] = i  // need i deletions</span><br></pre></td></tr></table></figure>
-
-<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
-<li><strong>Time:</strong> O(m × n)</li>
-<li><strong>Space:</strong> O(m × n)</li>
-</ul>
-<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">minDistance</span><span class="params">(String word1, String word2)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> word1.length(), n = word2.length();</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[m + <span class="number">1</span>][n + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt;= m; i++) dp[i][<span class="number">0</span>] = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt;= n; j++) dp[<span class="number">0</span>][j] = j;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (word1.charAt(i - <span class="number">1</span>) == word2.charAt(j - <span class="number">1</span>))</span><br><span class="line">                    dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>];</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    dp[i][j] = <span class="number">1</span> + Math.min(dp[i - <span class="number">1</span>][j],</span><br><span class="line">                                   Math.min(dp[i][j - <span class="number">1</span>], dp[i - <span class="number">1</span>][j - <span class="number">1</span>]));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m][n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>This problem demonstrates how dynamic programming elegantly handles string transformations.<br>We systematically consider all operations (insert, delete, replace) and store intermediate results to build the final answer efficiently.</p>
 
       
     </div>
