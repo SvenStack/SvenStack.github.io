@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">156</span>
+        <span class="site-state-item-count">157</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/27/Algorithm-Day108-Roman-to-Integer-lc-13/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/27/Algorithm-Day108-Roman-to-Integer-lc-13/" class="post-title-link" itemprop="url">Algorithm Day108 - Roman to Integer</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-27 21:30:00 / Modified: 21:30:06" itemprop="dateCreated datePublished" datetime="2025-10-27T21:30:00+11:00">2025-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="📌-Problem"><a href="#📌-Problem" class="headerlink" title="📌 Problem"></a>📌 Problem</h2><p>Convert a Roman numeral to an integer. Input is guaranteed to be within the range corresponding to standard Roman numerals (typically 1..3999).</p>
+<p>Roman numerals are represented by the symbols:<br><code>I(1), V(5), X(10), L(50), C(100), D(500), M(1000)</code>.<br>Some symbols may be placed before larger symbols to indicate subtraction, e.g., <code>IV = 4</code>, <code>IX = 9</code>.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;III&quot;</span><br><span class="line">Output: 3</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;IV&quot;</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 3</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;MCMXCIV&quot;</span><br><span class="line">Output: 1994</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Intuition-Greedy-Left-to-right"><a href="#💡-Intuition-Greedy-Left-to-right" class="headerlink" title="💡 Intuition (Greedy &#x2F; Left-to-right)"></a>💡 Intuition (Greedy &#x2F; Left-to-right)</h2><p>Scan from left to right, adding values. If a smaller-value symbol appears before a larger one, subtract the smaller; otherwise add it. A simple approach: for each character, compare its value with the next character (if any) to decide add or subtract.</p>
+<hr>
+<h2 id="🔢-Java-Code-Map-Greedy"><a href="#🔢-Java-Code-Map-Greedy" class="headerlink" title="🔢 Java Code (Map + Greedy)"></a>🔢 Java Code (Map + Greedy)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">romanToInt</span><span class="params">(String s)</span> &#123;</span><br><span class="line">        Map&lt;Character, Integer&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        map.put(<span class="string">&#x27;I&#x27;</span>, <span class="number">1</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;V&#x27;</span>, <span class="number">5</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;X&#x27;</span>, <span class="number">10</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;L&#x27;</span>, <span class="number">50</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;C&#x27;</span>, <span class="number">100</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;D&#x27;</span>, <span class="number">500</span>);</span><br><span class="line">        map.put(<span class="string">&#x27;M&#x27;</span>, <span class="number">1000</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> s.length();</span><br><span class="line">        <span class="type">int</span> <span class="variable">result</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">val</span> <span class="operator">=</span> map.get(s.charAt(i));</span><br><span class="line">            <span class="keyword">if</span> (i + <span class="number">1</span> &lt; n &amp;&amp; val &lt; map.get(s.charAt(i + <span class="number">1</span>))) &#123;</span><br><span class="line">                result -= val;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                result += val;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(n) — single pass over the string.  </li>
+<li><strong>Space:</strong> O(1) — constant-size map and a few variables.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Use a mapping from Roman symbols to integers.  </li>
+<li>Subtract when a smaller symbol precedes a larger one; otherwise add.  </li>
+<li>Simple, linear-time solution ideal for interviews.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1208,112 +1314,6 @@
 </ul>
 <hr>
 <h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>This problem is a perfect example of <strong>in-place array manipulation</strong> using multiple pointers.<br>The Dutch National Flag algorithm is elegant, efficient, and a must-know for array partitioning problems.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/13/Algorithm-Day98-Majority-Element-lc-169/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/13/Algorithm-Day98-Majority-Element-lc-169/" class="post-title-link" itemprop="url">Algorithm Day98 - Majority Element</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-10-13 19:00:00 / Modified: 19:23:37" itemprop="dateCreated datePublished" datetime="2025-10-13T19:00:00+11:00">2025-10-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 169 - Majority Element</strong><br>Given an array <code>nums</code> of size <code>n</code>, return the <strong>majority element</strong>.<br>The majority element is the element that appears <strong>more than ⌊n &#x2F; 2⌋ times</strong>.<br>You may assume that the majority element always exists in the array.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,2,1,1,1,2,2]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>There are multiple approaches:</p>
-<ol>
-<li><strong>Sorting</strong> → The middle element is the majority.</li>
-<li><strong>HashMap counting</strong> → Count frequencies.</li>
-<li><strong>Boyer–Moore Majority Vote Algorithm</strong> → O(n) time, O(1) space (most optimal).</li>
-</ol>
-<h3 id="Boyer–Moore-Explanation"><a href="#Boyer–Moore-Explanation" class="headerlink" title="Boyer–Moore Explanation"></a>Boyer–Moore Explanation</h3><p>We maintain a <code>candidate</code> and a <code>count</code>.  </p>
-<ul>
-<li>If <code>count</code> is 0, set the current number as <code>candidate</code>.  </li>
-<li>If the current number equals <code>candidate</code>, increment <code>count</code>; otherwise, decrement <code>count</code>.<br>At the end, <code>candidate</code> is the majority element.</li>
-</ul>
-<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [2,2,1,1,1,2,2]</span><br><span class="line">candidate=2, count=1</span><br><span class="line">=&gt; final candidate = 2</span><br></pre></td></tr></table></figure>
-
-<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">majorityElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>, candidate = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count == <span class="number">0</span>) candidate = num;</span><br><span class="line">            count += (num == candidate) ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> candidate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
-<li><strong>Time:</strong> O(n)</li>
-<li><strong>Space:</strong> O(1)</li>
-</ul>
-<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>The Boyer–Moore algorithm is elegant and efficient — it eliminates the need for extra storage by leveraging the majority element’s dominance in occurrence.</p>
 
       
     </div>

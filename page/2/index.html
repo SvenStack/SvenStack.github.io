@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">107</span>
+          <span class="site-state-item-count">108</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">156</span>
+        <span class="site-state-item-count">157</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,112 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/13/Algorithm-Day98-Majority-Element-lc-169/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/13/Algorithm-Day98-Majority-Element-lc-169/" class="post-title-link" itemprop="url">Algorithm Day98 - Majority Element</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-13 19:00:00 / Modified: 19:23:37" itemprop="dateCreated datePublished" datetime="2025-10-13T19:00:00+11:00">2025-10-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 169 - Majority Element</strong><br>Given an array <code>nums</code> of size <code>n</code>, return the <strong>majority element</strong>.<br>The majority element is the element that appears <strong>more than ⌊n &#x2F; 2⌋ times</strong>.<br>You may assume that the majority element always exists in the array.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,2,1,1,1,2,2]</span><br><span class="line">Output: 2</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>There are multiple approaches:</p>
+<ol>
+<li><strong>Sorting</strong> → The middle element is the majority.</li>
+<li><strong>HashMap counting</strong> → Count frequencies.</li>
+<li><strong>Boyer–Moore Majority Vote Algorithm</strong> → O(n) time, O(1) space (most optimal).</li>
+</ol>
+<h3 id="Boyer–Moore-Explanation"><a href="#Boyer–Moore-Explanation" class="headerlink" title="Boyer–Moore Explanation"></a>Boyer–Moore Explanation</h3><p>We maintain a <code>candidate</code> and a <code>count</code>.  </p>
+<ul>
+<li>If <code>count</code> is 0, set the current number as <code>candidate</code>.  </li>
+<li>If the current number equals <code>candidate</code>, increment <code>count</code>; otherwise, decrement <code>count</code>.<br>At the end, <code>candidate</code> is the majority element.</li>
+</ul>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">nums = [2,2,1,1,1,2,2]</span><br><span class="line">candidate=2, count=1</span><br><span class="line">=&gt; final candidate = 2</span><br></pre></td></tr></table></figure>
+
+<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">majorityElement</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>, candidate = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> num : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (count == <span class="number">0</span>) candidate = num;</span><br><span class="line">            count += (num == candidate) ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> candidate;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
+<li><strong>Time:</strong> O(n)</li>
+<li><strong>Space:</strong> O(1)</li>
+</ul>
+<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>The Boyer–Moore algorithm is elegant and efficient — it eliminates the need for extra storage by leveraging the majority element’s dominance in occurrence.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1239,126 +1345,6 @@
 <ul>
 <li><code>lc-53</code> — Maximum Subarray (Kadane’s algorithm)  </li>
 <li><code>lc-918</code> — Maximum Sum Circular Subarray</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/09/29/Algorithm-Day88-Longest-Increasing-Subsequence-lc-300/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/09/29/Algorithm-Day88-Longest-Increasing-Subsequence-lc-300/" class="post-title-link" itemprop="url">Algorithm Day88 - Longest Increasing Subsequence</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-09-29 11:00:00 / Modified: 12:42:10" itemprop="dateCreated datePublished" datetime="2025-09-29T11:00:00+10:00">2025-09-29</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/Binary-Search/" itemprop="url" rel="index"><span itemprop="name">Binary Search</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an integer array <code>nums</code>, return the length of the <strong>longest strictly increasing subsequence</strong>.</p>
-<p>A subsequence is a sequence that can be derived from an array by deleting some or no elements without changing the order of the remaining elements.</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [10,9,2,5,3,7,101,18]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: The longest increasing subsequence is [2,3,7,101].</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [0,1,0,3,2,3]</span><br><span class="line">Output: 4</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 3</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [7,7,7,7,7,7,7]</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approaches"><a href="#💡-Approaches" class="headerlink" title="💡 Approaches"></a>💡 Approaches</h2><h3 id="1-Dynamic-Programming-O-n²"><a href="#1-Dynamic-Programming-O-n²" class="headerlink" title="1) Dynamic Programming (O(n²))"></a>1) Dynamic Programming (O(n²))</h3><p>Let <code>dp[i]</code> be the length of the longest increasing subsequence ending at index <code>i</code>.<br>Transition: for each <code>j &lt; i</code>, if <code>nums[j] &lt; nums[i]</code> then <code>dp[i] = max(dp[i], dp[j] + 1)</code>.<br>Answer is <code>max(dp[i])</code> over all <code>i</code>.</p>
-<h3 id="2-Patience-Sorting-Greedy-Binary-Search-O-n-log-n"><a href="#2-Patience-Sorting-Greedy-Binary-Search-O-n-log-n" class="headerlink" title="2) Patience Sorting &#x2F; Greedy + Binary Search (O(n log n))"></a>2) Patience Sorting &#x2F; Greedy + Binary Search (O(n log n))</h3><p>Maintain an array <code>tails[len]</code> where <code>tails[k]</code> is the smallest possible tail value of an increasing subsequence with length <code>k+1</code>.<br>For each number <code>x</code> in <code>nums</code>, binary search the first index in <code>tails</code> with value ≥ <code>x</code> and replace it with <code>x</code>. If <code>x</code> is greater than all tails, append it. The length of <code>tails</code> is the LIS length.</p>
-<p>This method gives O(n log n) time and O(n) space and is the recommended optimal solution for large inputs.</p>
-<hr>
-<h2 id="🔢-Java-Code-—-DP-O-n²"><a href="#🔢-Java-Code-—-DP-O-n²" class="headerlink" title="🔢 Java Code — DP (O(n²))"></a>🔢 Java Code — DP (O(n²))</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">lengthOfLIS</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="literal">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">n</span> <span class="operator">=</span> nums.length;</span><br><span class="line">        <span class="type">int</span>[] dp = <span class="keyword">new</span> <span class="title class_">int</span>[n];</span><br><span class="line">        Arrays.fill(dp, <span class="number">1</span>);</span><br><span class="line">        <span class="type">int</span> <span class="variable">max</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[j] &lt; nums[i]) &#123;</span><br><span class="line">                    dp[i] = Math.max(dp[i], dp[j] + <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            max = Math.max(max, dp[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> max;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔢-Java-Code-—-Patience-Sorting-O-n-log-n"><a href="#🔢-Java-Code-—-Patience-Sorting-O-n-log-n" class="headerlink" title="🔢 Java Code — Patience Sorting (O(n log n))"></a>🔢 Java Code — Patience Sorting (O(n log n))</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">lengthOfLIS</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums == <span class="literal">null</span> || nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        List&lt;Integer&gt; tails = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x : nums) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> Collections.binarySearch(tails, x);</span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span>) i = -(i + <span class="number">1</span>);</span><br><span class="line">            <span class="keyword">if</span> (i == tails.size()) tails.add(x);</span><br><span class="line">            <span class="keyword">else</span> tails.set(i, x);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> tails.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em>Note</em>: <code>Collections.binarySearch</code> returns <code>-(insertionPoint) - 1</code> when the key is not found; the code above converts it into the insertion point.</p>
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><strong>DP:</strong> Time O(n²), Space O(n).  </li>
-<li><strong>Patience Sorting:</strong> Time O(n log n), Space O(n).</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Use DP for clarity or small <code>n</code>.  </li>
-<li>For large inputs, use the O(n log n) approach with <code>tails</code> + binary search (often called patience sorting).  </li>
-<li>The <code>tails</code> array stores the smallest possible tail for an increasing subsequence of each length; its size equals the LIS length.</li>
 </ul>
 
       
