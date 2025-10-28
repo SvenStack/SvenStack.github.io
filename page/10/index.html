@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">157</span>
+        <span class="site-state-item-count">159</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,122 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/15/Algorithm-Day19-Spiral-Matrix-lc-54/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/07/15/Algorithm-Day19-Spiral-Matrix-lc-54/" class="post-title-link" itemprop="url">Algorithm-Day19-Spiral-Matrix-lc-54</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-07-15 09:45:42 / Modified: 09:47:22" itemprop="dateCreated datePublished" datetime="2025-07-15T09:45:42+10:00">2025-07-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Matrix/" itemprop="url" rel="index"><span itemprop="name">Matrix</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given an <code>m x n</code> matrix, return all elements of the matrix in <strong>spiral order</strong>.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]</span><br><span class="line">Output: [1,2,3,6,9,8,7,4,5]</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-Layer-by-Layer-Traversal"><a href="#💡-Approach-Layer-by-Layer-Traversal" class="headerlink" title="💡 Approach: Layer-by-Layer Traversal"></a>💡 Approach: Layer-by-Layer Traversal</h2><h3 id="✨-Key-Idea"><a href="#✨-Key-Idea" class="headerlink" title="✨ Key Idea"></a>✨ Key Idea</h3><p>We maintain four boundaries:</p>
+<ul>
+<li><code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></li>
+</ul>
+<p>At each step:</p>
+<ol>
+<li>Traverse from <code>left</code> to <code>right</code> along <code>top</code>.</li>
+<li>Traverse from <code>top + 1</code> to <code>bottom</code> along <code>right</code>.</li>
+<li>Traverse from <code>right - 1</code> to <code>left</code> along <code>bottom</code> (only if <code>top &lt; bottom</code>).</li>
+<li>Traverse from <code>bottom - 1</code> to <code>top + 1</code> along <code>left</code> (only if <code>left &lt; right</code>).</li>
+</ol>
+<p>After each step, we shrink the boundaries inward.</p>
+<hr>
+<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">spiralOrder</span><span class="params">(<span class="type">int</span>[][] matrix)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (matrix == <span class="literal">null</span> || matrix.length == <span class="number">0</span>) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">top</span> <span class="operator">=</span> <span class="number">0</span>, bottom = matrix.length - <span class="number">1</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">left</span> <span class="operator">=</span> <span class="number">0</span>, right = matrix[<span class="number">0</span>].length - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (top &lt;= bottom &amp;&amp; left &lt;= right) &#123;</span><br><span class="line">            <span class="comment">// Traverse from left to right</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> left; j &lt;= right; j++) &#123;</span><br><span class="line">                result.add(matrix[top][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            top++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Traverse from top to bottom</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> top; i &lt;= bottom; i++) &#123;</span><br><span class="line">                result.add(matrix[i][right]);</span><br><span class="line">            &#125;</span><br><span class="line">            right--;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (top &lt;= bottom) &#123;</span><br><span class="line">                <span class="comment">// Traverse from right to left</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> right; j &gt;= left; j--) &#123;</span><br><span class="line">                    result.add(matrix[bottom][j]);</span><br><span class="line">                &#125;</span><br><span class="line">                bottom--;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (left &lt;= right) &#123;</span><br><span class="line">                <span class="comment">// Traverse from bottom to top</span></span><br><span class="line">                <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> bottom; i &gt;= top; i--) &#123;</span><br><span class="line">                    result.add(matrix[i][left]);</span><br><span class="line">                &#125;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(m × n)<br> Each cell is visited exactly once.</li>
+<li><strong>Space Complexity:</strong> O(1) extra space<br> (excluding output list)</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Boundary shrinking is a classic matrix traversal technique.</li>
+<li>Spiral order appears in related problems like <code>Spiral Matrix II</code> (filling numbers), <code>lc-59</code>.</li>
+<li>Make sure to check conditions carefully when shrinking boundaries to avoid duplicates.</li>
+</ul>
+<blockquote>
+<p>Matrix traversal patterns (row-wise, column-wise, spiral, zigzag) are common interview topics — good to master!</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1233,124 +1349,6 @@
 </ul>
 <blockquote>
 <p>This is a high-frequency interview question and a foundation for other problems like <code>Longest Subarray Sum</code>, <code>Count of Subarrays With Sum Divisible by K</code>, etc.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/05/Algorithm-Day09-Find-All-Angarams-in-a-String-lc-438/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/05/Algorithm-Day09-Find-All-Angarams-in-a-String-lc-438/" class="post-title-link" itemprop="url">Algorithm-Day09-Find-All-Angarams-in-a-String-lc-438</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-05 01:17:44 / Modified: 01:19:29" itemprop="dateCreated datePublished" datetime="2025-07-05T01:17:44+10:00">2025-07-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Sliding-Window/" itemprop="url" rel="index"><span itemprop="name">Sliding Window</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given two strings <code>s</code> and <code>p</code>, return <strong>all the start indices</strong> of <code>p</code>‘s anagrams in <code>s</code>.</p>
-<p>You may return the answer in <strong>any order</strong>.</p>
-<p><strong>Example:</strong></p>
-<p>Input: s &#x3D; “cbaebabacd”, p &#x3D; “abc”<br> Output: [0, 6]</p>
-<p>Explanation:</p>
-<ul>
-<li>The substring starting at index 0 is “cba”, an anagram of “abc”.</li>
-<li>The substring starting at index 6 is “bac”, another anagram.</li>
-</ul>
-<h2 id="💡-Brute-Force-Not-Efficient"><a href="#💡-Brute-Force-Not-Efficient" class="headerlink" title="💡 Brute Force (Not Efficient)"></a>💡 Brute Force (Not Efficient)</h2><p>Generate every substring of <code>s</code> with length <code>p.length()</code> and check if it is an anagram.</p>
-<ul>
-<li>Time: O(n * k log k) if sorting is used</li>
-<li>❌ Too slow for large inputs</li>
-</ul>
-<hr>
-<h2 id="💡-Optimized-Approach-Sliding-Window-Frequency-Count"><a href="#💡-Optimized-Approach-Sliding-Window-Frequency-Count" class="headerlink" title="💡 Optimized Approach: Sliding Window + Frequency Count"></a>💡 Optimized Approach: Sliding Window + Frequency Count</h2><ul>
-<li>Use two arrays of size 26 (for lowercase letters)</li>
-<li>One array stores frequency of characters in <code>p</code></li>
-<li>The second tracks the sliding window in <code>s</code></li>
-<li>Compare the arrays at each step (or use a match count to speed up)</li>
-</ul>
-<h2 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;Integer&gt; <span class="title function_">findAnagrams</span><span class="params">(String s, String p)</span> &#123;</span><br><span class="line">        List&lt;Integer&gt; result = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (s.length() &lt; p.length()) <span class="keyword">return</span> result;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span>[] pCount = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="type">int</span>[] sCount = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">26</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : p.toCharArray()) &#123;</span><br><span class="line">            pCount[c - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="comment">// Add new character to current window</span></span><br><span class="line">            sCount[s.charAt(i) - <span class="string">&#x27;a&#x27;</span>]++;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Remove character that&#x27;s left the window</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= p.length()) &#123;</span><br><span class="line">                sCount[s.charAt(i - p.length()) - <span class="string">&#x27;a&#x27;</span>]--;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Compare frequency arrays</span></span><br><span class="line">            <span class="keyword">if</span> (Arrays.equals(pCount, sCount)) &#123;</span><br><span class="line">                result.add(i - p.length() + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n)<br> Each character processed once, comparison takes O(26) &#x3D; constant</li>
-<li><strong>Space Complexity:</strong> O(1)<br> Only fixed-size arrays used (no hashmap needed)</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>This is a classic <strong>fixed-length sliding window</strong> problem</li>
-<li>Using <strong>character count arrays</strong> instead of sorting or hashing improves performance significantly</li>
-<li>Similar patterns appear in <code>Minimum Window Substring</code>, <code>Permutation in String</code>, etc.</li>
-</ul>
-<blockquote>
-<p>Mastering this technique is key to solving many real-time window comparison problems efficiently.</p>
 </blockquote>
 
       

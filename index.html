@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">108</span>
+          <span class="site-state-item-count">109</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">157</span>
+        <span class="site-state-item-count">159</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,108 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/28/Algorithm-Day109-Longest-Common-Prefix-lc-14/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/28/Algorithm-Day109-Longest-Common-Prefix-lc-14/" class="post-title-link" itemprop="url">Algorithm Day109 - Longest Common Prefix</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-28 19:00:00 / Modified: 18:59:28" itemprop="dateCreated datePublished" datetime="2025-10-28T19:00:00+11:00">2025-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="📌-Problem"><a href="#📌-Problem" class="headerlink" title="📌 Problem"></a>📌 Problem</h2><p>Write a function to find the longest common prefix string amongst an array of strings.<br>If there is no common prefix, return an empty string <code>&quot;&quot;</code>.</p>
+<hr>
+<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: strs = [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]</span><br><span class="line">Output: &quot;fl&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: strs = [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]</span><br><span class="line">Output: &quot;&quot;</span><br></pre></td></tr></table></figure>
+<p>Explanation: There is no common prefix among the input strings.</p>
+<hr>
+<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>A common and simple approach is to start from the first string as the prefix, and then gradually shorten it while checking against other strings.<br>Stop when the prefix no longer matches.</p>
+<hr>
+<h2 id="🔢-Java-Code-Vertical-Scanning"><a href="#🔢-Java-Code-Vertical-Scanning" class="headerlink" title="🔢 Java Code (Vertical Scanning)"></a>🔢 Java Code (Vertical Scanning)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">longestCommonPrefix</span><span class="params">(String[] strs)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (strs == <span class="literal">null</span> || strs.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">prefix</span> <span class="operator">=</span> strs[<span class="number">0</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; strs.length; i++) &#123;</span><br><span class="line">            <span class="keyword">while</span> (strs[i].indexOf(prefix) != <span class="number">0</span>) &#123;</span><br><span class="line">                prefix = prefix.substring(<span class="number">0</span>, prefix.length() - <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">if</span> (prefix.isEmpty()) <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> prefix;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
+<li><strong>Time:</strong> O(S) — S &#x3D; total number of characters in all strings (each char checked at most once).  </li>
+<li><strong>Space:</strong> O(1) — no extra data structure used.</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Start with the first string as prefix and reduce it when mismatches occur.  </li>
+<li>Efficient for small&#x2F;medium input sizes.  </li>
+<li>A clean and intuitive string problem that often appears early in interviews.</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1198,122 +1300,6 @@
 </ul>
 <hr>
 <h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>The key insight is recognizing the <strong>first decreasing pair from the right</strong> and making the minimal change to reach the next permutation.<br>This elegant algorithm is widely used in combinatorial generation and backtracking problems.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/14/Algorithm-Day99-Sort-Colors-lc-75/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/14/Algorithm-Day99-Sort-Colors-lc-75/" class="post-title-link" itemprop="url">Algorithm Day99 - Sort Colors</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-10-14 20:50:00 / Modified: 20:50:50" itemprop="dateCreated datePublished" datetime="2025-10-14T20:50:00+11:00">2025-10-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/Array/" itemprop="url" rel="index"><span itemprop="name">Array</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/Array/Two-Pointers/" itemprop="url" rel="index"><span itemprop="name">Two Pointers</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem"><a href="#🧩-Problem" class="headerlink" title="🧩 Problem"></a>🧩 Problem</h2><p><strong>LeetCode 75 - Sort Colors</strong><br>Given an array <code>nums</code> with <code>n</code> objects colored red, white, or blue, sort them <strong>in-place</strong> so that objects of the same color are adjacent, with the colors in the order <strong>red, white, and blue</strong>.</p>
-<p>We will use the integers <code>0</code>, <code>1</code>, and <code>2</code> to represent the colors red, white, and blue respectively.</p>
-<p>You must solve this problem <strong>without using the library’s sort function</strong>.</p>
-<p><strong>Example:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: nums = [2,0,2,1,1,0]</span><br><span class="line">Output: [0,0,1,1,2,2]</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Idea"><a href="#💡-Idea" class="headerlink" title="💡 Idea"></a>💡 Idea</h2><p>This is a <strong>Dutch National Flag problem</strong>, invented by Edsger Dijkstra.<br>We use <strong>three pointers</strong> to partition the array into three regions:</p>
-<ul>
-<li><code>0 ... low-1</code>: all 0s  </li>
-<li><code>low ... mid-1</code>: all 1s  </li>
-<li><code>high+1 ... end</code>: all 2s</li>
-</ul>
-<p>We iterate using <code>mid</code>:</p>
-<ul>
-<li>If <code>nums[mid] == 0</code>: swap with <code>low</code>, increment both <code>low</code> and <code>mid</code></li>
-<li>If <code>nums[mid] == 1</code>: just increment <code>mid</code></li>
-<li>If <code>nums[mid] == 2</code>: swap with <code>high</code>, decrement <code>high</code></li>
-</ul>
-<p>This ensures a one-pass, in-place sorting solution.</p>
-<hr>
-<h2 id="💻-Java-Code"><a href="#💻-Java-Code" class="headerlink" title="💻 Java Code"></a>💻 Java Code</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sortColors</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">low</span> <span class="operator">=</span> <span class="number">0</span>, mid = <span class="number">0</span>, high = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (mid &lt;= high) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[mid] == <span class="number">0</span>) &#123;</span><br><span class="line">                swap(nums, low++, mid++);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nums[mid] == <span class="number">1</span>) &#123;</span><br><span class="line">                mid++;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                swap(nums, mid, high--);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> nums[i];</span><br><span class="line">        nums[i] = nums[j];</span><br><span class="line">        nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🧠-Complexity"><a href="#🧠-Complexity" class="headerlink" title="🧠 Complexity"></a>🧠 Complexity</h2><ul>
-<li><strong>Time:</strong> O(n) — Single pass through the array  </li>
-<li><strong>Space:</strong> O(1) — In-place swaps only</li>
-</ul>
-<hr>
-<h2 id="🏁-Summary"><a href="#🏁-Summary" class="headerlink" title="🏁 Summary"></a>🏁 Summary</h2><p>This problem is a perfect example of <strong>in-place array manipulation</strong> using multiple pointers.<br>The Dutch National Flag algorithm is elegant, efficient, and a must-know for array partitioning problems.</p>
 
       
     </div>
