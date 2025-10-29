@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">109</span>
+          <span class="site-state-item-count">110</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">159</span>
+        <span class="site-state-item-count">160</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/16/Algorithm-Day49-Path-Sum-III-lc-437/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/16/Algorithm-Day49-Path-Sum-III-lc-437/" class="post-title-link" itemprop="url">LeetCode 437. Path Sum III</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-16 21:00:00 / Modified: 10:20:24" itemprop="dateCreated datePublished" datetime="2025-08-16T21:00:00+10:00">2025-08-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree and an integer <code>targetSum</code>, return the <strong>number of paths</strong> where the sum of the node values in the path equals <code>targetSum</code>.</p>
+<p>The path <strong>does not need to start or end at the root or a leaf</strong>, but it must go downwards (traveling only from parent nodes to child nodes).</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><p><strong>Example 1</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [10,5,-3,3,2,null,11,3,-2,null,1], targetSum = 8</span><br><span class="line">Output: 3</span><br><span class="line">Explanation: The paths that sum to 8 are:</span><br><span class="line">- 5 → 3</span><br><span class="line">- 5 → 2 → 1</span><br><span class="line">- -3 → 11</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example 2</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1], targetSum = 1</span><br><span class="line">Output: 1</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-1-DFS-Brute-Force"><a href="#💡-Approach-1-DFS-Brute-Force" class="headerlink" title="💡 Approach 1: DFS (Brute Force)"></a>💡 Approach 1: DFS (Brute Force)</h2><p>The most straightforward solution is:</p>
+<ul>
+<li>For each node, start a DFS to find all downward paths whose sum equals <code>targetSum</code>.</li>
+<li>This results in O(n²) time complexity in the worst case.</li>
+</ul>
+<hr>
+<h3 id="🔢-Java-Code-Brute-Force"><a href="#🔢-Java-Code-Brute-Force" class="headerlink" title="🔢 Java Code (Brute Force)"></a>🔢 Java Code (Brute Force)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pathSum</span><span class="params">(TreeNode root, <span class="type">int</span> targetSum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> countFromNode(root, targetSum) </span><br><span class="line">               + pathSum(root.left, targetSum) </span><br><span class="line">               + pathSum(root.right, targetSum);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">countFromNode</span><span class="params">(TreeNode node, <span class="type">long</span> targetSum)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (node.val == targetSum) count++;</span><br><span class="line">        count += countFromNode(node.left, targetSum - node.val);</span><br><span class="line">        count += countFromNode(node.right, targetSum - node.val);</span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-Approach-2-Prefix-Sum-HashMap-Optimized"><a href="#💡-Approach-2-Prefix-Sum-HashMap-Optimized" class="headerlink" title="💡 Approach 2: Prefix Sum + HashMap (Optimized)"></a>💡 Approach 2: Prefix Sum + HashMap (Optimized)</h2><p>We can reduce time complexity to <strong>O(n)</strong> by:</p>
+<ul>
+<li>Maintaining a prefix sum map that stores <code>(currentSum → frequency)</code>.</li>
+<li>At each node, we calculate how many previous prefix sums satisfy:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentSum - targetSum = somePreviousPrefix</span><br></pre></td></tr></table></figure></li>
+<li>Update the map during DFS and backtrack after visiting children.</li>
+</ul>
+<hr>
+<h3 id="🔢-Java-Code-Optimized"><a href="#🔢-Java-Code-Optimized" class="headerlink" title="🔢 Java Code (Optimized)"></a>🔢 Java Code (Optimized)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">pathSum</span><span class="params">(TreeNode root, <span class="type">int</span> targetSum)</span> &#123;</span><br><span class="line">        Map&lt;Long, Integer&gt; prefixSumMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        prefixSumMap.put(<span class="number">0L</span>, <span class="number">1</span>); <span class="comment">// Base case: sum = 0 occurs once</span></span><br><span class="line">        <span class="keyword">return</span> dfs(root, <span class="number">0L</span>, targetSum, prefixSumMap);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> <span class="title function_">dfs</span><span class="params">(TreeNode node, <span class="type">long</span> currSum, <span class="type">int</span> targetSum, Map&lt;Long, Integer&gt; map)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="literal">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        currSum += node.val;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> map.getOrDefault(currSum - targetSum, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">        map.put(currSum, map.getOrDefault(currSum, <span class="number">0</span>) + <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">        count += dfs(node.left, currSum, targetSum, map);</span><br><span class="line">        count += dfs(node.right, currSum, targetSum, map);</span><br><span class="line"></span><br><span class="line">        map.put(currSum, map.get(currSum) - <span class="number">1</span>); <span class="comment">// backtrack</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> count;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><p><strong>Brute Force</strong>  </p>
+<ul>
+<li>Time: O(n²) in worst case  </li>
+<li>Space: O(h) recursion stack</li>
+</ul>
+<p><strong>Prefix Sum Optimized</strong>  </p>
+<ul>
+<li>Time: O(n) — visiting each node once  </li>
+<li>Space: O(n) — prefix sum map and recursion stack</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li><strong>Brute Force</strong>: Try all starting points → simple but slow.  </li>
+<li><strong>Prefix Sum</strong>: Tracks how many ways we can reach <code>targetSum</code> efficiently.  </li>
+<li>Related problems:<ul>
+<li><code>lc-112</code> — Path Sum</li>
+<li><code>lc-113</code> — Path Sum II</li>
+<li><code>lc-437</code> — Path Sum III (this one)</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1206,125 +1338,6 @@
 </ul>
 <blockquote>
 <p>Pattern also appears in path sum and subtree depth problems. Master it well.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/05/Algorithm-Day40-Symmetric-Tree-lc-101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/08/05/Algorithm-Day40-Symmetric-Tree-lc-101/" class="post-title-link" itemprop="url">Algorithm-Day40-Symmetric-Tree-lc-101</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-08-05 22:32:15 / Modified: 22:33:48" itemprop="dateCreated datePublished" datetime="2025-08-05T22:32:15+10:00">2025-08-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, <strong>check whether it is a mirror of itself</strong> (i.e., symmetric around its center).</p>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [1,2,2,3,4,4,3]</span><br><span class="line">Output: true</span><br></pre></td></tr></table></figure>
-
-<p>Symmetric ✅</p>
-<hr>
-<h2 id="💡-Approach-1-Recursive-Comparison"><a href="#💡-Approach-1-Recursive-Comparison" class="headerlink" title="💡 Approach 1: Recursive Comparison"></a>💡 Approach 1: Recursive Comparison</h2><p>We define a helper function <code>isMirror(left, right)</code> to check whether two subtrees are mirror images of each other.</p>
-<hr>
-<h3 id="🔢-Java-Code-Recursive"><a href="#🔢-Java-Code-Recursive" class="headerlink" title="🔢 Java Code (Recursive)"></a>🔢 Java Code (Recursive)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> isMirror(root.left, root.right);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">isMirror</span><span class="params">(TreeNode t1, TreeNode t2)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (t1 == <span class="literal">null</span> &amp;&amp; t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (t1 == <span class="literal">null</span> || t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> (t1.val == t2.val)</span><br><span class="line">            &amp;&amp; isMirror(t1.left, t2.right)</span><br><span class="line">            &amp;&amp; isMirror(t1.right, t2.left);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Approach-2-Iterative-BFS-with-Queue"><a href="#💡-Approach-2-Iterative-BFS-with-Queue" class="headerlink" title="💡 Approach 2: Iterative (BFS with Queue)"></a>💡 Approach 2: Iterative (BFS with Queue)</h2><p>We can also use a queue to compare nodes level by level.</p>
-<hr>
-<h3 id="🔢-Java-Code-Iterative"><a href="#🔢-Java-Code-Iterative" class="headerlink" title="🔢 Java Code (Iterative)"></a>🔢 Java Code (Iterative)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isSymmetric</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root.left);</span><br><span class="line">        queue.offer(root.right);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">t1</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">            <span class="type">TreeNode</span> <span class="variable">t2</span> <span class="operator">=</span> queue.poll();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="literal">null</span> &amp;&amp; t2 == <span class="literal">null</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1 == <span class="literal">null</span> || t2 == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">if</span> (t1.val != t2.val) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">            queue.offer(t1.left);</span><br><span class="line">            queue.offer(t2.right);</span><br><span class="line">            queue.offer(t1.right);</span><br><span class="line">            queue.offer(t2.left);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n) — visit each node once</li>
-<li><strong>Space Complexity:</strong><ul>
-<li>Recursive: O(h)</li>
-<li>Iterative: O(w) for queue</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Use recursion for elegant, clear code.</li>
-<li>Iterative is slightly more verbose but stack-safe.</li>
-<li>Understand the <strong>mirror condition</strong>:<ul>
-<li><code>left.left == right.right</code></li>
-<li><code>left.right == right.left</code></li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Often paired with <code>lc-100</code>, <code>lc-226</code>, and other binary tree symmetry&#x2F;mirroring problems.</p>
 </blockquote>
 
       
