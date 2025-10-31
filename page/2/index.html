@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">160</span>
+        <span class="site-state-item-count">162</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,125 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/19/Algorithm-Day102-Zigzag-Conversion-lc-6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/10/19/Algorithm-Day102-Zigzag-Conversion-lc-6/" class="post-title-link" itemprop="url">Algorithm Day102 - Zigzag Conversion</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-10-19 12:00:00 / Modified: 12:17:36" itemprop="dateCreated datePublished" datetime="2025-10-19T12:00:00+11:00">2025-10-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p><strong>LeetCode 6 - Zigzag Conversion</strong><br>The string <code>&quot;PAYPALISHIRING&quot;</code> is written in a zigzag pattern on a given number of rows, like this:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">P   A   H   N</span><br><span class="line">A P L S I I G</span><br><span class="line">Y   I   R</span><br></pre></td></tr></table></figure>
+
+<p>Then read line by line: <code>&quot;PAHNAPLSIIGYIR&quot;</code>  </p>
+<p>Write the code that will take a string and make this conversion given a number of rows.</p>
+<p><strong>Example:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: s = &quot;PAYPALISHIRING&quot;, numRows = 3</span><br><span class="line">Output: &quot;PAHNAPLSIIGYIR&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="💡-First-Thought-Simulation"><a href="#💡-First-Thought-Simulation" class="headerlink" title="💡 First Thought (Simulation)"></a>💡 First Thought (Simulation)</h2><p>We can simulate the zigzag process by writing characters row by row.<br>Keep track of the current row and the direction (down or up).</p>
+<hr>
+<h2 id="⚙️-Optimized-Approach-—-Row-Buckets"><a href="#⚙️-Optimized-Approach-—-Row-Buckets" class="headerlink" title="⚙️ Optimized Approach — Row Buckets"></a>⚙️ Optimized Approach — Row Buckets</h2><p>We maintain a list of <code>StringBuilder</code> objects, one for each row,<br>and iterate over the string while changing direction when we hit the top or bottom row.</p>
+<h3 id="Java-Code"><a href="#Java-Code" class="headerlink" title="Java Code"></a>Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">convert</span><span class="params">(String s, <span class="type">int</span> numRows)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (numRows == <span class="number">1</span> || s.length() &lt;= numRows) <span class="keyword">return</span> s;</span><br><span class="line"></span><br><span class="line">        StringBuilder[] rows = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>[numRows];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numRows; i++) rows[i] = <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> <span class="variable">curRow</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">goingDown</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">char</span> c : s.toCharArray()) &#123;</span><br><span class="line">            rows[curRow].append(c);</span><br><span class="line">            <span class="keyword">if</span> (curRow == <span class="number">0</span> || curRow == numRows - <span class="number">1</span>) goingDown = !goingDown;</span><br><span class="line">            curRow += goingDown ? <span class="number">1</span> : -<span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (StringBuilder row : rows) result.append(row);</span><br><span class="line">        <span class="keyword">return</span> result.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱️-Complexity-Analysis"><a href="#⏱️-Complexity-Analysis" class="headerlink" title="⏱️ Complexity Analysis"></a>⏱️ Complexity Analysis</h2><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Time Complexity</th>
+<th>Space Complexity</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Iterate over string</td>
+<td>O(n)</td>
+<td>O(n)</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧠-Key-Takeaways"><a href="#🧠-Key-Takeaways" class="headerlink" title="🧠 Key Takeaways"></a>🧠 Key Takeaways</h2><ul>
+<li>Zigzag pattern can be simulated by <strong>tracking row direction</strong>.  </li>
+<li>Great example of <strong>string traversal with controlled direction change</strong>.  </li>
+<li>Easy to visualize and implement with <code>StringBuilder[]</code>.</li>
+</ul>
+<hr>
+<p>📘 <em>Next Step:</em> We’ll look into <strong>string pattern transformation</strong> problems in the next post.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1202,129 +1321,6 @@
 <li><code>lc-63</code> (Unique Paths II)  </li>
 <li><code>lc-120</code> (Triangle)</li>
 </ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/10/03/Algorithm-Day92-Unique-Paths-lc-62/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/10/03/Algorithm-Day92-Unique-Paths-lc-62/" class="post-title-link" itemprop="url">Algorithm Day92 - Unique Paths</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-10-03 12:00:00 / Modified: 12:21:12" itemprop="dateCreated datePublished" datetime="2025-10-03T12:00:00+10:00">2025-10-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Dynamic-Programming/" itemprop="url" rel="index"><span itemprop="name">Dynamic Programming</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>A robot is located at the top-left corner of an <code>m x n</code> grid (marked <code>start</code> in the diagram below).</p>
-<p>The robot can only move either down or right at any point in time. The robot is trying to reach the bottom-right corner of the grid (marked <code>finish</code>).</p>
-<p>How many possible unique paths are there?</p>
-<hr>
-<h3 id="💬-Examples"><a href="#💬-Examples" class="headerlink" title="💬 Examples"></a>💬 Examples</h3><p><strong>Example 1</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: m = 3, n = 7</span><br><span class="line">Output: 28</span><br></pre></td></tr></table></figure>
-
-<p><strong>Example 2</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Input: m = 3, n = 2</span><br><span class="line">Output: 3</span><br><span class="line">Explanation:  </span><br><span class="line">Right -&gt; Down -&gt; Down  </span><br><span class="line">Down -&gt; Down -&gt; Right  </span><br><span class="line">Down -&gt; Right -&gt; Down</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>At each cell <code>(i, j)</code>, the number of unique paths to reach it is the sum of paths from the top <code>(i-1, j)</code> and from the left <code>(i, j-1)</code>. This gives a <strong>dynamic programming</strong> relation.</p>
-<p>Alternatively, this problem has a combinatorial solution using binomial coefficients: choosing <code>(m-1)</code> downs from <code>(m+n-2)</code> total moves.</p>
-<hr>
-<h2 id="🔢-Java-Code-Dynamic-Programming"><a href="#🔢-Java-Code-Dynamic-Programming" class="headerlink" title="🔢 Java Code (Dynamic Programming)"></a>🔢 Java Code (Dynamic Programming)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">uniquePaths</span><span class="params">(<span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] dp = <span class="keyword">new</span> <span class="title class_">int</span>[m][n];</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; m; i++) dp[i][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; n; j++) dp[<span class="number">0</span>][j] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt; m; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">                dp[i][j] = dp[i - <span class="number">1</span>][j] + dp[i][j - <span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[m - <span class="number">1</span>][n - <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔢-Java-Code-Combinatorics"><a href="#🔢-Java-Code-Combinatorics" class="headerlink" title="🔢 Java Code (Combinatorics)"></a>🔢 Java Code (Combinatorics)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">uniquePaths</span><span class="params">(<span class="type">int</span> m, <span class="type">int</span> n)</span> &#123;</span><br><span class="line">        <span class="type">long</span> <span class="variable">res</span> <span class="operator">=</span> <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i &lt;= m - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            res = res * (n - <span class="number">1</span> + i) / i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (<span class="type">int</span>) res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Complexity-Analysis"><a href="#⏱-Complexity-Analysis" class="headerlink" title="⏱ Complexity Analysis"></a>⏱ Complexity Analysis</h2><ul>
-<li><p><strong>DP approach</strong>:  </p>
-<ul>
-<li>Time: O(m × n)  </li>
-<li>Space: O(m × n) (can be optimized to O(n))</li>
-</ul>
-</li>
-<li><p><strong>Combinatorics</strong>:  </p>
-<ul>
-<li>Time: O(m)  </li>
-<li>Space: O(1)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Grid path counting reduces to a <strong>classic DP problem</strong>.  </li>
-<li>Alternatively, solve with <strong>binomial coefficient</strong>.  </li>
-<li>Use combinatorics for very large grids to avoid DP overhead.</li>
-</ul>
-<p><strong>Related problems</strong>: <code>lc-63</code> (Unique Paths II), <code>lc-64</code> (Minimum Path Sum).</p>
 
       
     </div>

@@ -141,7 +141,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -152,7 +152,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags">
-        <span class="site-state-item-count">160</span>
+        <span class="site-state-item-count">162</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -177,6 +177,120 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/08/07/Algorithm-Day42-Binary-Tree-Level-Order-Traversal-lc-102/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/profile_compressed.png">
+      <meta itemprop="name" content="Sven">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SvenStack">
+      <meta itemprop="description" content="Code. Learn. Evolve.">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | SvenStack">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/08/07/Algorithm-Day42-Binary-Tree-Level-Order-Traversal-lc-102/" class="post-title-link" itemprop="url">Algorithm-Day42-Binary-Tree-Level-Order-Traversal-lc-102</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2025-08-07 22:26:48 / Modified: 22:28:03" itemprop="dateCreated datePublished" datetime="2025-08-07T22:26:48+10:00">2025-08-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithms/Binary-Tree/" itemprop="url" rel="index"><span itemprop="name">Binary Tree</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>root</code> of a binary tree, return the <strong>level order traversal</strong> of its nodes’ values (i.e., from left to right, level by level).</p>
+<hr>
+<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: root = [3,9,20,null,null,15,7]</span><br><span class="line">Output: [[3],[9,20],[15,7]]</span><br></pre></td></tr></table></figure>
+
+<h2 id="💡-Approach-Breadth-First-Search-BFS"><a href="#💡-Approach-Breadth-First-Search-BFS" class="headerlink" title="💡 Approach: Breadth-First Search (BFS)"></a>💡 Approach: Breadth-First Search (BFS)</h2><p>This is a classic <strong>BFS traversal</strong> problem using a <strong>queue</strong>:</p>
+<ol>
+<li>Start from the root and process each level of the tree.</li>
+<li>For each node in the current level, push its children into the queue.</li>
+<li>Collect all node values level by level.</li>
+</ol>
+<hr>
+<h3 id="🔢-Java-Code"><a href="#🔢-Java-Code" class="headerlink" title="🔢 Java Code"></a>🔢 Java Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; res = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span> res;</span><br><span class="line"></span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            List&lt;Integer&gt; level = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                level.add(node.val);</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>) queue.offer(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>) queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            res.add(level);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
+<li><strong>Time Complexity:</strong> O(n) — every node is visited once</li>
+<li><strong>Space Complexity:</strong> O(n) — queue + output list</li>
+</ul>
+<hr>
+<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
+<li>Straightforward BFS template.</li>
+<li>Common interview question to test <strong>level-by-level traversal</strong>.</li>
+<li>Often used in problems involving:<ul>
+<li>Tree depth</li>
+<li>Zigzag&#x2F;spiral level order</li>
+<li>Node connect (next pointers)</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Try implementing variations like <code>lc-107</code>, <code>lc-103</code>, <code>lc-199</code>.</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1247,131 +1361,6 @@
 </ul>
 <blockquote>
 <p>Practice building clones of linked structures while preserving complex references. This is a great test of both logic and implementation skill.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/profile_compressed.png">
-      <meta itemprop="name" content="Sven">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SvenStack">
-      <meta itemprop="description" content="Code. Learn. Evolve.">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content=" | SvenStack">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2025/07/28/Algorithm-Day32-Reverse-Nodes-in-Group-lc25/" class="post-title-link" itemprop="url">Algorithm-Day32-Reverse-Nodes-in-Group-lc-25</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2025-07-28 18:12:13 / Modified: 18:14:18" itemprop="dateCreated datePublished" datetime="2025-07-28T18:12:13+10:00">2025-07-28</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/" itemprop="url" rel="index"><span itemprop="name">Algorithms</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithms/Linked-List/" itemprop="url" rel="index"><span itemprop="name">Linked List</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="🧩-Problem-Description"><a href="#🧩-Problem-Description" class="headerlink" title="🧩 Problem Description"></a>🧩 Problem Description</h2><p>Given the <code>head</code> of a linked list, reverse the nodes of the list <strong>k at a time</strong>, and return the modified list.</p>
-<ul>
-<li>Nodes that remain fewer than <code>k</code> at the end should <strong>remain in order</strong>.</li>
-<li>You <strong>may not</strong> alter the values in the list’s nodes — only node pointers may be changed.</li>
-</ul>
-<hr>
-<h3 id="💬-Example"><a href="#💬-Example" class="headerlink" title="💬 Example"></a>💬 Example</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Input: head = [1,2,3,4,5], k = 3</span><br><span class="line">Output: [3,2,1,4,5]</span><br></pre></td></tr></table></figure>
-
-<h2 id="💡-Intuition"><a href="#💡-Intuition" class="headerlink" title="💡 Intuition"></a>💡 Intuition</h2><p>This is an extension of basic linked list reversal.</p>
-<ul>
-<li>Reversing <strong>k nodes</strong> at a time → similar to <code>lc-206</code>, but in segments.</li>
-<li>Key steps:<ol>
-<li>Check if at least <code>k</code> nodes remain.</li>
-<li>Reverse <code>k</code> nodes.</li>
-<li>Recurse or loop to the next <code>k</code>-group.</li>
-</ol>
-</li>
-</ul>
-<p>✅ Use a helper function to reverse a portion of the list.</p>
-<hr>
-<h2 id="🔢-Java-Code-Recursive"><a href="#🔢-Java-Code-Recursive" class="headerlink" title="🔢 Java Code (Recursive)"></a>🔢 Java Code (Recursive)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseKGroup</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">curr</span> <span class="operator">=</span> head;</span><br><span class="line">        <span class="type">int</span> <span class="variable">count</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 1: Check if we have at least k nodes</span></span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span> &amp;&amp; count &lt; k) &#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            count++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (count &lt; k) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 2: Reverse k nodes</span></span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">prev</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">        curr = head;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; k; i++) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">nextTemp</span> <span class="operator">=</span> curr.next;</span><br><span class="line">            curr.next = prev;</span><br><span class="line">            prev = curr;</span><br><span class="line">            curr = nextTemp;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Step 3: Recursively reverse next k group</span></span><br><span class="line">        head.next = reverseKGroup(curr, k);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> prev;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="🔁-Java-Code-Iterative-with-Dummy-Node"><a href="#🔁-Java-Code-Iterative-with-Dummy-Node" class="headerlink" title="🔁 Java Code (Iterative with Dummy Node)"></a>🔁 Java Code (Iterative with Dummy Node)</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> ListNode <span class="title function_">reverseKGroup</span><span class="params">(ListNode head, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">dummy</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ListNode</span>(<span class="number">0</span>, head);</span><br><span class="line">        <span class="type">ListNode</span> <span class="variable">prevGroupEnd</span> <span class="operator">=</span> dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (<span class="literal">true</span>) &#123;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">kth</span> <span class="operator">=</span> getKthNode(prevGroupEnd, k);</span><br><span class="line">            <span class="keyword">if</span> (kth == <span class="literal">null</span>) <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">groupStart</span> <span class="operator">=</span> prevGroupEnd.next;</span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">nextGroupStart</span> <span class="operator">=</span> kth.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Reverse current k-group</span></span><br><span class="line">            <span class="type">ListNode</span> <span class="variable">prev</span> <span class="operator">=</span> kth.next, curr = groupStart;</span><br><span class="line">            <span class="keyword">while</span> (curr != nextGroupStart) &#123;</span><br><span class="line">                <span class="type">ListNode</span> <span class="variable">tmp</span> <span class="operator">=</span> curr.next;</span><br><span class="line">                curr.next = prev;</span><br><span class="line">                prev = curr;</span><br><span class="line">                curr = tmp;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Connect with previous part</span></span><br><span class="line">            prevGroupEnd.next = kth;</span><br><span class="line">            prevGroupEnd = groupStart;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> ListNode <span class="title function_">getKthNode</span><span class="params">(ListNode curr, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">        <span class="keyword">while</span> (curr != <span class="literal">null</span> &amp;&amp; k &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            curr = curr.next;</span><br><span class="line">            k--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> curr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="⏱-Time-and-Space-Complexity"><a href="#⏱-Time-and-Space-Complexity" class="headerlink" title="⏱ Time and Space Complexity"></a>⏱ Time and Space Complexity</h2><ul>
-<li><strong>Time Complexity:</strong> O(n), each node is visited once</li>
-<li><strong>Space Complexity:</strong><ul>
-<li>Recursive: O(n&#x2F;k) recursion stack</li>
-<li>Iterative: O(1)</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="✍️-Summary"><a href="#✍️-Summary" class="headerlink" title="✍️ Summary"></a>✍️ Summary</h2><ul>
-<li>Advanced linked list problem — combines <strong>segment reversal</strong>, <strong>pointer manipulation</strong>, and <strong>recursion&#x2F;looping</strong>.</li>
-<li>You must understand <code>lc-206</code> (reverse linked list) first.</li>
-<li>Mastering this problem improves your skill with pointer operations.</li>
-</ul>
-<blockquote>
-<p>Start from simpler problems like lc-24, then build up to this level. Great interview question!</p>
 </blockquote>
 
       
